@@ -22,6 +22,7 @@
     <modules>
         <module>rocketmq-producer</module>
         <module>rocketmq-consumer</module>
+        <module>security</module>
     </modules>
 
 <!--    除了jdk外 使用properties引入的maven包同时需要在在子项目中引入-->
