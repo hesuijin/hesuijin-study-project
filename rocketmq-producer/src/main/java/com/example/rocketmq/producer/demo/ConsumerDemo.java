@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  * @Date 2021/3/1 23:23
  * @Description:
  */
-@RocketMQMessageListener(topic = "Hello",consumerGroup = "${rocketmq.producer.group}")
+@RocketMQMessageListener(topic = "HELLO_TOPIC",consumerGroup = "${rocketmq.producer.group}")
 @Component
 public class ConsumerDemo implements RocketMQListener<String> {
     @Override

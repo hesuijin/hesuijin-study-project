@@ -16,7 +16,7 @@ public class ProducerDemo {
 
     public void sendMessage(){
         //参数1:topic  参数2：要发送的消息
-        rocketMQTemplate.convertAndSend("Hello","你好啊！");
+        rocketMQTemplate.convertAndSend("HELLO_TOPIC","你好啊！");
         System.out.println("消息发送完成");
     }
 
