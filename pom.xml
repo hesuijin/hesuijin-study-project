@@ -47,15 +47,21 @@
 
 
     <dependencies>
+        <!--        SpringBoot项目启动类-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
         <!--        web项目启动器器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--        SpringBoot项目启动类-->
+
+        <!--        引入validator 使用校验请求-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
         <!--        SpringBoot的Test启动类-->
@@ -82,12 +88,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!--        引入validator 使用校验请求-->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>6.0.1.Final</version>
-        </dependency>
+
     </dependencies>
 
     <!--编译-->
