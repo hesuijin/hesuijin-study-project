@@ -14,3 +14,6 @@
 ##### 该项目的学习要点：
     1. Spring Security +JWT 实现登入登出以及权限校验
     2. JPA 实现审计功能、多对多的映射关系如何通过关联表实现
+
+##### 项目结构
+![](./pictures/structure.png)    
