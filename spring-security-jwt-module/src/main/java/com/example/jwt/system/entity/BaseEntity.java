@@ -8,11 +8,6 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.Column;
-import javax.persistence.EntityListeners;
-import javax.persistence.MappedSuperclass;
 import java.time.Instant;
 
 /**
@@ -23,28 +18,15 @@ import java.time.Instant;
  * @Date 2021/3/3
  */
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@MappedSuperclass
-@EntityListeners(value = AuditingEntityListener.class)
+
 public class BaseEntity {
 
-    @CreatedDate
-    @Column(updatable = false)
-    @JsonIgnore
     private Instant createdAt;
 
-    @LastModifiedDate
-    @JsonIgnore
     private Instant updatedAt;
 
-    @CreatedBy
-    @Column(updatable = false)
-    @JsonIgnore
     private String createdBy;
 
-    @LastModifiedBy
-    @JsonIgnore
     private String updatedBy;
 
 }

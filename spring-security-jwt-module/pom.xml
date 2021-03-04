@@ -22,6 +22,14 @@
         <jwt.version>0.10.7</jwt.version>
         <commons-pool2.version>2.8.0</commons-pool2.version>
         <junit.version>4.13.1</junit.version>
+        <!-- Mysql 驱动包 -->
+        <mysql-connector-java.version>5.1.44</mysql-connector-java.version>
+        <!-- Mybatis 驱动包 -->
+        <java.mybatis.version>1.3.0</java.mybatis.version>
+        <!-- Mybatis-plus 驱动包 -->
+        <java.mybatis-plus.version>3.3.1.tmp</java.mybatis-plus.version>
+        <!-- 阿里巴巴Druid数据库连接池版本 -->
+        <druid.version>1.1.6</druid.version>
     </properties>
 
     <dependencies>
@@ -35,7 +43,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
         <!--        secuity启动器-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -72,24 +79,43 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!-- jpa 数据库框架-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
         <!-- database h2数据库 内嵌数据库-->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.h2database</groupId>-->
+        <!--            <artifactId>h2</artifactId>-->
+        <!--            <scope>runtime</scope>-->
+        <!--        </dependency>-->
+
         <!-- database mysql数据库-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
+            <version>${mysql-connector-java.version}</version>
         </dependency>
+        <!-- druid 数据库连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>${druid.version}</version>
+        </dependency>
+        <!-- mybatis 数据库框架-->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>${mysql-connector-java.mybatis.version}</version>
+        </dependency>
+        <!-- mybatis plus 加强框架-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${java.mybatis-plus.version}</version>
+        </dependency>
+        <!-- jpa 数据库框架-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--        </dependency>-->
+
         <!-- redis -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -100,7 +126,6 @@
             <artifactId>commons-pool2</artifactId>
             <version>${commons-pool2.version}</version>
         </dependency>
-
 
         <!-- guava 谷歌插件 -->
         <dependency>
@@ -148,10 +173,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
     </dependencies>
-
-
 
     <build>
         <plugins>
