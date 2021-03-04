@@ -1,6 +1,6 @@
 package com.example.jwt.secuirty.service;
 
-import com.example.jwt.secuirty.request.LoginRequest;
+import com.example.jwt.base.request.LoginRequest;
 
 /**
  * @Author hesuijin

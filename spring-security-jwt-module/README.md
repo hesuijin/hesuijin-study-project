@@ -4,7 +4,7 @@
     数据库： H2内存数据库，无需手动安装。
     缓存： Redis
     权限框架 ：Spring Security
-    ORM框架 ：JPA （低SQL）
+    ORM框架 ：Mybatis plus 加 自定义 mapper
     
     接口文档 ： swagger:
     在线 API 文档地址：http://localhost:7001/api/swagger-ui/

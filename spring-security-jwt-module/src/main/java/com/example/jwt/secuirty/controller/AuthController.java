@@ -1,12 +1,11 @@
 package com.example.jwt.secuirty.controller;
 
+import com.example.jwt.base.request.LoginRequest;
 import com.example.jwt.secuirty.common.constants.SecurityConstants;
-import com.example.jwt.secuirty.request.LoginRequest;
 import com.example.jwt.secuirty.service.AuthService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

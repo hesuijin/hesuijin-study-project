@@ -1,8 +1,10 @@
 package com.example.jwt.secuirty.serviceImpl;
 
-import com.example.jwt.secuirty.request.LoginRequest;
+import com.example.jwt.base.request.LoginRequest;
+import com.example.jwt.secuirty.dao.UserMapper;
 import com.example.jwt.secuirty.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,8 +18,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthServiceImpl implements AuthService {
 
+    @Autowired
+    private UserMapper userMapper;
+
     @Override
     public String createToken(LoginRequest loginRequest) {
+
+//        userMapper.
         return null;
     }
 
