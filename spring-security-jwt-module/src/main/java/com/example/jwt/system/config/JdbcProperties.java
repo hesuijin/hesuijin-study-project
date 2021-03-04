@@ -2,7 +2,6 @@ package com.example.jwt.system.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.PropertySource;
 
 /**
  * @Author hesuijin
