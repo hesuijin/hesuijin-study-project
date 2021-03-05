@@ -102,7 +102,7 @@
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mysql-connector-java.mybatis.version}</version>
+            <version>${java.mybatis.version}</version>
         </dependency>
         <!-- mybatis plus 加强框架-->
         <dependency>
