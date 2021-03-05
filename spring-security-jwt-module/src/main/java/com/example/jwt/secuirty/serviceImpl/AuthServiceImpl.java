@@ -7,6 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author hesuijin
  * @Description
@@ -23,8 +26,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String createToken(LoginRequest loginRequest) {
-
-//        userMapper.
+        Map<String,Object> columnMap = new HashMap<>();
+        columnMap.put("user_name",loginRequest.getUsername());
+        System.out.println(userMapper.selectByMap(columnMap));
         return null;
     }
 

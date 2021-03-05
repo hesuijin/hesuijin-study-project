@@ -12,12 +12,12 @@ import lombok.Data;
 @Data
 public class BaseModel {
 
-    private Long createdAt;
+    private Long createTime;
 
-    private Long updatedAt;
+    private Long updateTime;
 
-    private String createdBy;
+    private String createUserName;
 
-    private String updatedBy;
+    private String updateUserName;
 
 }
