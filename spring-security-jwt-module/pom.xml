@@ -25,9 +25,9 @@
         <!-- Mysql 驱动包 -->
         <mysql-connector-java.version>5.1.44</mysql-connector-java.version>
         <!-- Mybatis 驱动包 -->
-        <java.mybatis.version>1.3.0</java.mybatis.version>
+        <java.mybatis.version>2.1.4</java.mybatis.version>
         <!-- Mybatis-plus 驱动包 -->
-        <java.mybatis-plus.version>3.2.0</java.mybatis-plus.version>
+        <java.mybatis-plus.version>3.3.1.tmp</java.mybatis-plus.version>
         <!-- 阿里巴巴Druid数据库连接池版本 -->
         <druid.version>1.1.6</druid.version>
     </properties>
