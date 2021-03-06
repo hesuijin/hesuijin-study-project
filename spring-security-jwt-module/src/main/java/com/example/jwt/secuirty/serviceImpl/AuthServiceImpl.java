@@ -1,5 +1,6 @@
 package com.example.jwt.secuirty.serviceImpl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.jwt.base.request.LoginRequest;
 import com.example.jwt.secuirty.dao.UserMapper;
 import com.example.jwt.secuirty.service.AuthService;
@@ -28,7 +29,8 @@ public class AuthServiceImpl implements AuthService {
     public String createToken(LoginRequest loginRequest) {
         Map<String,Object> columnMap = new HashMap<>();
         columnMap.put("user_name",loginRequest.getUsername());
-        System.out.println(userMapper.selectByMap(columnMap));
+
+        log.info(JSONObject.toJSONString("根据条件查询下user信息：{}"+userMapper.selectByMap(columnMap)));
         return null;
     }
 

@@ -1,11 +1,13 @@
 package com.example.jwt.secuirty.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.jwt.base.request.LoginRequest;
 import com.example.jwt.secuirty.common.constants.SecurityConstants;
 import com.example.jwt.secuirty.service.AuthService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Api(tags = "认证")
+@Slf4j
 public class AuthController {
 
     private final AuthService authService;
@@ -39,6 +42,7 @@ public class AuthController {
     @PostMapping("/login")
     @ApiOperation("登录")
     public ResponseEntity<Void> login(@RequestBody LoginRequest loginRequest) {
+        log.info("登录入参 /auth/login ：{} ",JSONObject.toJSONString(loginRequest));
         String token = authService.createToken(loginRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set(SecurityConstants.TOKEN_HEADER, token);
