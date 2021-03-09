@@ -20,11 +20,11 @@
     <description>Study project for Spring Boot</description>
 
     <!--    子模块-->
-<!--    <modules>-->
-<!--        <module>rocketmq-producer</module>-->
-<!--        <module>rocketmq-consumer</module>-->
-<!--        <module>security</module>-->
-<!--    </modules>-->
+    <modules>
+        <module>rocketmq-producer</module>
+        <module>rocketmq-consumer</module>
+        <module>security</module>
+    </modules>
 
 <!--    除了jdk外 使用properties引入的maven包同时需要在在子项目中引入-->
     <properties>
