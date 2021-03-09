@@ -15,6 +15,7 @@
     <groupId>com.example</groupId>
     <artifactId>hesuijin-study-project</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>hesuijin-study-project</name>
     <description>Study project for Spring Boot</description>
 
