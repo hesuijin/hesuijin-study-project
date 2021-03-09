@@ -30,7 +30,7 @@ public class CookieDemo {
      */
     @GetMapping("/cookie-value")
     public String readCookie(@CookieValue(value = "username", defaultValue =
-            "hsj111") String username) {
+            "hsj") String username) {
         return "Hey! My username is " + username;
     }
 
