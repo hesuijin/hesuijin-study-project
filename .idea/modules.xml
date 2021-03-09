@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-security-jwt-module/hesuijin-study-project.iml" filepath="$PROJECT_DIR$/spring-security-jwt-module/hesuijin-study-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-security-jwt-module/rocketmq-consumer.iml" filepath="$PROJECT_DIR$/spring-security-jwt-module/rocketmq-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-security-jwt-module/rocketmq-producer.iml" filepath="$PROJECT_DIR$/spring-security-jwt-module/rocketmq-producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-security-jwt-module/security.iml" filepath="$PROJECT_DIR$/spring-security-jwt-module/security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-security-jwt-module/spring-security-jwt-module.iml" filepath="$PROJECT_DIR$/spring-security-jwt-module/spring-security-jwt-module.iml" />
+    </modules>
+  </component>
+</project>
