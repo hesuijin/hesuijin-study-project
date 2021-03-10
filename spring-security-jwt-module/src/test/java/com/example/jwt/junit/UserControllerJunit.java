@@ -24,7 +24,7 @@ public class UserControllerJunit {
     private UserController userController;
 
     /**
-     * 新增注册用户
+     * 注册用户
      * save单元测试
      */
     @Test

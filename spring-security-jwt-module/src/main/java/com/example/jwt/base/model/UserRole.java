@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.jwt.base.BaseModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 
 /**
@@ -13,6 +14,7 @@ import lombok.EqualsAndHashCode;
 */
 @Data
 @EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
 public class UserRole extends BaseModel {
 
     @TableId(type = IdType.AUTO)

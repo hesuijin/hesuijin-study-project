@@ -33,7 +33,7 @@ public class UserController {
     @PostMapping("/sign-up")
     @ApiOperation("用户注册")
     public ResponseEntity<Void> signUp(@RequestBody @Valid UserRegisterRequest userRegisterRequest) {
-        log.info("用户注册 请求入参 /users/sign-up： {}", JSONObject.toJSONString(userRegisterRequest));
+        log.info("用户注册 请求入参 /users/sign-up： {}", userRegisterRequest);
         userService.save(userRegisterRequest);
         return ResponseEntity.ok().build();
     }

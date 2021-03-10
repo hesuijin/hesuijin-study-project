@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.jwt.secuirty.dao.RoleMapper">
 
-    <select id="findByRoleName" resultType="com.example.jwt.base.model.Role">
-        SELECT * FROM role WHERE `name` = #{roleName} limit 1;
+    <select id="findByRoleName" resultMap="BaseResultMap">
+        SELECT * FROM role WHERE `name` = #{roleName} limit 1
     </select>
 
 </mapper>

@@ -14,6 +14,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RoleMapper extends BaseMapper<Role> {
 
-    Role findByRoleName(@Param("RoleName") String roleName);
+    /**
+     * 根据角色名称查询
+     * @param roleName
+     * @return
+     */
+    Role findByRoleName(@Param("roleName") String roleName);
 
 }

@@ -14,6 +14,7 @@ import com.example.jwt.secuirty.dao.UserRoleMapper;
 import com.example.jwt.secuirty.service.UserService;
 import com.google.common.collect.ImmutableMap;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private final UserMapper userMapper;
@@ -46,7 +48,9 @@ public class UserServiceImpl implements UserService {
 
         //给用户绑定两个角色：用户和管理者
 
+        log.info("打印：{}",RoleType.USER.getName());
          Role studentRole = roleMapper.findByRoleName(RoleType.USER.getName());
+
          boolean studentRoleExist = studentRole != null;
          if(!studentRoleExist){
              new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.USER.getName()));
@@ -83,7 +87,7 @@ public class UserServiceImpl implements UserService {
      */
     private void ensureUserNameNotExist(String userName) {
         boolean exist = findUserByUserName(userName);
-        if (!exist) {
+        if (exist) {
             throw new UserNameAlreadyExistException(ImmutableMap.of("username:", userName));
         }
     }
@@ -98,6 +102,7 @@ public class UserServiceImpl implements UserService {
         queryWrapper.eq("user_name",userName);
         queryWrapper.last("limit 1");
         User user = userMapper.selectOne(queryWrapper);
+        //存在则为true 不存在为false
         return user != null;
     }
 
