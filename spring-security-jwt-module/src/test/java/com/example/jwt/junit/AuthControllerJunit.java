@@ -32,6 +32,7 @@ public class AuthControllerJunit {
     public void login(){
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername("HeSuiJin");
+        loginRequest.setPassword("123456");
         authController.login(loginRequest);
     }
 

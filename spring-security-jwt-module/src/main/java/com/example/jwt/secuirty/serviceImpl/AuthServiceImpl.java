@@ -33,23 +33,22 @@ import java.util.stream.Collectors;
 public class AuthServiceImpl implements AuthService {
 
     private final UserMapper userMapper;
-//    private final UserComponent userComponent;
+    private final UserComponent userComponent;
 //    private final StringRedisTemplate stringRedisTemplate;
 
     @Override
     public String createToken(LoginRequest loginRequest) {
-
-        log.info(JSONObject.toJSONString(userMapper.selectById(1)));
-
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("user_name",loginRequest.getUsername());
         queryWrapper.last("limit 1");
-//        User user = userMapper.selectOne(queryWrapper);
-//
-////        UserComponent userComponent = new UserComponent();
-//        if (!userComponent.userCheck(loginRequest.getPassword(), user.getPassword())) {
-//            throw new BadCredentialsException("The user name or password is not correct.");
-//        }
+        User user = userMapper.selectOne(queryWrapper);
+
+        log.info(JSONObject.toJSONString(user));
+
+        if (!userComponent.userCheck(loginRequest.getPassword(), user.getPassword())) {
+            throw new BadCredentialsException("The user name or password is not correct.");
+        }
+
 //        JwtUser jwtUser = new JwtUser(user);
 //        if (!jwtUser.isEnabled()) {
 //            throw new BadCredentialsException("User is forbidden to login");

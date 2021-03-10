@@ -1,9 +1,11 @@
 package com.example.jwt.component;
 
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -15,10 +17,12 @@ import javax.annotation.PostConstruct;
  * @Date 2021/3/10 11:36
  * @Description:
  */
+@Component
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserComponent {
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public boolean userCheck(String currentPassword, String password) {
         return this.bCryptPasswordEncoder.matches(currentPassword, password);
