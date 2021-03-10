@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cd16bec-f373-4599-866d-d50ca47f3027" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mybatis-configuration.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/BaseModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/BaseModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/UserRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/RoleMapperExtend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/RoleMapperExtend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/application.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/rocketmq-consumer/target/" />
@@ -29,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+            <state relative-caret-position="298">
+              <caret line="55" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,47 +37,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/Role.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+            <state relative-caret-position="439">
+              <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/UserRole.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/BaseModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="9" column="9" lean-forward="true" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -86,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/test/java/com/example/jwt/junit/UserControllerJunit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
+            <state relative-caret-position="363">
+              <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -98,8 +64,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="443">
-              <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+            <state relative-caret-position="368">
+              <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/dao/RoleMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
+            <state relative-caret-position="399">
+              <caret line="21" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,8 +97,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/RoleMapperExtend.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="73" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
+            <state relative-caret-position="19">
+              <caret line="1" column="35" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/application.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mybatis-configuration.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/RoleMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
             </state>
           </provider>
         </entry>
@@ -198,19 +191,20 @@
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/User.java" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/problem.md" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/configuration.xml" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/dao/RoleMapper.java" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/RoleMapper.xml" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/UserMapperExtend.xml" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/UserRoleMapperExtend.xml" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/UserRoleMapper.xml" />
-        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/RoleMapperExtend.xml" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/UserRole.java" />
-        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/BaseModel.java" />
+        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/RoleMapperExtend.xml" />
+        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/configuration.xml" />
         <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/Role.java" />
+        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mybatis-configuration.xml" />
       </list>
     </option>
   </component>
@@ -254,9 +248,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2873" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -584,25 +579,6 @@
               <item name="hesuijin-study-project" type="462c0819:PsiDirectoryNode" />
               <item name="spring-security-jwt-module" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hesuijin-study-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hesuijin-study-project" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-security-jwt-module" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-              <item name="extend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hesuijin-study-project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hesuijin-study-project" type="462c0819:PsiDirectoryNode" />
-              <item name="spring-security-jwt-module" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -835,7 +811,7 @@
       <workItem from="1615195060613" duration="2918000" />
       <workItem from="1615198740064" duration="2327000" />
       <workItem from="1615285024621" duration="1008000" />
-      <workItem from="1615344560475" duration="24581000" />
+      <workItem from="1615344560475" duration="25481000" />
     </task>
     <task id="LOCAL-00001" summary="修改yml编码错误（GBK-&gt;UTF8） 修改pom mybatis starter 包版本为2.1.8">
       <created>1615020858512</created>
@@ -907,22 +883,17 @@
       <option name="project" value="LOCAL" />
       <updated>1615383552076</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="security-jwt-module 修改mybatis mapper 映射正常 新增basemodel 无效映射todo">
+      <created>1615387751225</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1615387751225</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="UserControllerJunit_save - 2021.03.10 at 22h 02m 34s.xml">
-      <configuration name="UserControllerJunit.save" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserControllerJunit_save - 2021.03.10 at 22h 03m 24s.xml">
-      <configuration name="UserControllerJunit.save" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserControllerJunit_save - 2021.03.10 at 22h 05m 48s.xml">
-      <configuration name="UserControllerJunit.save" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UserControllerJunit_save - 2021.03.10 at 22h 07m 40s.xml">
-      <configuration name="UserControllerJunit.save" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="UserControllerJunit_save - 2021.03.10 at 22h 08m 13s.xml">
       <configuration name="UserControllerJunit.save" configurationId="JUnit" />
     </history-entry>
@@ -941,15 +912,27 @@
     <history-entry file="UserControllerJunit_save - 2021.03.10 at 22h 44m 34s.xml">
       <configuration name="UserControllerJunit.save" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="UserControllerJunit_save - 2021.03.10 at 22h 47m 48s.xml">
+      <configuration name="UserControllerJunit.save" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserControllerJunit_save - 2021.03.10 at 22h 57m 03s.xml">
+      <configuration name="UserControllerJunit.save" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserControllerJunit_save - 2021.03.10 at 23h 02m 16s.xml">
+      <configuration name="UserControllerJunit.save" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserControllerJunit_save - 2021.03.10 at 23h 05m 12s.xml">
+      <configuration name="UserControllerJunit.save" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37731000" />
+    <option name="totallyTimeSpent" value="38631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21588486" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21588486" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -958,9 +941,9 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6794311" weight="0.25301206" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.345987" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.345987" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -1039,7 +1022,8 @@
     <MESSAGE value="security-jwt-module 新增注册接口" />
     <MESSAGE value="security-jwt-module 新增注册接口 新增exception异常处理" />
     <MESSAGE value="security-jwt-module 修改mybatis mapper 映射路径" />
-    <option name="LAST_COMMIT_MESSAGE" value="security-jwt-module 修改mybatis mapper 映射路径" />
+    <MESSAGE value="security-jwt-module 修改mybatis mapper 映射正常 新增basemodel 无效映射todo" />
+    <option name="LAST_COMMIT_MESSAGE" value="security-jwt-module 修改mybatis mapper 映射正常 新增basemodel 无效映射todo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1054,13 +1038,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.4.5/spring-security-core-5.4.5-sources.jar!/org/springframework/security/crypto/bcrypt/BCryptPasswordEncoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.4.5/spring-security-core-5.4.5-sources.jar!/org/springframework/security/core/userdetails/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
@@ -1300,20 +1277,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/configuration.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="64" selection-start-line="6" selection-start-column="64" selection-end-line="6" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/UserMapperExtend.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
@@ -1387,71 +1350,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/RoleMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="66" selection-start-line="3" selection-start-column="66" selection-end-line="3" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="36" column="22" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/RoleMapperExtend.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="73" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="36" column="27" selection-start-line="36" selection-start-column="27" selection-end-line="36" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/test/java/com/example/jwt/junit/UserControllerJunit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/dao/RoleMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1475,13 +1377,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/Role.java">
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/dao/RoleMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+        <state relative-caret-position="399">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/RoleMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="68" selection-start-line="3" selection-start-column="68" selection-end-line="3" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/test/java/com/example/jwt/junit/UserControllerJunit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="36" column="22" lean-forward="true" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mapper/extend/RoleMapperExtend.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="35" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/configuration.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="64" selection-start-line="6" selection-start-column="64" selection-end-line="6" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/Role.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="25" column="1" lean-forward="true" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="55" column="54" lean-forward="true" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/resources/mybatis-configuration.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

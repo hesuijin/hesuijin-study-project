@@ -23,12 +23,4 @@ public class Role extends BaseModel {
     private String name;
     private String description;
 
-    @TableField(fill = FieldFill.INSERT)
-    private Long createTime;
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Long updateTime;
-    @TableField(fill = FieldFill.INSERT)
-    private String createUserName;
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private String updateUserName;
 }

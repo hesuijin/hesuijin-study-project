@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
 
         log.info("打印：{}",RoleType.USER.getName());
          Role studentRole = roleMapper.findByRoleName(RoleType.USER.getName());
+         log.info(JSONObject.toJSONString(studentRole));
          boolean studentRoleExist = studentRole != null;
          if(!studentRoleExist){
              new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.USER.getName()));

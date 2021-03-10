@@ -12,7 +12,6 @@ import lombok.*;
  * @Date 2021/3/3
  */
 @Data
-//TODO mybatis  映射到  BaseModel无效
 public class BaseModel {
 
     @TableField(fill = FieldFill.INSERT)
