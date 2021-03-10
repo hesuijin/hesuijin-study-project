@@ -26,6 +26,7 @@ public class AuthControllerJunit {
     private AuthController authController;
 
     /**
+     * 用户登录
      * login单元测试
      */
     @Test

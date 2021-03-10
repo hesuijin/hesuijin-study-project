@@ -47,7 +47,7 @@ public class AuthController {
     @PostMapping("/login")
     @ApiOperation("登录")
     public ResponseEntity<Void> login(@RequestBody LoginRequest loginRequest) {
-        log.info("登录入参 /auth/login ：{} ",JSONObject.toJSONString(loginRequest));
+        log.info("登录 请求入参 /auth/login ：{} ",JSONObject.toJSONString(loginRequest));
         String token = authService.createToken(loginRequest);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set(SecurityConstants.TOKEN_HEADER, token);

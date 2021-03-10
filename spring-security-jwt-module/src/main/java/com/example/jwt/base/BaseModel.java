@@ -1,5 +1,7 @@
 package com.example.jwt.base;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 /**
@@ -12,12 +14,13 @@ import lombok.Data;
 @Data
 public class BaseModel {
 
+    @TableField(fill = FieldFill.INSERT)
     private Long createTime;
-
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateTime;
-
+    @TableField(fill = FieldFill.INSERT)
     private String createUserName;
-
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateUserName;
 
 }

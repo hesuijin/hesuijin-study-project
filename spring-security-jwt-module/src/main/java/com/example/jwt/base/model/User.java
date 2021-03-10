@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.jwt.base.BaseModel;
 import com.example.jwt.base.info.UserNameInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
 */
 @Data
 @EqualsAndHashCode(callSuper = false)
+@Builder
 public class User extends BaseModel {
 
     @TableId(type = IdType.AUTO)
