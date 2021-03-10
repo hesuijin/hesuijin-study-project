@@ -1,4 +1,4 @@
-package com.example.jwt.secuirty.common.constants;
+package com.example.jwt.common.constants;
 
 /**
  * Spring Security相关配置常量

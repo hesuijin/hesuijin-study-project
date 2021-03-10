@@ -2,7 +2,7 @@ package com.example.jwt.secuirty.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.jwt.base.request.LoginRequest;
-import com.example.jwt.secuirty.common.constants.SecurityConstants;
+import com.example.jwt.common.constants.SecurityConstants;
 import com.example.jwt.secuirty.service.AuthService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,12 +32,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/auth")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
-@Api(tags = "认证")
+//@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+//@Api(tags = "认证")
 @Slf4j
 public class AuthController {
 
-    private final AuthService authService;
+//    private final AuthService authService;
+    @Autowired
+    private AuthService authService;
 
     @PostMapping("/login")
     @ApiOperation("登录")
