@@ -33,10 +33,13 @@ public class User extends BaseModel {
     private Boolean enabled;
 
 //    忽略该字段
-    @TableField(exist = false)
-    private List<UserRole> userRoles = new ArrayList<>();
+//    @TableField(exist = false)
+//    @JsonIgnore
+//    private List<UserRole> userRoles = new ArrayList<>();
 
     public List<SimpleGrantedAuthority> getRoles() {
+        List<UserRole> userRoles = new ArrayList<>();
+
         List<Role> roles = userRoles.stream().map(UserRole::getRole).collect(Collectors.toList());
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
         roles.forEach(role -> authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName())));

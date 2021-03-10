@@ -42,34 +42,40 @@ public class UserServiceImpl implements UserService {
         //校验该用户是否存在
         ensureUserNameNotExist(userRegisterRequest.getUserName());
         User user = userRegisterRequest.getUser();
+        log.info("打印user：{}",JSONObject.toJSONString(user));
         //设置密码加密
         user.setPassword(bCryptPasswordEncoder.encode(userRegisterRequest.getPassword()));
 
         userMapper.insert(user);
 
         //给用户绑定两个角色：用户和管理者
-
-        log.info("打印：{}",RoleType.USER.getName());
-         Role studentRole = roleMapper.findByRoleName(RoleType.USER.getName());
-         log.info(JSONObject.toJSONString(studentRole));
-         boolean studentRoleExist = studentRole != null;
-         if(!studentRoleExist){
-             new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.USER.getName()));
-         }
+        Role studentRole = roleMapper.findByRoleName(RoleType.USER.getName());
+        boolean studentRoleExist = studentRole != null;
+        if (!studentRoleExist) {
+            new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.USER.getName()));
+        }
         Role managerRole = roleMapper.findByRoleName(RoleType.MANAGER.getName());
+
         boolean managerRoleExist = managerRole != null;
-        if(!managerRoleExist){
+        if (!managerRoleExist) {
             new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.MANAGER.getName()));
         }
-        userRoleMapper.insert(new UserRole(user,studentRole));
-        userRoleMapper.insert(new UserRole(user,managerRole));
+
+        log.info(JSONObject.toJSONString(user));
+        log.info(JSONObject.toJSONString(studentRole));
+        log.info(JSONObject.toJSONString(managerRole));
+
+        log.info("打印insert对象：{}",JSONObject.toJSONString(new UserRole(user, studentRole)));
+
+        userRoleMapper.insert(new UserRole(user, studentRole));
+        userRoleMapper.insert(new UserRole(user, managerRole));
 
     }
 
 
-
     /**
      * 删除用户
+     *
      * @param userName
      */
     public void delete(String userName) {
@@ -78,12 +84,13 @@ public class UserServiceImpl implements UserService {
             throw new UserNameAlreadyExistException(ImmutableMap.of("username:", userName));
         }
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name",userName);
+        queryWrapper.eq("user_name", userName);
         userMapper.delete(queryWrapper);
     }
 
     /**
      * 查询该该账户是否存在
+     *
      * @param userName
      */
     private void ensureUserNameNotExist(String userName) {
@@ -95,12 +102,13 @@ public class UserServiceImpl implements UserService {
 
     /**
      * 根据UserName查询用户是否存在
+     *
      * @param userName
      * @return
      */
-    private Boolean findUserByUserName(String userName){
+    private Boolean findUserByUserName(String userName) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name",userName);
+        queryWrapper.eq("user_name", userName);
         queryWrapper.last("limit 1");
         User user = userMapper.selectOne(queryWrapper);
         //存在则为true 不存在为false
