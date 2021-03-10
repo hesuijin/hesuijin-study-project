@@ -3,9 +3,7 @@ package com.example.jwt.base.model;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.example.jwt.base.BaseModel;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 /**
@@ -14,7 +12,9 @@ import lombok.NoArgsConstructor;
 */
 @Data
 @EqualsAndHashCode(callSuper = false)
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserRole extends BaseModel {
 
     @TableId(type = IdType.AUTO)

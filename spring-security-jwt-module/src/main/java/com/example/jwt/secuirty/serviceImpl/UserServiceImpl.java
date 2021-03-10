@@ -1,5 +1,6 @@
 package com.example.jwt.secuirty.serviceImpl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.jwt.base.model.Role;
 import com.example.jwt.base.model.User;
@@ -50,7 +51,6 @@ public class UserServiceImpl implements UserService {
 
         log.info("打印：{}",RoleType.USER.getName());
          Role studentRole = roleMapper.findByRoleName(RoleType.USER.getName());
-
          boolean studentRoleExist = studentRole != null;
          if(!studentRoleExist){
              new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.USER.getName()));

@@ -2,7 +2,7 @@ package com.example.jwt.base;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
-import lombok.Data;
+import lombok.*;
 
 /**
  * @Author hesuijin
@@ -12,6 +12,7 @@ import lombok.Data;
  * @Date 2021/3/3
  */
 @Data
+//TODO mybatis  映射到  BaseModel无效
 public class BaseModel {
 
     @TableField(fill = FieldFill.INSERT)
