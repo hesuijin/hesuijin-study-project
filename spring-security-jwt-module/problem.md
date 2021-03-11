@@ -28,3 +28,13 @@
     
 #### 4：debug模式  无法看到继承父类的属性  但日志却可以
     如实体类继承了BaseModel  但在debug模式中无法 看到BaseModel的属性
+         
+#### 5：New出来的对象是  里面无法使用 Autowire的 
+     可以利用反射   反射出来的类 使用构造方法创建的对象也无法使用  Autowire
+     可以使用ApplicationContextHelper  通过上下文 直接获取该类的 spring对象
+     详情见 User类
+     
+         
+#### 6：JSONObject.toJSONString 会执行该实体里面所有的get方法
+       @JSONField(serialize = false)
+       在相应的get方法中加入该注解

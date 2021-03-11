@@ -53,5 +53,3 @@ spring:
           min-idle: 0
 mybatis:
   mapper-locations: classpath:mapper/*/*.xml, classpath:mapper/*.xml
-#  无效
-#  config-location: classpath:mybatis-configuration.xml

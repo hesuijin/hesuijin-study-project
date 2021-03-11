@@ -1,8 +1,6 @@
 package com.example.jwt.junit;
 
-import com.alibaba.fastjson.JSONObject;
 import com.example.jwt.base.model.Role;
-import com.example.jwt.base.request.LoginRequest;
 import com.example.jwt.base.request.UserRegisterRequest;
 import com.example.jwt.secuirty.controller.UserController;
 import lombok.extern.slf4j.Slf4j;

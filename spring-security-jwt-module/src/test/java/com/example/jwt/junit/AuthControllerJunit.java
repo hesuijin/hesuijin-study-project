@@ -2,7 +2,6 @@ package com.example.jwt.junit;
 
 import com.example.jwt.base.request.LoginRequest;
 import com.example.jwt.secuirty.controller.AuthController;
-import com.example.jwt.secuirty.service.AuthService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,8 +31,9 @@ public class AuthControllerJunit {
     @Test
     public void login(){
         LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUsername("HeSuiJin");
+        loginRequest.setUsername("root");
         loginRequest.setPassword("123456");
+        loginRequest.setRememberMe(false);
         authController.login(loginRequest);
     }
 
