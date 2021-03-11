@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0cd16bec-f373-4599-866d-d50ca47f3027" name="Default Changelist" comment="调试 注册 insert接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/jwt/JwtUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/jwt/JwtUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/base/model/UserRole.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/AuthServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java" afterDir="false" />
     </list>
@@ -65,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+            <state relative-caret-position="332">
+              <caret line="140" column="8" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -257,9 +254,9 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1903" />
+    <option name="x" value="1913" />
     <option name="width" value="974" />
-    <option name="height" value="1050" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -783,7 +780,7 @@
       <workItem from="1615198740064" duration="2327000" />
       <workItem from="1615285024621" duration="1008000" />
       <workItem from="1615344560475" duration="29261000" />
-      <workItem from="1615434296390" duration="2659000" />
+      <workItem from="1615434296390" duration="3048000" />
     </task>
     <task id="LOCAL-00001" summary="修改yml编码错误（GBK-&gt;UTF8） 修改pom mybatis starter 包版本为2.1.8">
       <created>1615020858512</created>
@@ -883,7 +880,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615396543037</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="spring-securit-jwt-module ： 调试注册成功">
+      <created>1615441047514</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1615441047514</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -919,12 +923,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45070000" />
+    <option name="totallyTimeSpent" value="45459000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1903" y="0" width="974" height="1050" extended-state="0" />
+    <frame x="1913" y="0" width="974" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.36105034" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25054705" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -934,7 +939,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6794311" visible="true" weight="0.2521834" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.6794311" visible="true" weight="0.25301206" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3179396" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1019,7 +1024,9 @@
     <MESSAGE value="新增讲解 @EqualsAndHashCode(callSuper = false)的作用  debug模式  无法看到继承父类的属性  但日志却可以" />
     <MESSAGE value="调试 insert接口" />
     <MESSAGE value="调试 注册 insert接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="调试 注册 insert接口" />
+    <MESSAGE value="spring-securit-jwt-module ： 调试登录成功" />
+    <MESSAGE value="spring-securit-jwt-module ： 调试注册成功" />
+    <option name="LAST_COMMIT_MESSAGE" value="spring-securit-jwt-module ： 调试注册成功" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/component/UserComponent.java">
@@ -1412,8 +1419,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spring-security-jwt-module/src/main/java/com/example/jwt/secuirty/serviceImpl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
+        <state relative-caret-position="332">
+          <caret line="140" column="8" selection-start-line="140" selection-start-column="8" selection-end-line="140" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

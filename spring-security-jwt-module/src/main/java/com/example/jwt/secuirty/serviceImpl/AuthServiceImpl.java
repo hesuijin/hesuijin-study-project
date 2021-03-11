@@ -2,23 +2,16 @@ package com.example.jwt.secuirty.serviceImpl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.jwt.base.jwt.JwtUser;
 import com.example.jwt.base.model.User;
 import com.example.jwt.base.request.LoginRequest;
 import com.example.jwt.component.UserComponent;
 import com.example.jwt.secuirty.dao.UserMapper;
 import com.example.jwt.secuirty.service.AuthService;
-import com.example.jwt.utils.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @Author hesuijin
