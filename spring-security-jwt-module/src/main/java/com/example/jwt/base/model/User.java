@@ -37,14 +37,14 @@ public class User extends BaseModel {
 //    @JsonIgnore
 //    private List<UserRole> userRoles = new ArrayList<>();
 
-    public List<SimpleGrantedAuthority> getRoles() {
-        List<UserRole> userRoles = new ArrayList<>();
-
-        List<Role> roles = userRoles.stream().map(UserRole::getRole).collect(Collectors.toList());
-        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        roles.forEach(role -> authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName())));
-        return authorities;
-    }
+//    public List<SimpleGrantedAuthority> getRoles() {
+//        List<UserRole> userRoles = new ArrayList<>();
+//
+//        List<Role> roles = userRoles.stream().map(UserRole::getRole).collect(Collectors.toList());
+//        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+//        roles.forEach(role -> authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName())));
+//        return authorities;
+//    }
 
     public UserNameInfo getUserNameInfo() {
         return UserNameInfo.builder().fullName(this.fullName)

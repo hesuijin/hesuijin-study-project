@@ -61,17 +61,46 @@ public class UserServiceImpl implements UserService {
             new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.MANAGER.getName()));
         }
 
-        log.info(JSONObject.toJSONString(user));
-        log.info(JSONObject.toJSONString(studentRole));
-        log.info(JSONObject.toJSONString(managerRole));
-
-        log.info("打印insert对象：{}",JSONObject.toJSONString(new UserRole(user, studentRole)));
-
-        userRoleMapper.insert(new UserRole(user, studentRole));
-        userRoleMapper.insert(new UserRole(user, managerRole));
+        userRoleMapper.insert(createUserRoleStudent(user,studentRole));
+        userRoleMapper.insert(createUserRoleManager(user, managerRole));
 
     }
 
+    /**
+     * 创建 UserRoleStudent对象
+     * @param user
+     * @param studentRole
+     * @return
+     */
+    private UserRole createUserRoleStudent(User user, Role studentRole) {
+        UserRole userRoleStudent = UserRole.builder()
+                .userName(user.getUserName())
+                .fullName(user.getFullName())
+                .password(user.getPassword())
+                .enabled(user.getEnabled())
+                .name(studentRole.getName())
+                .fullName(studentRole.getDescription())
+                .build();
+        return userRoleStudent;
+    }
+
+    /**
+     * 创建 UserRoleManager对象
+     * @param user
+     * @param managerRole
+     * @return
+     */
+    private UserRole createUserRoleManager(User user, Role managerRole) {
+        UserRole userRoleManager = UserRole.builder()
+                .userName(user.getUserName())
+                .fullName(user.getFullName())
+                .password(user.getPassword())
+                .enabled(user.getEnabled())
+                .name(managerRole.getName())
+                .fullName(managerRole.getDescription())
+                .build();
+        return userRoleManager;
+    }
 
     /**
      * 删除用户
