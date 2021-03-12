@@ -1,8 +1,10 @@
 package com.example.jwt.junit;
 
+import com.example.jwt.base.PageModel;
 import com.example.jwt.base.model.Role;
 import com.example.jwt.base.request.UserRegisterRequest;
 import com.example.jwt.secuirty.controller.UserController;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,4 +40,10 @@ public class UserControllerJunit {
         userController.signUp(userRegisterRequest);
     }
 
+
+    @Test
+    public void test(){
+//        PageModel pageModel = new
+        userController.getAllUser(new PageModel());
+    }
 }

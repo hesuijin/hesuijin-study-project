@@ -2,10 +2,14 @@ package com.example.jwt.secuirty.serviceImpl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.example.jwt.base.PageModel;
 import com.example.jwt.base.model.Role;
 import com.example.jwt.base.model.User;
 import com.example.jwt.base.model.UserRole;
 import com.example.jwt.base.request.UserRegisterRequest;
+import com.example.jwt.base.request.UserUpdateRequest;
+import com.example.jwt.base.vo.UserNameVO;
 import com.example.jwt.common.enums.RoleType;
 import com.example.jwt.component.UserComponent;
 import com.example.jwt.exception.RoleNotFoundException;
@@ -18,9 +22,12 @@ import com.google.common.collect.ImmutableMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
 
 /**
  * @Author HeSuiJin
@@ -53,17 +60,42 @@ public class UserServiceImpl implements UserService {
         Role studentRole = roleMapper.findByRoleName(RoleType.USER.getName());
         boolean studentRoleExist = studentRole != null;
         if (!studentRoleExist) {
-            new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.USER.getName()));
+          throw   new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.USER.getName()));
         }
         Role managerRole = roleMapper.findByRoleName(RoleType.MANAGER.getName());
 
         boolean managerRoleExist = managerRole != null;
         if (!managerRoleExist) {
-            new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.MANAGER.getName()));
+           throw  new RoleNotFoundException(ImmutableMap.of("roleName", RoleType.MANAGER.getName()));
         }
 
         userRoleMapper.insert(createUserRoleStudent(user, studentRole));
         userRoleMapper.insert(createUserRoleManager(user, managerRole));
+    }
+
+    @Override
+    public IPage<UserNameVO> getAll(PageModel pageModel) {
+        Page page = new Page(pageModel.getPage(), pageModel.getSize());
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.select("user_name","full_name");
+
+        IPage<UserNameVO> resp = userMapper.selectPage(page,queryWrapper);;
+        return resp;
+    }
+
+    @Override
+    public void update(UserUpdateRequest userUpdateRequest) {
+        User user = userComponent.findUserByUserName(userUpdateRequest.getUserName());
+        if (Objects.nonNull(userUpdateRequest.getFullName())) {
+            user.setFullName(userUpdateRequest.getFullName());
+        }
+        if (Objects.nonNull(userUpdateRequest.getPassword())) {
+            user.setPassword(bCryptPasswordEncoder.encode(userUpdateRequest.getPassword()));
+        }
+        if (Objects.nonNull(userUpdateRequest.getEnabled())) {
+            user.setEnabled(userUpdateRequest.getEnabled());
+        }
+        userMapper.insert(user);
     }
 
     /**
@@ -104,20 +136,21 @@ public class UserServiceImpl implements UserService {
         return userRoleManager;
     }
 
-//    /**
-//     * 删除用户
-//     *
-//     * @param userName
-//     */
-//    public void delete(String userName) {
-//        User user = findUserByUserName(userName);
-//        if (user == null) {
-//            throw new UserNameAlreadyExistException(ImmutableMap.of("username:", userName));
-//        }
-//        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-//        queryWrapper.eq("user_name", userName);
-//        userMapper.delete(queryWrapper);
-//    }
+    /**
+     * 删除用户
+     *
+     * @param userName
+     */
+    @Override
+    public void delete(String userName) {
+        User user = userComponent.findUserByUserName(userName);
+        if (user == null) {
+            throw new UserNameAlreadyExistException(ImmutableMap.of("username:", userName));
+        }
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("user_name", userName);
+        userMapper.delete(queryWrapper);
+    }
 
     /**
      * 查询该该账户是否存在
