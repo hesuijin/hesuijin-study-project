@@ -61,6 +61,6 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void removeToken() {
-
+        stringRedisTemplate.delete(userComponent.getCurrentUser().getId().toString());
     }
 }
