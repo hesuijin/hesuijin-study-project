@@ -7,6 +7,7 @@ import com.example.jwt.base.model.User;
 import com.example.jwt.base.model.UserRole;
 import com.example.jwt.base.request.UserRegisterRequest;
 import com.example.jwt.common.enums.RoleType;
+import com.example.jwt.component.UserComponent;
 import com.example.jwt.exception.RoleNotFoundException;
 import com.example.jwt.exception.UserNameAlreadyExistException;
 import com.example.jwt.secuirty.dao.RoleMapper;
@@ -35,6 +36,7 @@ public class UserServiceImpl implements UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final RoleMapper roleMapper;
     private final UserRoleMapper userRoleMapper;
+    private final UserComponent userComponent;
 
     @Override
     @Transactional(rollbackFor = Exception.class)
@@ -123,25 +125,12 @@ public class UserServiceImpl implements UserService {
      * @param userName
      */
     private void ensureUserNameNotExist(String userName) {
-        User user = findUserByUserName(userName);
+        User user = userComponent.findUserByUserName(userName);
         if (user != null) {
             throw new UserNameAlreadyExistException(ImmutableMap.of("username:", userName));
         }
     }
 
-    /**
-     * 根据UserName查询用户是否存在
-     *
-     * @param userName
-     * @return
-     */
-    private User findUserByUserName(String userName) {
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name", userName);
-        queryWrapper.last("limit 1");
-        User user = userMapper.selectOne(queryWrapper);
-        //存在则为true 不存在为false
-        return user;
-    }
+
 
 }
