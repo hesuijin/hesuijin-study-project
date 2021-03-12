@@ -1,6 +1,5 @@
 package com.example.jwt.secuirty.serviceImpl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.jwt.base.jwt.JwtUser;
 import com.example.jwt.base.model.User;
@@ -45,7 +44,7 @@ public class AuthServiceImpl implements AuthService {
         if (!userComponent.userCheck(loginRequest.getPassword(), user.getPassword())) {
             throw new BadCredentialsException("The user name or password is not correct.");
         }
-
+        //生成jwtUser对象
         JwtUser jwtUser = new JwtUser(user);
         if (!jwtUser.isEnabled()) {
             throw new BadCredentialsException("User is forbidden to login");
@@ -54,7 +53,7 @@ public class AuthServiceImpl implements AuthService {
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
-        log.info(JSONObject.toJSONString(user),JSONObject.toJSONString(loginRequest.getRememberMe()));
+        //生成token
         String token = JwtTokenUtils.createToken(user.getUserName(), user.getId().toString(), authorities, loginRequest.getRememberMe());
         stringRedisTemplate.opsForValue().set(user.getId().toString(), token);
         return token;
