@@ -1,4 +1,4 @@
-package com.example.jwt.system.config;
+package com.example.jwt.config;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

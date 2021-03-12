@@ -1,4 +1,4 @@
-package com.example.jwt.secuirty.service;
+package com.example.jwt.secuirty_mvc.service;
 
 import com.example.jwt.base.request.LoginRequest;
 

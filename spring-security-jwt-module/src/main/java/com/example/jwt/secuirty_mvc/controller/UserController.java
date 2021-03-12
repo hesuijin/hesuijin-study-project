@@ -1,18 +1,16 @@
-package com.example.jwt.secuirty.controller;
+package com.example.jwt.secuirty_mvc.controller;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.example.jwt.base.PageModel;
 import com.example.jwt.base.request.UserRegisterRequest;
 import com.example.jwt.base.request.UserUpdateRequest;
 import com.example.jwt.base.vo.UserNameVO;
-import com.example.jwt.secuirty.service.UserService;
+import com.example.jwt.secuirty_mvc.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -42,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping
-//    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_MANAGER','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_MANAGER','ROLE_ADMIN')")
     @ApiOperation("获取所有用户的信息（分页）")
     public ResponseEntity<IPage<UserNameVO>> getAllUser(PageModel pageModel) {
         IPage<UserNameVO> allUser = userService.getAll(pageModel);

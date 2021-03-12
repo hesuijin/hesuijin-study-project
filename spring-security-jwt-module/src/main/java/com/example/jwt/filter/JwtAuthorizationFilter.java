@@ -56,7 +56,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             }
             authentication = JwtTokenUtils.getAuthentication(tokenValue);
         } catch (JwtException e) {
-            logger.error("Invalid jwt : " + e.getMessage());
+            logger.error("Invalid dto : " + e.getMessage());
         }
         SecurityContextHolder.getContext().setAuthentication(authentication);
         chain.doFilter(request, response);

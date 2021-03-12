@@ -1,12 +1,12 @@
-package com.example.jwt.secuirty.serviceImpl;
+package com.example.jwt.secuirty_mvc.serviceImpl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.jwt.base.jwt.JwtUser;
+import com.example.jwt.base.dto.JwtUserDTO;
 import com.example.jwt.base.model.User;
 import com.example.jwt.base.request.LoginRequest;
 import com.example.jwt.component.UserComponent;
-import com.example.jwt.secuirty.dao.UserMapper;
-import com.example.jwt.secuirty.service.AuthService;
+import com.example.jwt.secuirty_mvc.dao.UserMapper;
+import com.example.jwt.secuirty_mvc.service.AuthService;
 import com.example.jwt.utils.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -45,11 +45,11 @@ public class AuthServiceImpl implements AuthService {
             throw new BadCredentialsException("The user name or password is not correct.");
         }
         //生成jwtUser对象
-        JwtUser jwtUser = new JwtUser(user);
-        if (!jwtUser.isEnabled()) {
+        JwtUserDTO jwtUserDTO = new JwtUserDTO(user);
+        if (!jwtUserDTO.isEnabled()) {
             throw new BadCredentialsException("User is forbidden to login");
         }
-        List<String> authorities = jwtUser.getAuthorities()
+        List<String> authorities = jwtUserDTO.getAuthorities()
                 .stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());

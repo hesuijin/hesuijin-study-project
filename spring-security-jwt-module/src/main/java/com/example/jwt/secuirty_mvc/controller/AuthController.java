@@ -1,19 +1,17 @@
-package com.example.jwt.secuirty.controller;
+package com.example.jwt.secuirty_mvc.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.jwt.base.request.LoginRequest;
 import com.example.jwt.common.constants.SecurityConstants;
-import com.example.jwt.secuirty.service.AuthService;
+import com.example.jwt.secuirty_mvc.service.AuthService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-//@Api(tags = "认证")
+@Api(tags = "认证")
 @Slf4j
 public class AuthController {
 

@@ -1,4 +1,4 @@
-package com.example.jwt.secuirty.dao;
+package com.example.jwt.secuirty_mvc.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.jwt.base.model.UserRole;

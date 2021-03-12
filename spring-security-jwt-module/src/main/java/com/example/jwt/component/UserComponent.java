@@ -5,14 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.jwt.base.model.User;
 import com.example.jwt.base.model.UserRole;
 import com.example.jwt.exception.UserNameNotFoundException;
-import com.example.jwt.secuirty.dao.UserMapper;
-import com.example.jwt.secuirty.dao.UserRoleMapper;
-import com.example.jwt.secuirty.serviceImpl.UserServiceImpl;
+import com.example.jwt.secuirty_mvc.dao.UserMapper;
+import com.example.jwt.secuirty_mvc.dao.UserRoleMapper;
 import com.google.common.collect.ImmutableMap;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
@@ -20,10 +16,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 

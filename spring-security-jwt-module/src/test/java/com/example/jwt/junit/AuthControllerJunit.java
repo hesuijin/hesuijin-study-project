@@ -1,7 +1,7 @@
 package com.example.jwt.junit;
 
 import com.example.jwt.base.request.LoginRequest;
-import com.example.jwt.secuirty.controller.AuthController;
+import com.example.jwt.secuirty_mvc.controller.AuthController;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

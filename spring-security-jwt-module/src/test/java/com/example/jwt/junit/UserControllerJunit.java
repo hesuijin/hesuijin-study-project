@@ -1,17 +1,12 @@
 package com.example.jwt.junit;
 
-import com.example.jwt.base.PageModel;
-import com.example.jwt.base.model.Role;
 import com.example.jwt.base.request.UserRegisterRequest;
-import com.example.jwt.secuirty.controller.UserController;
-import lombok.Data;
+import com.example.jwt.secuirty_mvc.controller.UserController;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
@@ -40,10 +35,4 @@ public class UserControllerJunit {
         userController.signUp(userRegisterRequest);
     }
 
-
-    @Test
-    public void test(){
-//        PageModel pageModel = new
-        userController.getAllUser(new PageModel());
-    }
 }

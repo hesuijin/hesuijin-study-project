@@ -1,33 +1,19 @@
 package com.example.jwt.base.model;
 
-import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.jwt.base.BaseModel;
-import com.example.jwt.base.info.UserNameInfo;
+import com.example.jwt.base.dto.UserNameInfoDTO;
 import com.example.jwt.component.UserComponent;
-import com.example.jwt.secuirty.dao.UserMapper;
-import com.example.jwt.secuirty.dao.UserRoleMapper;
-import com.example.jwt.system.context.ApplicationContextHelper;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.jwt.config.ApplicationContextHelper;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 使用充血模型
@@ -77,8 +63,8 @@ public class User extends BaseModel {
     }
 
     @JSONField(serialize = false)
-    public UserNameInfo getUserNameInfo() {
-        return UserNameInfo.builder().fullName(this.fullName)
+    public UserNameInfoDTO getUserNameInfoDTO() {
+        return UserNameInfoDTO.builder().fullName(this.fullName)
                 .userName(this.userName).build();
     }
 }

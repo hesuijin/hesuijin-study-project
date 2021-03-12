@@ -1,4 +1,4 @@
-package com.example.jwt.base.jwt;
+package com.example.jwt.base.dto;
 
 import com.example.jwt.base.model.User;
 import lombok.Data;
@@ -14,7 +14,7 @@ import java.util.Collection;
  * @Description:
  */
 @Data
-public class JwtUser implements UserDetails {
+public class JwtUserDTO implements UserDetails {
 
     private Long id;
     private String username;
@@ -25,7 +25,7 @@ public class JwtUser implements UserDetails {
     /**
      * 通过 user 对象创建jwtUser
      */
-    public JwtUser(User user) {
+    public JwtUserDTO(User user) {
         id = user.getId();
         username = user.getUserName();
         password = user.getPassword();
@@ -70,7 +70,7 @@ public class JwtUser implements UserDetails {
 
     @Override
     public String toString() {
-        return "JwtUser{" +
+        return "JwtUserDTO{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +

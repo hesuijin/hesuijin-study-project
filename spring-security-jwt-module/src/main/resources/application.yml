@@ -14,7 +14,7 @@ spring:
 #    username: root
 #    password: 123456
 #    platform: h2
-#    url: jdbc:h2:mem:jwt-demo
+#    url: jdbc:h2:mem:dto-demo
 #  h2:
 #    console:
 #      enabled: true

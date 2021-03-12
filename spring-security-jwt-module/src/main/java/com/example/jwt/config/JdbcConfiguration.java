@@ -1,4 +1,4 @@
-package com.example.jwt.system.config;
+package com.example.jwt.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import lombok.extern.slf4j.Slf4j;

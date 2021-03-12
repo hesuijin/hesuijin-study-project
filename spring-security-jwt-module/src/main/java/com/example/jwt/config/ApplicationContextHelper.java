@@ -1,4 +1,4 @@
-package com.example.jwt.system.context;
+package com.example.jwt.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

@@ -1,4 +1,4 @@
-package com.example.jwt.secuirty.serviceImpl;
+package com.example.jwt.secuirty_mvc.serviceImpl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -14,10 +14,10 @@ import com.example.jwt.common.enums.RoleType;
 import com.example.jwt.component.UserComponent;
 import com.example.jwt.exception.RoleNotFoundException;
 import com.example.jwt.exception.UserNameAlreadyExistException;
-import com.example.jwt.secuirty.dao.RoleMapper;
-import com.example.jwt.secuirty.dao.UserMapper;
-import com.example.jwt.secuirty.dao.UserRoleMapper;
-import com.example.jwt.secuirty.service.UserService;
+import com.example.jwt.secuirty_mvc.dao.RoleMapper;
+import com.example.jwt.secuirty_mvc.dao.UserMapper;
+import com.example.jwt.secuirty_mvc.dao.UserRoleMapper;
+import com.example.jwt.secuirty_mvc.service.UserService;
 import com.google.common.collect.ImmutableMap;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

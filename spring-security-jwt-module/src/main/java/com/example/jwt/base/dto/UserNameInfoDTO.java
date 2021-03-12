@@ -1,4 +1,4 @@
-package com.example.jwt.base.info;
+package com.example.jwt.base.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @Builder
-public class UserNameInfo {
+public class UserNameInfoDTO {
     private String userName;
     private String fullName;
 }
