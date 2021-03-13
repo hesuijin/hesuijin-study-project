@@ -33,8 +33,10 @@
      可以利用反射   反射出来的类 使用构造方法创建的对象也无法使用  Autowire
      可以使用ApplicationContextHelper  通过上下文 直接获取该类的 spring对象
      详情见 User类
-     
-         
+            
 #### 6：JSONObject.toJSONString 会执行该实体里面所有的get方法
        @JSONField(serialize = false)
        在相应的get方法中加入该注解
+       
+#### 7：发现执行单元测试的时 Class not found: com.example.xxx.junit
+    点击maven 的 lifecycle 再点击 test    
