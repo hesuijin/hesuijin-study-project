@@ -2,6 +2,8 @@ package com.example.security.junit;
 
 import com.example.security.base.request.LoginRequest;
 import com.example.security.mvc.controller.AuthController;
+import com.example.security.mvc.serviceImpl.AuthServiceImpl;
+import com.example.security.utils.AutowiredDemo;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,4 +39,14 @@ public class AuthControllerJunit {
         authController.login(loginRequest);
     }
 
+//    @Autowired
+//    AuthServiceImpl authService;
+    @Test
+    public void test(){
+
+        AutowiredDemo autowiredDemo = new AutowiredDemo();
+        System.out.println("111");
+        System.out.println("2222");
+        autowiredDemo.test();
+    }
 }
