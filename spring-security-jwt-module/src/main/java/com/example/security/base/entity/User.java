@@ -25,7 +25,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Slf4j
-@Controller
 public class User extends BaseModel {
 
     @TableId(type = IdType.AUTO)
