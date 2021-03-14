@@ -1,7 +1,7 @@
 ####    spring-security-jwt-module(模块讲解)
 
 ##### 项目用到的一些框架/服务：
-    数据库： H2内存数据库，无需手动安装。
+    数据库： Mysql
     缓存： Redis
     权限框架 ：Spring Security
     ORM框架 ：Mybatis plus 加 自定义 mapper
