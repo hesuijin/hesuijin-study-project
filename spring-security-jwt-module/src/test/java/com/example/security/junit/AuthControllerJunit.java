@@ -43,10 +43,10 @@ public class AuthControllerJunit {
 //    AuthServiceImpl authService;
     @Test
     public void test(){
-
         AutowiredDemo autowiredDemo = new AutowiredDemo();
         System.out.println("111");
-        System.out.println("2222");
-        autowiredDemo.test();
+        System.out.println("011000");
+//        autowiredDemo.test();
     }
+
 }

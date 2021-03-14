@@ -1,4 +1,4 @@
-package com.example.rocketmq.producer.demo;
+package com.example.rocketmq.producer.junit;
 
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
