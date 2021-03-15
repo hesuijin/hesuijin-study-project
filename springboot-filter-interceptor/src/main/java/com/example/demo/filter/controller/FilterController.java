@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api")
-public class MyController {
+public class FilterController {
 
     @GetMapping("/hello")
     public String getConfigurationFilter() throws InterruptedException {
