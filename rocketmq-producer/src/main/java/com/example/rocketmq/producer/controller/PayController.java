@@ -1,6 +1,8 @@
 package com.example.rocketmq.producer.controller;
 
 import com.example.rocketmq.producer.base.RocketEvent;
+import com.example.rocketmq.producer.component.CallBackActionComponent;
+import com.example.rocketmq.producer.component.CallBackComponent;
 import com.example.rocketmq.producer.component.RocketMqComponent;
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -23,12 +25,17 @@ public class PayController {
 
     @Autowired
     private RocketMqComponent rocketMqComponent;
+    @Autowired
+    private CallBackComponent callBackComponent;
 
     @RequestMapping("/api/v1/pay")
     public Object callback(String text) {
 
-        RocketEvent rocketEvent = new RocketEvent<>("event","Hello Rocket MQ");
-        rocketMqComponent.sendOrderMessage(rocketEvent);
+        //事务提交后再发送
+        callBackComponent.execute(()->{
+            RocketEvent rocketEvent = new RocketEvent<>("event","Hello Rocket MQ");
+            rocketMqComponent.sendOrderMessage(rocketEvent);
+        });
         return null;
     }
 }
