@@ -1,0 +1,3 @@
+rocketmq:
+    producer-group: pay_group
+    name-srv-addr: 47.113.101.241:9876
