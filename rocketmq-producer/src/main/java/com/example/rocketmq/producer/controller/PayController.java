@@ -24,8 +24,6 @@ public class PayController {
     @Autowired
     private RocketMqComponent rocketMqComponent;
 
-    private static  final String topic = "pay_test_topic";
-
     @RequestMapping("/api/v1/pay")
     public Object callback(String text) {
 
