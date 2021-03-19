@@ -15,11 +15,11 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class RocketMqComponent {
+public class RocketMqProduceComponent {
 
     private DefaultMQProducer defaultMQProducer;
 
-    public RocketMqComponent(DefaultMQProducer defaultMQProducer) {
+    public RocketMqProduceComponent(DefaultMQProducer defaultMQProducer) {
         this.defaultMQProducer = defaultMQProducer;
     }
 

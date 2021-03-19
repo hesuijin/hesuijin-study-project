@@ -1,14 +1,8 @@
 package com.example.rocketmq.producer.controller;
 
 import com.example.rocketmq.producer.base.RocketEvent;
-import com.example.rocketmq.producer.component.CallBackActionComponent;
 import com.example.rocketmq.producer.component.CallBackComponent;
-import com.example.rocketmq.producer.component.RocketMqComponent;
-import org.apache.rocketmq.client.exception.MQBrokerException;
-import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.producer.SendResult;
-import org.apache.rocketmq.common.message.Message;
-import org.apache.rocketmq.remoting.exception.RemotingException;
+import com.example.rocketmq.producer.component.RocketMqProduceComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +18,7 @@ public class PayController {
 
 
     @Autowired
-    private RocketMqComponent rocketMqComponent;
+    private RocketMqProduceComponent rocketMqProduceComponent;
     @Autowired
     private CallBackComponent callBackComponent;
 
@@ -34,7 +28,7 @@ public class PayController {
         //事务提交后再发送
         callBackComponent.execute(()->{
             RocketEvent rocketEvent = new RocketEvent<>("event","Hello Rocket MQ"+message);
-            rocketMqComponent.sendOrderMessage(rocketEvent);
+            rocketMqProduceComponent.sendOrderMessage(rocketEvent);
         });
         return null;
     }
