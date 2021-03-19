@@ -28,7 +28,6 @@ public class RocketMqConfiguration {
      * @throws MQClientException MQ客户端异常
      */
     @Bean
-
     public DefaultMQProducer defaultProducer() throws MQClientException {
         log.info("初始化RocketMQ");
         //生产到哪个group中
