@@ -27,7 +27,7 @@ public class PayController {
 
         //事务提交后再发送
         callBackComponent.execute(()->{
-            RocketEvent rocketEvent = new RocketEvent<>("event","Hello Rocket MQ"+message);
+            RocketEvent rocketEvent = new RocketEvent<>("event","Hello Rocket MQ ："+message);
             rocketMqProduceComponent.sendOrderMessage(rocketEvent);
         });
         return null;

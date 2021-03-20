@@ -25,8 +25,8 @@ public class JunitTest {
     private PayController payController;
 
     @Test
-    public void payControllerJunit() throws InterruptedException, RemotingException, MQClientException, MQBrokerException {
-        payController.callback("hhhh");
+    public void payControllerJunit()  {
+        payController.callback("你好啊");
     }
 
 }
