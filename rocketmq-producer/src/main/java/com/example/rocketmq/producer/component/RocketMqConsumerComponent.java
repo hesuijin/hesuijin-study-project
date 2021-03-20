@@ -25,33 +25,37 @@ import java.lang.reflect.Method;
  * @Description:
  */
 @Slf4j
-@Configuration
+@Component
 public class RocketMqConsumerComponent {
 
     private String pay_consumer_group = "pay_consumer_group";
 
-    private DefaultMQPushConsumer consumer;
+    private String nameSrvAddr = "47.113.101.241:9876";
+
+    private String topic = "pay_test_topic";
+
+    private DefaultMQPushConsumer defaultMQPushConsumer;
 
     public RocketMqConsumerComponent() throws MQClientException {
-         consumer = new DefaultMQPushConsumer();
-        //服务器地址
-        consumer.setNamesrvAddr("47.113.101.241:9876");
+        defaultMQPushConsumer = new DefaultMQPushConsumer();
+        //如需要多个地址 以 ; 分开   "localhost:9876;127.0.0.1:9876;"
+        defaultMQPushConsumer.setNamesrvAddr(nameSrvAddr);
         //消费时的策略
-        consumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
+        defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
         //设置消费者存放的组
-        consumer.setConsumerGroup(pay_consumer_group);
+        defaultMQPushConsumer.setConsumerGroup(pay_consumer_group);
         //订阅的主题 topic
-        consumer.subscribe("pay_test_topic", "*");
+        defaultMQPushConsumer.subscribe(topic, "*");
 
         //监听器
-        consumer.registerMessageListener((MessageListenerConcurrently) (messages, context) -> {
+        defaultMQPushConsumer.registerMessageListener((MessageListenerConcurrently) (messages, context) -> {
             try {
                 Message msg = messages.get(0);
                 log.info(" Receive New Messages: {},{} ",Thread.currentThread().getName(), new String(messages.get(0).getBody()));
                 String topic = msg.getTopic();
-                String body = new String(msg.getBody(), "utf-8");
                 String tags = msg.getTags();
                 String keys = msg.getKeys();
+                String body = new String(msg.getBody(), "utf-8");
                 log.info("topic=" + topic + ", tags=" + tags + ", keys = " + keys + ", msg = " + body);
                 return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
             } catch (UnsupportedEncodingException e) {
@@ -60,6 +64,6 @@ public class RocketMqConsumerComponent {
             }
         });
         log.info("consumer  start");
-        consumer.start();
+        defaultMQPushConsumer.start();
     }
 }

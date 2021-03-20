@@ -23,7 +23,7 @@ public class RocketMqProduceComponent {
         this.defaultMQProducer = defaultMQProducer;
     }
 
-    public void sendOrderMessage(RocketEvent<?> rocketEvent) {
+    public void     sendOrderMessage(RocketEvent<?> rocketEvent) {
         //主题
         String topic = "pay_test_topic";
         Message message ;
