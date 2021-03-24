@@ -1,4 +1,4 @@
-package com.example.security.a_source_code;
+package com.example.security.source_code;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -29,6 +29,7 @@ public class AuthenticationExample {
             System.out.println("Please enter your password:");
             String password = in.readLine();
             try {
+                //name 为 principal   password 为 credentials
                 Authentication request = new UsernamePasswordAuthenticationToken(name, password);
                 Authentication result = am.authenticate(request);
                 SecurityContextHolder.getContext().setAuthentication(result);

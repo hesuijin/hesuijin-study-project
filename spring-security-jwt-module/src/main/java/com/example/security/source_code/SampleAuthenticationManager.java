@@ -1,4 +1,4 @@
-package com.example.security.a_source_code;
+package com.example.security.source_code;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -27,6 +27,7 @@ class SampleAuthenticationManager implements AuthenticationManager {
 
     @Override
     public Authentication authenticate(Authentication auth) throws AuthenticationException {
+        //auth.getName()  就是调用 Principal中getName() 的方法  获取名称
         if (auth.getName().equals(auth.getCredentials())) {
             return new UsernamePasswordAuthenticationToken(auth.getName(),
                     auth.getCredentials(), AUTHORITIES);
