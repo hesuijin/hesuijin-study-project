@@ -21,8 +21,7 @@
 
     <!--    子模块-->
     <modules>
-        <module>rocketmq-producer</module>
-        <module>rocketmq-consumer</module>
+        <module>rocketmq-module</module>
         <module>security</module>
     </modules>
 

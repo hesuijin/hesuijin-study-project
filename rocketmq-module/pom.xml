@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.example</groupId>
-    <artifactId>rocketmq-producer</artifactId>
+    <artifactId>rocketmq-module</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>rocketmq-producer</name>
-    <description>RocketMq producer project for Spring Boot</description>
+    <name>rocketmq-module</name>
+    <description>RocketMq module  for Spring Boot</description>
 
     <dependencies>
         <dependency>
