@@ -83,7 +83,7 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--        引入lombok 使用@Data注解-->
+        <!--        引入lombok 使用@Data注解  使用@Slf4j注解-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
