@@ -22,7 +22,7 @@ public class HelloClientHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelActive(ChannelHandlerContext channelHandlerContext) {
-        System.out.println("client sen msg to server " + message);
+        System.out.println("client send msg to server " + message);
         channelHandlerContext.writeAndFlush(Unpooled.copiedBuffer(message, CharsetUtil.UTF_8));
     }
 
