@@ -18,7 +18,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class RocketMqProduceComponent {
 
-    //TODO 注意两种方法都可以？？？
+    //TODO 注意两种方法都可以
+    //注意阿里巴巴的规范化监测
 
     @Autowired
     private DefaultMQProducer defaultMQProducer;
