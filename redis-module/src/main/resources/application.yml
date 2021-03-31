@@ -1,0 +1,21 @@
+spring:
+# redis不需要设置配置类
+  redis:
+#    默认数据库
+    database: 0
+    host: 47.115.38.181
+    port: 6379
+    password: Hsj123456
+    #超时时间 3000毫秒为3秒
+    timeout: 3000
+#    连接池
+    jedis:
+      pool:
+#        连接池最大空闲链接  默认8
+        max-idle: 8
+#       连接池最小空闲链接  默认0
+        min-idle: 8
+#        pool最大已经分配了maxActive个jedis实例  默认8
+        max-active: 8
+#       更待可用链接最长时间 默认为-1 永不超时  1000毫秒 为1秒
+        max-wait: 1000
