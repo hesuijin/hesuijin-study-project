@@ -43,6 +43,9 @@ public class RedisStringUtil {
      */
     public   <T> T  getObject(String key ,Class<T> clazz){
         String returnString  = redisTemplate.opsForValue().get(key);
+        if (null ==returnString){
+            return null;
+        }
         return JSONObject.parseObject(returnString, clazz);
     }
 }
