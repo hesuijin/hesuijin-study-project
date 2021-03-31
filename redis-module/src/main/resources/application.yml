@@ -1,5 +1,5 @@
 spring:
-# redis不需要设置配置类
+# 在RedisTemplate不需要设置配置类
   redis:
 #    默认数据库
     database: 0
