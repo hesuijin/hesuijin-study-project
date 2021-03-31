@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisKeyValueTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,12 @@ public class RedisTestController {
     private StringRedisTemplate redisTemplate;
 
 
+
     @GetMapping("set")
     public String addTest() {
         //set  key value
         redisTemplate.opsForValue().set("name", "hesuijin");
+
         return "set success";
     }
 
