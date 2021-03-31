@@ -1,4 +1,4 @@
-package com.example.rocketmq.producer.component;
+package com.example.rocketmq.demo.component;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.support.TransactionSynchronization;

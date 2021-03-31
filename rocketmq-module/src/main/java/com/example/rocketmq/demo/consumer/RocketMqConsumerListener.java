@@ -1,23 +1,15 @@
-package com.example.rocketmq.producer.component;
+package com.example.rocketmq.demo.consumer;
 
-import com.alibaba.fastjson.JSONObject;
-import com.example.rocketmq.producer.config.RocketMqConfiguration;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.Message;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Configurable;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Method;
 
 /**
  * @Author HeSuiJin
@@ -26,7 +18,7 @@ import java.lang.reflect.Method;
  */
 @Slf4j
 @Component
-public class RocketMqConsumerComponent {
+public class RocketMqConsumerListener {
 
     private String pay_consumer_group = "pay_consumer_group";
 
@@ -36,7 +28,7 @@ public class RocketMqConsumerComponent {
 
     private DefaultMQPushConsumer defaultMQPushConsumer;
 
-    public RocketMqConsumerComponent() throws MQClientException {
+    public RocketMqConsumerListener() throws MQClientException {
         defaultMQPushConsumer = new DefaultMQPushConsumer();
         //如需要多个地址 以 ; 分开   "localhost:9876;127.0.0.1:9876;"
         defaultMQPushConsumer.setNamesrvAddr(nameSrvAddr);

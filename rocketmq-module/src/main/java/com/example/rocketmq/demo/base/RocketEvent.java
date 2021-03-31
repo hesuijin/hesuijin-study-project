@@ -1,4 +1,4 @@
-package com.example.rocketmq.producer.base;
+package com.example.rocketmq.demo.base;
 
 import lombok.Data;
 

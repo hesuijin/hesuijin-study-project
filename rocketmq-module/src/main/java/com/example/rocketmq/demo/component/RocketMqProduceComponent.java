@@ -1,11 +1,12 @@
-package com.example.rocketmq.producer.component;
+package com.example.rocketmq.demo.component;
 
 import com.alibaba.fastjson.JSON;
-import com.example.rocketmq.producer.base.RocketEvent;
+import com.example.rocketmq.demo.base.RocketEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,13 +18,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class RocketMqProduceComponent {
 
+    //TODO 注意两种方法都可以？？？
+
+    @Autowired
     private DefaultMQProducer defaultMQProducer;
 
-    public RocketMqProduceComponent(DefaultMQProducer defaultMQProducer) {
-        this.defaultMQProducer = defaultMQProducer;
-    }
+//    private DefaultMQProducer defaultMQProducer;
+//    public RocketMqProduceComponent(DefaultMQProducer defaultMQProducer) {
+//        this.defaultMQProducer = defaultMQProducer;
+//    }
 
-    public void     sendOrderMessage(RocketEvent<?> rocketEvent) {
+    public void   sendOrderMessage(RocketEvent<?> rocketEvent) {
         //主题
         String topic = "pay_test_topic";
         Message message ;

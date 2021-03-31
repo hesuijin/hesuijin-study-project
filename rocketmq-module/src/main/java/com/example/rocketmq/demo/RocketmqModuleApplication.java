@@ -1,4 +1,4 @@
-package com.example.rocketmq.producer;
+package com.example.rocketmq.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

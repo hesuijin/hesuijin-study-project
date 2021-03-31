@@ -1,8 +1,8 @@
-package com.example.rocketmq.producer.controller;
+package com.example.rocketmq.demo.producer.controller;
 
-import com.example.rocketmq.producer.base.RocketEvent;
-import com.example.rocketmq.producer.component.CallBackComponent;
-import com.example.rocketmq.producer.component.RocketMqProduceComponent;
+import com.example.rocketmq.demo.base.RocketEvent;
+import com.example.rocketmq.demo.component.CallBackComponent;
+import com.example.rocketmq.demo.component.RocketMqProduceComponent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 public class PayController {
-
 
     @Autowired
     private RocketMqProduceComponent rocketMqProduceComponent;

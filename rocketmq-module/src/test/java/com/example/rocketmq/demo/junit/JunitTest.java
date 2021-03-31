@@ -1,10 +1,7 @@
-package com.example.rocketmq.producer.junit;
+package com.example.rocketmq.demo.junit;
 
-import com.example.rocketmq.producer.controller.PayController;
+import com.example.rocketmq.demo.producer.controller.PayController;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.rocketmq.client.exception.MQBrokerException;
-import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.remoting.exception.RemotingException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

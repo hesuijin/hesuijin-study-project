@@ -1,4 +1,4 @@
-package com.example.rocketmq.producer;
+package com.example.rocketmq.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
