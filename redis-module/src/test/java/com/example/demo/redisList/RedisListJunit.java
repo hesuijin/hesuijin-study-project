@@ -95,4 +95,38 @@ public class RedisListJunit {
       log.info("popLeft 获取并移除的数据：{}",popLeft);
       log.info("popLeft 获取并移除的数据：{}",popLeft);
     }
+
+    /**
+     *通过  PopAndPush  移动数据
+     */
+    @Test
+    public void PopAndPush() {
+
+        redisTemplate.opsForList().leftPush("List1","List1 我是左边插入的1");
+        redisTemplate.opsForList().leftPush("List1","List1 我是左边插入的2");
+        redisTemplate.opsForList().rightPush("List1","List1 我是右边插入的1");
+        redisTemplate.opsForList().rightPush("List1","List1 我是右边插入的2");
+
+        redisTemplate.opsForList().leftPush("List2","List2 我是左边插入的1");
+        redisTemplate.opsForList().leftPush("List2","List2 我是左边插入的2");
+        redisTemplate.opsForList().rightPush("List2","List2我是右边插入的1");
+        redisTemplate.opsForList().rightPush("List2","List2 我是右边插入的2");
+
+        List list1 =  redisTemplate.opsForList().range("List1",0,-1);
+        log.info("range 转换前 list1 请求返回：{}",list1);
+
+        List list2 =  redisTemplate.opsForList().range("List2",0,-1);
+        log.info("range 转换前 list2 请求返回：{}",list2);
+
+        //取source的最右边第一个元素 插入到destination的最左边第一个元素
+        redisTemplate.opsForList().rightPopAndLeftPush("List1","List2");
+
+        List listOther1 =  redisTemplate.opsForList().range("List1",0,-1);
+        log.info("range 转换后 list1 请求返回：{}",listOther1);
+
+        List listOther2 =  redisTemplate.opsForList().range("List2",0,-1);
+        log.info("range 转换后 list2 请求返回：{}",listOther2);
+
+
+    }
 }
