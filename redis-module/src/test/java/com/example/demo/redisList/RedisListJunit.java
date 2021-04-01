@@ -23,8 +23,6 @@ public class RedisListJunit {
     @Autowired
     StringRedisTemplate redisTemplate;
 
-
-
     @Test
     public void pushTest(){
         redisTemplate.opsForList().leftPush("List","我是左边插入的1");
@@ -33,7 +31,6 @@ public class RedisListJunit {
         redisTemplate.opsForList().rightPush("List","我是右边插入的2");
         log.info("pushTest 请求返回：{}","success");
     }
-
 
     /**
      *通过set替换数据
@@ -69,8 +66,6 @@ public class RedisListJunit {
         log.info("deleteTest 请求返回：{}","success");
     }
 
-
-
         /**
          * 获取数据
          */
@@ -79,10 +74,9 @@ public class RedisListJunit {
         //使用下标获取数据  0为第一个  -1为最后一个
         String indexReturn = redisTemplate.opsForList().index("List",0);
         log.info("indexTest 请求返回：{}",indexReturn);
-
         //TODO opsForList() 的  indexOf lastIndexOf  异常
 
-//         redisTemplate.opsForList().indexOf("List","我是通过set插入的");
+//        redisTemplate.opsForList().indexOf("List","我是通过set插入的");
 //        Long lastIndexOfReturn = redisTemplate.opsForList().lastIndexOf("List","我是通过set插入的");
 //        log.info("我是通过set插入的 第一个地址：{}",indexOfReturn);
 //        log.info("我是通过set插入的 最后一个地址：{}",lastIndexOfReturn);
