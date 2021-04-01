@@ -49,7 +49,6 @@ public class RedisListJunit {
     public void pushPivotTest() {
         //使用下标获取数据
         redisTemplate.opsForList().leftPush("List", "我是通过set插入的", "我是通过pushLeftPivot插入的");
-
         redisTemplate.opsForList().rightPush("List", "我是通过set插入的", "我是通过pushLeftPivot插入的");
         log.info("setTest 请求返回：{}", "success");
     }
@@ -101,7 +100,6 @@ public class RedisListJunit {
      */
     @Test
     public void PopAndPush() {
-
         redisTemplate.opsForList().leftPush("List1","List1 我是左边插入的1");
         redisTemplate.opsForList().leftPush("List1","List1 我是左边插入的2");
         redisTemplate.opsForList().rightPush("List1","List1 我是右边插入的1");

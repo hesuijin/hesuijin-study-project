@@ -72,5 +72,4 @@ public class RedisSetJunit {
         log.info("differenceMember  请求返回：{}", JSONObject.toJSONString(differenceMember));
         redisTemplate.opsForSet().differenceAndStore("Set1","Set2","differenceMember");
     }
-
 }

@@ -31,7 +31,6 @@ public class RedisHashJunit {
             user.setId(1L);
             user.setAge(18);
             user.setName("HSJ");
-
             redisTemplate.opsForHash().put("hash","hashKey1","hashValue1");
             redisTemplate.opsForHash().put("hash","hashKey2","hashValue2");
             redisTemplate.opsForHash().put("hash","hashKey3","hashValue3");
@@ -44,13 +43,11 @@ public class RedisHashJunit {
             //报错.JSONObject cannot be cast to java.lang.String
             //redisTemplate.opsForHash().put("hash","userJSONString",JSONObject.toJSON(user));
             redisTemplate.opsForHash().put("hash","userJSONString",JSONObject.toJSON(user).toString());
-
             log.info("putTest 请求返回：{}","success");
         }
 
     @Test
     public void getTest()  {
-
 //       Object object1= redisTemplate.opsForHash().get("hash","user");
 //        log.info("getTest 请求返回 转换前：{}", JSONObject.toJSONString(object1));
 //        User user1 = (User)(object1);
@@ -61,7 +58,6 @@ public class RedisHashJunit {
 
         User user2 = JSONObject.parseObject(object2.toString(),User.class);
         log.info("getTest 请求返回 转换后：{}", JSONObject.toJSONString(user2));
-
     }
 
     /**
@@ -71,7 +67,6 @@ public class RedisHashJunit {
     public void getAllTest()  {
         Object object = redisTemplate.opsForHash().entries("hash");
         log.info("getAllTest 请求返回 所有 hashMap：{}", JSONObject.toJSONString(object));
-
     }
 
     /**
@@ -80,11 +75,8 @@ public class RedisHashJunit {
     @Test
     public void keysOrValueTest()  {
         Object object1= redisTemplate.opsForHash().keys("hash");
-
         log.info("keysOrValueTest 请求返回 所有keys：{}", JSONObject.toJSONString(object1));
-
         Object object2= redisTemplate.opsForHash().values("hash");
         log.info("keysOrValueTest 请求返回 所有values：{}", JSONObject.toJSONString(object2));
-
     }
 }

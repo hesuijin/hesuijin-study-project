@@ -27,7 +27,6 @@ public class RedisZSetJunit {
     @Test
     public void zAddTest(){
         //权重可以为double类型 权重越大 排序越后  若权重一样则按照ASCII
-
         redisTemplate.opsForZSet().add("ZSet1","1",1);
         redisTemplate.opsForZSet().add("ZSet1","2",2);
         redisTemplate.opsForZSet().add("ZSet1","3",3);
@@ -94,7 +93,6 @@ public class RedisZSetJunit {
         log.info("unionAndStore  请求返回并集个数：{}", JSONObject.toJSONString(b));
         Set unionRange =redisTemplate.opsForZSet().range("unionRange",0,-1);
         log.info("unionRange zSetRange 请求返回：{}", JSONObject.toJSONString(unionRange));
-
     }
 
 }
