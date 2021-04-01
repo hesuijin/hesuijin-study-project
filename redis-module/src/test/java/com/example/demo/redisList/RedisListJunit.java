@@ -126,7 +126,5 @@ public class RedisListJunit {
 
         List listOther2 =  redisTemplate.opsForList().range("List2",0,-1);
         log.info("range 转换后 list2 请求返回：{}",listOther2);
-
-
     }
 }
