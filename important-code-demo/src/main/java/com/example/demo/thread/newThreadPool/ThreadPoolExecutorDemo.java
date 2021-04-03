@@ -30,7 +30,7 @@ public class ThreadPoolExecutorDemo {
                 discardOldestPolicyDemo();
                 break;
             case 4:
-                // 丢调用任务的run()方法绕过线程池直接执行
+                // 丢调用任务的run()方法绕过线程池直接执行  (谁调用 则使用谁的线程)
                 callerRunsPolicyDemo();
                 break;
             default:
@@ -106,7 +106,7 @@ public class ThreadPoolExecutorDemo {
     }
 
     /**
-     * 调用任务的run()方法绕过线程池直接执行。
+     * 调用任务的run()方法绕过线程池直接执行。(谁调用 则使用谁的线程)
      */
     private static void callerRunsPolicyDemo() {
         ThreadPoolExecutor threadPoolExecutor;
