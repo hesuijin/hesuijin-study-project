@@ -9,15 +9,23 @@ package com.example.demo.thread.stateThreadDemo;
 // wait 与 notify都需要使用在 同步关键字：synchronized 中
 // 否则会抛出异常IllegalMonitorStateException
 // 抛出该异常表明某一线程已经试图等待对象的监视器，或者试图通知其他正在等待对象的监视器，然而本身没有指定的监视器的线程。
-
 public class StateThreadDemo {
 
     public static Object obj = new Object();
 
-//    下面是两个线程，一个等待线程，一个唤醒线程，都在一直执行，然后共用同一把锁
-
     public static void main(String[] args) {
-//        演示waiting
+        threadState();
+
+        deadLock();
+    }
+
+
+    /**
+     * 线程状态测试
+     */
+    private static void threadState() {
+        //    下面是两个线程，一个等待线程，一个唤醒线程，都在一直执行，然后共用同一把锁
+        //        演示waiting
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -62,5 +70,35 @@ public class StateThreadDemo {
                 }
             }
         }, "唤醒线程").start();
+    }
+
+    /**
+     * 死锁测试
+     */
+    private static void deadLock() {
+        Object objA = new Object();
+        Object objB = new Object();
+
+        new Thread(() -> {
+            while (true) {
+                synchronized (objA) {
+                    //线程一
+                    synchronized (objB) {
+                        System.out.println("小康同学正在走路");
+                    }
+                }
+            }
+        }).start();
+
+        new Thread(() -> {
+            while (true) {
+                synchronized (objB) {
+                    //线程二
+                    synchronized (objA) {
+                        System.out.println("小薇同学正在走路");
+                    }
+                }
+            }
+        }).start();
     }
 }
