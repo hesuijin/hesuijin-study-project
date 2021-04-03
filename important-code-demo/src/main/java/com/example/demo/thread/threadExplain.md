@@ -6,6 +6,14 @@
 #### 2：一般有四种方法
      创建线程的方式总共有四种方法，继承Thread, 实现Runnable接口,实现Callable接口,使用Executor框架来创建线程池（单独讲解）
      
+    最多使用方法时 ：实现Runnable接口
+    
+    实现Runnable接口比继承Thread类所具有的优势：
+         1. 适合多个相同的程序代码的线程去共享同一个资源。
+         2. 可以避免java中的单继承的局限性。 
+         3. 增加程序的健壮性，实现解耦操作，代码可以被多个线程共享，代码和线程独立。 
+         4. 线程池只能放入实现Runnable或Callable类线程，不能直接放入继承Thread的类。 
+     
     Runnable和Callable的区别是，
     (1)Callable规定的方法是call(),Runnable规定的方法是run().
     (2)Callable的任务执行后可返回值，而Runnable的任务是不能返回值得
@@ -13,8 +21,12 @@
     (4)运行Callable任务可以拿到一个Future对象，表示异步计算的结果。
         它提供了检查计算是否完成的方法，以等待计算的完成，并检索计算的结果。
         通过Future对象可以了解任务执行情况，可取消任务的执行，还可获取执行结果
+
+#### 3：多种创建并调用线程的实质
+    实际上所有的多线程代码都是通过运行Thread的start()方法来运行的。
+    最终还是通过Thread的对象的API来控制线程的，熟悉Thread类的API是进行多线程 编程的基础  .
         
-#### 3：什么是守护线程 
+#### 4：什么是守护线程 
     JVM 程序在什么情况下能够正常退出？
     
     The Java Virtual Machine exits when the only threads running are all daemon threads.
@@ -32,4 +44,5 @@
      垃圾回收线程就是守护线程：
      当 JVM 要退出时，由于垃圾回收线程还在运行着，导致程序无法退出，这就很尴尬了！！！
      由此可见，守护线程的重要性了
-    
+
+
