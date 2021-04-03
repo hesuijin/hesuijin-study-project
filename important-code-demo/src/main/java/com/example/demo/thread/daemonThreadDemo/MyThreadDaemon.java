@@ -1,4 +1,4 @@
-package com.example.demo.thread.daemonDemo;
+package com.example.demo.thread.daemonThreadDemo;
 
 import lombok.extern.slf4j.Slf4j;
 
