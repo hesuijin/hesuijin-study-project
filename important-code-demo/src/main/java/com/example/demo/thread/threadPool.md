@@ -29,7 +29,7 @@
                               RejectedExecutionHandler handler)
 
     corePoolSize：   核心线程的最大值，不能小于0
-    maximumPoolSize：最大线程数，不能小于等于0，maximumPoolSize >= corePoolSize
+    maximumPoolSize：最大线程数，不能小于等于0，maximumPoolSize >= corePoolSize  （maximumPoolSize的数量包含了核心线程数的数量）
     keepAliveTime：  空闲线程最大存活时间,不能小于0
     unit：           时间单位
     workQueue：      任务队列，不能为null
@@ -62,12 +62,12 @@ public class ThreadPoolExecutorDemo {
                    new ArrayBlockingQueue<>(1), Executors.defaultThreadFactory(), new ThreadPoolExecutor.DiscardOldestPolicy());
            // 提交5个任务
    
-           //由于任务2在线程池中等待时间最长，因此任务2被丢弃。 1 2 3 4 5
-           // 1    小于等于进入核心线程数 直接执行
-           // 2    阻塞队列未满  进入阻塞队列
-           // 3 4  阻塞队列已满  最大线程数未来满  进入最大线程数  直接创建线程运行
-           // 5    此时线程数大于等于最大线程数，则实行线程池自定义的拒绝策略。  把队列中的2挤出来
-           // 当最大线程的存在时间  超过空闲时间  都没有获取到队列 则关闭最大线程
+        //由于任务2在线程池中等待时间最长，因此任务2被丢弃。 1 2 3 4 5
+        // 1    小于等于进入核心线程数 直接执行
+        // 2    阻塞队列未满  进入阻塞队列
+        // 3 4  阻塞队列已满  最大线程数未来满  进入最大线程数  直接创建线程运行
+        // 5    此时任务数大于等于  最大线程数+阻塞队列容量 ，则实行线程池自定义的拒绝策略。  把队列中的2挤出来
+        // 当线程数  大于核心线程数的线程  超过空闲时间  都没有获取到队列 则关闭这些空闲线程
            
            for (int x = 1; x <= 5; x++) {
                // 定义一个变量，来指定指定当前执行的任务;这个变量需要被final修饰
