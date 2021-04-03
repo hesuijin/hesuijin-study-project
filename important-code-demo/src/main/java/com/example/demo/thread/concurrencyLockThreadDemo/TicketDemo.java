@@ -37,13 +37,13 @@ public class TicketDemo {
 
         //使用线程池
         //暂时不用理会报错 后续会讲到线程池 现在先运行
-        ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(5);//包含个线程对象
-        newFixedThreadPool.submit(ticket);
-        newFixedThreadPool.submit(ticket);
-        newFixedThreadPool.submit(ticket);
-        newFixedThreadPool.submit(ticket);
-        newFixedThreadPool.submit(ticket);
-        newFixedThreadPool.shutdown();
+//        ExecutorService newFixedThreadPool = Executors.newFixedThreadPool(5);//包含个线程对象
+//        newFixedThreadPool.submit(ticket);
+//        newFixedThreadPool.submit(ticket);
+//        newFixedThreadPool.submit(ticket);
+//        newFixedThreadPool.submit(ticket);
+//        newFixedThreadPool.submit(ticket);
+//        newFixedThreadPool.shutdown();
 
     }
 }
