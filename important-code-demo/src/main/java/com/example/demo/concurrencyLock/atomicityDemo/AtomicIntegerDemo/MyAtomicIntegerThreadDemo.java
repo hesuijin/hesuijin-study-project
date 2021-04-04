@@ -1,4 +1,4 @@
-package com.example.demo.atomicity.atomicityDemo.AtomicIntegerDemo;
+package com.example.demo.concurrencyLock.atomicityDemo.AtomicIntegerDemo;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,14 +16,13 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class MyAtomicIntegerThreadDemo implements Runnable{
 
-
     AtomicInteger ac = new AtomicInteger(0);
 
     @Override
     public void run() {
         for (int i = 0; i < 100; i++) {
             int count = ac.incrementAndGet();
-            System.out.println("已经送了" + count + "个冰淇淋");
+            System.out.println("AtomicInteger 已经送了" + count + "个冰淇淋");
         }
     }
 }

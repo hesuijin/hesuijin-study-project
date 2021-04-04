@@ -1,6 +1,5 @@
-package com.example.demo.atomicity.atomicityDemo.AtomicIntegerDemo;
+package com.example.demo.concurrencyLock.atomicityDemo.AtomicIntegerDemo;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -24,7 +23,6 @@ public class AtomicIntegerMethodDemo {
 //    AtomicLong：	原子更新长整型
 
     public static void main(String[] args) {
-
         //获取值
         AtomicInteger ac1 = new AtomicInteger(10);
         System.out.println(ac1.get());

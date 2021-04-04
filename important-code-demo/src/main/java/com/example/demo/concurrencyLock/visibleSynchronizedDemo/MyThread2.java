@@ -1,4 +1,4 @@
-package com.example.demo.atomicity.synchronizedDemo;
+package com.example.demo.concurrencyLock.visibleSynchronizedDemo;
 
 
 /**
@@ -15,7 +15,6 @@ public class MyThread2 extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         synchronized (MoneySynchronized.lock) {
             MoneySynchronized.money = 9;
         }

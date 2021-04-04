@@ -1,4 +1,4 @@
-package com.example.demo.atomicity.atomicityDemo;
+package com.example.demo.concurrencyLock.atomicityDemo;
 
 /**
  * @Description:
@@ -6,7 +6,8 @@ package com.example.demo.atomicity.atomicityDemo;
  * @Date 2021/4/4
  */
 public class MyAtomThreadVolatile implements Runnable{
-    private volatile int count = 0; //送冰淇淋的数量
+    //送冰淇淋的数量
+    private volatile int count = 0;
 
     @Override
     public void run() {

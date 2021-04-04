@@ -1,4 +1,4 @@
-package com.example.demo.atomicity.synchronizedDemo;
+package com.example.demo.concurrencyLock.visibleSynchronizedDemo;
 
 
 /**

@@ -1,4 +1,4 @@
-package com.example.demo.atomicity.atomicityDemo.AtomicIntegerDemo;
+package com.example.demo.concurrencyLock.atomicityDemo.AtomicIntegerDemo;
 
 /**
  * @Description:
@@ -9,7 +9,6 @@ public class AtomicIntegerDemo {
 
     public static void main(String[] args) {
         MyAtomicIntegerThreadDemo atom = new MyAtomicIntegerThreadDemo();
-
         for (int i = 0; i < 10; i++) {
             new Thread(atom).start();
         }

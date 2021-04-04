@@ -1,4 +1,4 @@
-package com.example.demo.atomicity.atomicityDemo;
+package com.example.demo.concurrencyLock.atomicityDemo;
 
 /**
  * @Description:
