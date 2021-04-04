@@ -1,7 +1,5 @@
 package com.example.demo.thread.newThreadPool;
 
-import com.example.demo.thread.newThread.MyRunnable;
-
 import java.util.concurrent.*;
 
 /**
@@ -12,9 +10,11 @@ import java.util.concurrent.*;
 public class ThreadPoolExecutorDemo {
 
     public static void main(String[] args) {
+        //尝试创建一个标准的线程池
+        threadPoolExecutorDemo();
 
-//        核心线程数量为1 ， 最大线程池数量为3, 任务容器的容量为1 ,空闲线程的最大存在时间为20s   然后运行5个任务
-
+//       核心线程数量为1 ， 最大线程池数量为3, 任务容器的容量为1 ,
+//     空闲线程（即大于核心线程数的线程）的最大存在时间为20s   然后运行5个任务
         Integer RejectedPolicy = 3;
         switch (RejectedPolicy) {
             case 1:
@@ -39,12 +39,18 @@ public class ThreadPoolExecutorDemo {
 
     }
 
+    /**
+     * 一个标准的线程池
+     */
     private static void threadPoolExecutorDemo() {
-        ThreadPoolExecutor pool = new ThreadPoolExecutor(2, 5, 2, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
-        pool.submit(new ThreadPoolExcutorRunnable());
-        pool.submit(new ThreadPoolExcutorRunnable());
-
-        pool.shutdown();
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 5, 2, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+        //使用一个实现Runnable接口的类重写方法
+        threadPoolExecutor.submit(new ThreadPoolExecutorRunnable());
+        //使用内部类重写方法
+        threadPoolExecutor.submit(()->{
+            System.out.println(Thread.currentThread().getName() + "---->> 使用匿名内部类 重写方法");
+        });
+        threadPoolExecutor.shutdown();
     }
 
 
@@ -121,6 +127,4 @@ public class ThreadPoolExecutorDemo {
             });
         }
     }
-
-
 }

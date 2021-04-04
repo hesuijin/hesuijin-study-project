@@ -38,9 +38,9 @@ public class NewThreadDemo {
     private static void implRunnable(){
         //创建自定义类对象 线程任务对象
         MyRunnable myRunnable = new MyRunnable();
-//       创建新的线程对象
+        //创建新的线程对象
         Thread thread = new Thread(myRunnable, "新的线程！实现Runnable新线程");
-//       开始新的线程对象
+        //开始新的线程对象
         thread.start();
 
         //main函数主线程

@@ -21,8 +21,13 @@
         最后：银行卡少20 自己钱包多了10块钱
         
     2.而用synchronized的关键是建立一个监控monitor，这个monitor可以是要修改的变量，也可以是其他自己认为合适的对象(方法)，然后通过给这个monitor加锁来实现线程安全，
-    3.每个线程在获得这个锁之后，要执行完加载load到working memory 到 use && 指派assign 到 存储store 再到 main memory的过程。才会释放它得到的锁。这样就实现了所谓的线程安全。
-
+    
+    3：每个线程在获得这个锁之后，要执行完后面的逻辑：
+      1：加载（load）到working memory  
+      2：使用（user）
+      3： 重新指派（assign）  存储（store） 到 main memory的过程。
+      才会释放它得到的锁。这样就实现了所谓的线程安全。
+       
 ##### 3：常见的线程安全的类？
     StringBuffer Vector Hashtable
      

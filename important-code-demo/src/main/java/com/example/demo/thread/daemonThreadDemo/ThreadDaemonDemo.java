@@ -21,8 +21,6 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class ThreadDaemonDemo {
     public static void main(String[] args) {
-
-
         MyThreadDaemon myThreadDaemon = new MyThreadDaemon();
         myThreadDaemon.setName("张羽");
 
@@ -31,7 +29,7 @@ public class ThreadDaemonDemo {
 
         // 用户自定义的线程标记为守护线程（用户线程）
         myThreadDaemon.setDaemon(true);
-//        myThreadDaemon.setDaemon(false);
+        //myThreadDaemon.setDaemon(false);
 
         myThreadDaemon.start();
 

@@ -16,15 +16,14 @@ public class TicketDemo {
 
     public static void main(String[] args) {
 //    创建线程任务对象
-//        Ticket ticket = new Ticket();
+        Ticket ticket = new Ticket();
 
         //同步代码块
-        TicketSynchronizedBlockDemo ticket = new TicketSynchronizedBlockDemo();
+//        TicketSynchronizedBlockDemo ticket = new TicketSynchronizedBlockDemo();
         //同步方法锁
 //        TicketSynchronizedMethodDemo ticket = new TicketSynchronizedMethodDemo();
         //同步锁
 //        TicketLockDemo ticket = new TicketLockDemo();
-
 
 //     创建三个窗口对象
         Thread t1 = new Thread(ticket, "窗口1");

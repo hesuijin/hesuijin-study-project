@@ -12,12 +12,10 @@ import java.util.concurrent.*;
 public class ExecutorsDemo {
 
     public static void main(String[] args) throws InterruptedException {
-
         //默认线程池
 //        cachedThreadPoolDemo();
         //可以指定线程数量的线程池
 //        newFixedThreadPoolDemo();
-
     }
 
     private static void cachedThreadPoolDemo() {
@@ -35,13 +33,11 @@ public class ExecutorsDemo {
     }
 
     private static void newFixedThreadPoolDemo() {
-
         //参数不是初始值而是最大值
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         ThreadPoolExecutor pool = (ThreadPoolExecutor) executorService;
         //大小为0
         System.out.println(pool.getPoolSize());
-
         executorService.submit(() -> {
             System.out.println(Thread.currentThread().getName() + "在执行了");
         });
@@ -52,6 +48,4 @@ public class ExecutorsDemo {
         System.out.println(pool.getPoolSize());
         executorService.shutdown();
     }
-
-
 }
