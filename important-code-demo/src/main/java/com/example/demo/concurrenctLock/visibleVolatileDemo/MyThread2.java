@@ -1,4 +1,4 @@
-package com.example.demo.concurrencyLock.visibleVolatileDemo;
+package com.example.demo.concurrenctLock.visibleVolatileDemo;
 
 /**
  * @Description:
