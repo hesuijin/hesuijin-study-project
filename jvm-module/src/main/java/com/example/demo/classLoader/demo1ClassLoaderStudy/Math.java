@@ -1,4 +1,4 @@
-package com.example.demo.classLoader.classLoaderDemo1;
+package com.example.demo.classLoader.demo1ClassLoaderStudy;
 
 import com.example.demo.classLoader.User;
 

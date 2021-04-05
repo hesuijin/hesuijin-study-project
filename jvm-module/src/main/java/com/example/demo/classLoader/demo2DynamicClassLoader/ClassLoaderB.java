@@ -1,4 +1,4 @@
-package com.example.demo.classLoader.classLoaderDemo2;
+package com.example.demo.classLoader.demo2DynamicClassLoader;
 
 /**
  * @Description:
