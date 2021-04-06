@@ -15,21 +15,24 @@ public class MyClassLoaderTest {
         //1：初始化自定义类加载器，会先初始化父类ClassLoader，
         //   其中会把自定义类加载器的父加载器默认设置为应用程序类加载器AppClassLoader
         MyClassLoader classLoader = new MyClassLoader("D:/test");
-        //2:com.myClassLoaderTest.jvm下创建 User类
-        //3：D盘创建 test/com/myClassLoaderTest/jvm 几级目录，将User类的 .class文件  User.class丢入该目录
+        //2:com.example.demo.classLoader下创建 User类
+        //3：D盘创建 test/com/example/demo/classLoader 几级目录，将User类的 .class文件  User.class丢入该目录
 
 //        双亲委派
-        //4：JDK的 classLoader.loadClass 里面有方法findClass （由于双亲委派 使用获取父加载器的该方法）
-//        Class clazz = classLoader.loadClass("com.myClassLoaderTest.jvm.User");
-        //5：获取该类存在的类加载器名称 （应用程序加载器） （由于双亲委派 先获取父加载器）
+//        先查看自定义加载器是否进行过首次加载
+//        自定义加载器没有进行首次加载  由于双亲委派 使用父加载器应用程序加载器进行查询并加载
+//        应用程序加载器 可以在 A:\MyProject\hesuijin-study-project\jvm-module\target\classes  查询到User
+//        因此使用应用加载器进行加载
+//        Class clazz = classLoader.loadClass("com.example.demo.classLoader.User");
+ //       获取该类的类加载器名称 （应用程序加载器）
 //        System.out.println(clazz.getClassLoader().getClass().getName());
 
+        //注意 ：把2中的com.example.demo.classLoader下创建 User类  以及 .class文件删除 （防止双亲委派 先获取父加载器）
 
-        //注意 ：把2中的com.myClassLoaderTest.jvm下创建 User类  以及 .class文件删除 （防止双亲委派 先获取父加载器）
-
-        //4：JDK的 classLoader.loadClass 里面有方法findClass  这时会调用到我们自定义实现的findClass方法
-        Class clazz = classLoader.loadClass("com.myClassLoaderTest.jvm.User");
-        //5：获取该类存在的类加载器名称 （自定义加载器）
+        //使用自定义加载器进行加载
+        //调用自定义加载器的findClass方法
+        Class clazz = classLoader.loadClass("com.example.demo.classLoader.User");
+        //4: 获取该类的类加载器名称 （自定义加载器）
         System.out.println(clazz.getClassLoader().getClass().getName());
     }
 
@@ -63,7 +66,5 @@ public class MyClassLoaderTest {
                 throw new ClassNotFoundException();
             }
         }
-
     }
-
 }
