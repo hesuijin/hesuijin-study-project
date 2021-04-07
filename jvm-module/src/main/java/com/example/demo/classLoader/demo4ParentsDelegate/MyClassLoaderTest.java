@@ -4,8 +4,7 @@ import java.io.FileInputStream;
 import java.lang.reflect.Method;
 
 /**
- * @Description:
- * 自定义 类加载器
+ * @Description: 自定义 类加载器
  * @Author HeSuiJin
  * @Date 2021/4/6
  */
@@ -24,7 +23,7 @@ public class MyClassLoaderTest {
 //        应用程序加载器 可以在 A:\MyProject\hesuijin-study-project\jvm-module\target\classes  查询到User
 //        因此使用应用加载器进行加载
 //        Class clazz = classLoader.loadClass("com.example.demo.classLoader.User");
- //       获取该类的类加载器名称 （应用程序加载器）
+        //       获取该类的类加载器名称 （应用程序加载器）
 //        System.out.println(clazz.getClassLoader().getClass().getName());
 
         //注意 ：把2中的com.example.demo.classLoader下创建 User类  以及 .class文件删除 （防止双亲委派 先获取父加载器）
@@ -66,5 +65,46 @@ public class MyClassLoaderTest {
                 throw new ClassNotFoundException();
             }
         }
+//
+//        注意测试打破双亲委派机制时  把注释打开
+//        /**
+//         *  最终代码
+//         * 打破双亲委派机制  重写loadClass方法 去除双亲委派逻辑
+//         * 针对核心类 还是使用委派机制
+//         * @param name
+//         * @param resolve
+//         * @return
+//         * @throws ClassNotFoundException
+//         */
+//        @Override
+//        protected Class<?> loadClass(String name, boolean resolve)
+//                throws ClassNotFoundException {
+//            synchronized (getClassLoadingLock(name)) {
+//                // First, check if the class has already been loaded
+//                Class<?> c = findLoadedClass(name);
+//                if (c == null) {
+//                    long t0 = System.nanoTime();
+//                    long t1 = System.nanoTime();
+//
+//                    //在进行Object的类（非自定义类）加载的时候  使用 父加载器进行加载
+//                    if(!name.startsWith("com.example.demo")){
+//                       c = this.getParent().loadClass(name);
+//                    }else {
+//                        c = this.findClass(name);
+//                    }
+//                    // this is the defining class loader; record the stats
+//                    sun.misc.PerfCounter.getParentDelegationTime().addTime(t1 - t0);
+//                    sun.misc.PerfCounter.getFindClassTime().addElapsedTimeFrom(t1);
+//                    sun.misc.PerfCounter.getFindClasses().increment();
+//
+//                }
+//                if (resolve) {
+//                    resolveClass(c);
+//                }
+//                return c;
+//            }
+//        }
     }
+
+
 }
