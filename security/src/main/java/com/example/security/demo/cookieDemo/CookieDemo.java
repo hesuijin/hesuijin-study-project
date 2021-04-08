@@ -1,4 +1,4 @@
-package com.example.security.demo;
+package com.example.security.demo.cookieDemo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CookieValue;

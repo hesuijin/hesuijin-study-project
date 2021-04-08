@@ -1,4 +1,4 @@
-package com.example.security.demo.securityDemo;
+package com.example.security.demo.securitySoundCodeDemo;
 
 /**
  * @Description:

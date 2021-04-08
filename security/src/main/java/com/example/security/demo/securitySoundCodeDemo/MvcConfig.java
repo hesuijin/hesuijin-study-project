@@ -1,4 +1,4 @@
-package com.example.security.demo.securityDemo;
+package com.example.security.demo.securitySoundCodeDemo;
 
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
