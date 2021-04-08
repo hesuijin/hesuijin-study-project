@@ -7,6 +7,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 /**
  * @Description:
+ * 该配置可以让http 请求该接口的时候 直接跳转到 templates的页面
  * @Author HeSuiJin
  * @Date 2021/4/8
  */

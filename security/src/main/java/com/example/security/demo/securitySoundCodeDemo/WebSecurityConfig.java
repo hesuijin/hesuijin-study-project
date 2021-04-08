@@ -17,6 +17,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Configuration
 @EnableWebSecurity
@@ -41,6 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll();
+
     }
 
     /**
@@ -51,8 +55,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        //java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id "null"
+        //这是因为Spring boot 2.0.3引用的security 依赖是 spring security 5.X版本，
+        //需要指定明文
+//        auth
+//            .inMemoryAuthentication()
+//                .withUser("admin").password("admin").roles("USER");
+
+        //.passwordEncoder(new MyPasswordEncoder())。
+        //页面提交时候，密码以明文的方式进行匹配。
         auth
-            .inMemoryAuthentication()
+                .inMemoryAuthentication().passwordEncoder(new MyPasswordEncoder())
                 .withUser("admin").password("admin").roles("USER");
     }
 }
