@@ -27,7 +27,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <!--        查看对象头结构-->
+        <dependency>
+            <groupId>org.openjdk.jol</groupId>
+            <artifactId>jol-core</artifactId>
+            <version>0.9</version>
+        </dependency>
         <!--        引入lombok 使用@Data注解  使用@Slf4j注解-->
         <dependency>
             <groupId>org.projectlombok</groupId>
