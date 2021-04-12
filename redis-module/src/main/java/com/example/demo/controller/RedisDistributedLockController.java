@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Date;
 
 /**
- * @Description: 下单测试
+ * @Description:
+ * 下单测试 使用post  分别 连续调用两次该接口
  * @Author HeSuiJin
  * @Date 2021/4/12
  */
