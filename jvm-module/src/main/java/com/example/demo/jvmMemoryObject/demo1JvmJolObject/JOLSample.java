@@ -1,4 +1,4 @@
-package com.example.demo.jvmMemoryObject;
+package com.example.demo.jvmMemoryObject.demo1JvmJolObject;
 
 import org.openjdk.jol.info.ClassLayout;
 
