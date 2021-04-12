@@ -23,11 +23,6 @@ public class RedisDistributedLockComponent {
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
-//    @Bean
-//    public DistributedLock getDistributedLock() {
-//        return new DistributedLock();
-//    }
-
     /**
      * 分布式锁
      */
@@ -48,27 +43,20 @@ public class RedisDistributedLockComponent {
         public boolean getLock(String key, long acquireTimeout, long lockTimeOut) {
             //初始化锁为 false
             boolean lock = false;
-
             key = "lock:" + key;
-
             long now = System.currentTimeMillis();
             acquireTimeout = now + acquireTimeout;
-
             //如果入参acquireTimeout 小于等于 0  则使用默认值
             if (0L>= acquireTimeout ) {
                 acquireTimeout = now + DEFAULT_ACQUIRE_TIME_OUT;
             }
-
             //如果入参lockTimeOut 小于等于 0  则使用默认值
             if (0 >= lockTimeOut) {
                 lockTimeOut = DEFAULT_LOCK_TIME_OUT;
             }
-
             //只要是字符串就行了content
             byte[] content ="content".getBytes();
-
             RedisConnection connection = null;
-
             try {
                 //获取redis的连接
                 connection = stringRedisTemplate.getConnectionFactory().getConnection();
@@ -79,6 +67,7 @@ public class RedisDistributedLockComponent {
                     //原子性 SET if Not Exists
                     if (connection.setNX(key.getBytes(), content)) {
                         //设置该key对应的锁超时时间
+
                         stringRedisTemplate.expire(key, lockTimeOut, TimeUnit.MILLISECONDS);
                         //设置锁为true
                         lock = true;
@@ -95,7 +84,6 @@ public class RedisDistributedLockComponent {
                     connection.close();
                 }
             }
-
             return lock;
         }
 
@@ -107,7 +95,6 @@ public class RedisDistributedLockComponent {
         public boolean releaseLock(String key) {
             boolean releaseLock = false;
             key = "lock:" + key;
-
             try {
                 stringRedisTemplate.delete(key);
                  releaseLock = true;
@@ -115,7 +102,6 @@ public class RedisDistributedLockComponent {
                 log.error("释放锁异常", e);
                 return false;
             }
-
             return releaseLock;
         }
 }

@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  * boundValueOps()  类似于  redisTemplate.opsForValue() (原生)
  * boundHashOps()   类型于   redisTemplate.opsForHash() (原生)
  *
- * 另外还有boundListOps()、()、boundSetOps()、boundZSetOps()
+ * 另外还有boundListOps()、boundSetOps()、boundZSetOps()
  *
  * 建议是使用以redisTemplate.opsForValue() 为主 因为更加贴近redis的原生语言     b
  *

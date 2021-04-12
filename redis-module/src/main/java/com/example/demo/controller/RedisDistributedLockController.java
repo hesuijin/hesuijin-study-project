@@ -36,7 +36,6 @@ public class RedisDistributedLockController {
         }
         try {
             //下单耗时3秒操作
-
             System.out.println(new Date());
             Thread.sleep(3000L);
             System.out.println(new Date());
@@ -49,9 +48,6 @@ public class RedisDistributedLockController {
                 log.error("该key的分布式锁释放失败{}", memberOrderLockKey);
             }
         }
-
         return "success  下单成功";
     }
-
-
 }
