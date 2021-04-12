@@ -8,7 +8,6 @@ import com.example.demo.jvmMemoryObject.User;
  * @Date 2021/4/12
  */
 public class ObjectEscape {
-
     public User test1() {
         //user 分配给堆
         User user = new User();
@@ -25,5 +24,4 @@ public class ObjectEscape {
         user.setName("zhuge");
         //保存到数据库
     }
-
 }
