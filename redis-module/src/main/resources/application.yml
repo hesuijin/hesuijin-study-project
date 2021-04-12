@@ -19,3 +19,24 @@ spring:
         max-active: 8
 #       更待可用链接最长时间 默认为-1 永不超时  1000毫秒 为1秒
         max-wait: 1000
+
+# 如果需要配置redis哨兵 需要添加以下 redis.sentinel.nodes的配置
+#spring:
+#  redis:
+#    sentinel:
+#      master: mymaster
+#      nodes:
+#        - 111.xxx.xx.xxx:7001
+#        - 112.xxx.xx.xxx:7002
+#        - 113.xxx.xxx.xx:7003
+#
+#
+# 如果需要配置redis集群 需要添加以下 redis.cluster.nodes的配置
+#spring:
+#   在RedisTemplate不需要设置配置类
+#  redis:
+#    cluster:
+#     nodes:
+#        - 111.xxx.xx.xxx:7001
+#        - 112.xxx.xx.xxx:7002
+#        - 113.xxx.xxx.xx:7003
