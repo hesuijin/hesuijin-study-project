@@ -12,7 +12,7 @@ public class ObjectEscape {
         //user 分配给堆
         User user = new User();
         user.setId(1L);
-        user.setName("zhuge");
+        user.setName("hesuijin");
         //保存到数据库
         return user;
     }
@@ -21,7 +21,7 @@ public class ObjectEscape {
         //user 分配给线程栈
         User user = new User();
         user.setId(1L);
-        user.setName("zhuge");
+        user.setName("hesuijin");
         //保存到数据库
     }
 }

@@ -35,7 +35,7 @@ public class ObjectEscapeGC {
     private static void alloc() {
         User user = new User();
         user.setId(1L);
-        user.setName("zhuge");
+        user.setName("hesuijin");
     }
 }
 
