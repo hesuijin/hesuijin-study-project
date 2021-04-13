@@ -46,7 +46,7 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
-
+        <!--        使用alibaba的 json转换-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
