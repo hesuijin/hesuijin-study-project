@@ -7,6 +7,7 @@ import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
@@ -26,18 +27,11 @@ public class RocketMqConsumerListener {
 
     private String topic = "pay_test_topic";
 
-    private DefaultMQPushConsumer defaultMQPushConsumer;
 
     public RocketMqConsumerListener() throws MQClientException {
-        defaultMQPushConsumer = new DefaultMQPushConsumer();
-        //如需要多个地址 以 ; 分开   "localhost:9876;127.0.0.1:9876;"
-        defaultMQPushConsumer.setNamesrvAddr(nameSrvAddr);
-        //消费时的策略
-        defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
-        //设置消费者存放的组
-        defaultMQPushConsumer.setConsumerGroup(pay_consumer_group);
-        //订阅的主题 topic
-        defaultMQPushConsumer.subscribe(topic, "*");
+
+        //创建DefaultMQPushConsumer
+        DefaultMQPushConsumer  defaultMQPushConsumer = creatDefaultMQPushConsumer();
 
         //监听器
         defaultMQPushConsumer.registerMessageListener((MessageListenerConcurrently) (messages, context) -> {
@@ -57,5 +51,23 @@ public class RocketMqConsumerListener {
         });
         log.info("consumer  start");
         defaultMQPushConsumer.start();
+    }
+
+    /**
+     * 配置DefaultMQPushConsumer参数
+     * @throws MQClientException
+     */
+    private DefaultMQPushConsumer creatDefaultMQPushConsumer() throws MQClientException {
+        DefaultMQPushConsumer  defaultMQPushConsumer = new DefaultMQPushConsumer();
+        //如果是集群模式 以 ; 分开   "IP1:9876;IP2:9876;"
+        defaultMQPushConsumer.setNamesrvAddr(nameSrvAddr);
+        //消费时的策略
+        defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);
+        //设置消费者存放的组
+        defaultMQPushConsumer.setConsumerGroup(pay_consumer_group);
+        //订阅的主题 topic
+        defaultMQPushConsumer.subscribe(topic, "*");
+
+        return defaultMQPushConsumer;
     }
 }

@@ -32,12 +32,13 @@ public class RocketMqConfiguration {
         log.info("初始化RocketMQ");
         //该生产者所在group
         DefaultMQProducer defaultMQProducer = new DefaultMQProducer(producerGroup);
-        //如需要多个地址 以 ; 分开   "47.113.101.241:9876;127.0.0.1:9876;"
+        ///如果是集群模式 以 ; 分开   "IP1:9876;IP2:9876;"
         defaultMQProducer.setNamesrvAddr(nameSrvAddr);
         //是否走Vip通道
         defaultMQProducer.setVipChannelEnabled(false);
         //设置发送失败重试次数
         defaultMQProducer.setRetryTimesWhenSendAsyncFailed(3);
+
         //开启线程
         defaultMQProducer.start();
         return defaultMQProducer;
