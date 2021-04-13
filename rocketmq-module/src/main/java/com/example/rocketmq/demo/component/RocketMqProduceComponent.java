@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,15 +18,13 @@ import org.springframework.stereotype.Component;
 public class RocketMqProduceComponent {
 
     //TODO 注意两种方法都可以
-    //注意阿里巴巴的规范化监测
-
-    @Autowired
-    private DefaultMQProducer defaultMQProducer;
-
+//    @Autowired
 //    private DefaultMQProducer defaultMQProducer;
-//    public RocketMqProduceComponent(DefaultMQProducer defaultMQProducer) {
-//        this.defaultMQProducer = defaultMQProducer;
-//    }
+
+    private DefaultMQProducer defaultMQProducer;
+    public RocketMqProduceComponent(DefaultMQProducer defaultMQProducer) {
+        this.defaultMQProducer = defaultMQProducer;
+    }
 
     public void   sendOrderMessage(RocketEvent<?> rocketEvent) {
         //主题

@@ -39,6 +39,11 @@ public class RocketMqConfiguration {
         //设置发送失败重试次数
         defaultMQProducer.setRetryTimesWhenSendAsyncFailed(3);
 
+        //消息同步发送失败重试次数
+        defaultMQProducer.setRetryTimesWhenSendFailed(3);
+        //消息异步发送失败重试次数
+        defaultMQProducer.setRetryTimesWhenSendAsyncFailed(3);
+
         //开启线程
         defaultMQProducer.start();
         return defaultMQProducer;
