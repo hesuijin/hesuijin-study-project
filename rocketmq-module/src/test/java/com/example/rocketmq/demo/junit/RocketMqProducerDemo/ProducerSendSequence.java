@@ -37,28 +37,27 @@ public class ProducerSendSequence {
     private DefaultMQProducer defaultMQProducer;
 
     /**
-     *
+     *构建orderList
      * @return
      */
     private static List<Order> getOrderList(){
         List<Order> orderList = new ArrayList<>();
         orderList.add(new Order(1L,"创建订单"));
-        orderList.add(new Order(2L,"结束订单"));
-        orderList.add(new Order(2L,"结束订单"));
-        orderList.add(new Order(1L,"创建订单"));
-        orderList.add(new Order(1L,"创建订单"));
-        orderList.add(new Order(2L,"结束订单"));
-        orderList.add(new Order(2L,"结束订单"));
-        orderList.add(new Order(2L,"结束订单"));
-        orderList.add(new Order(1L,"创建订单"));
-        orderList.add(new Order(1L,"创建订单"));
-        return  orderList;
-
+        orderList.add(new Order(2L,"创建订单"));
+        orderList.add(new Order(2L,"订单预提交"));
+        orderList.add(new Order(1L,"订单预提交"));
+        orderList.add(new Order(1L,"订单完成"));
+        orderList.add(new Order(2L,"订单完成"));
+        orderList.add(new Order(2L,"订单退款"));
+        orderList.add(new Order(1L,"订单退款"));
+        return orderList;
     }
 
+    /**
+     * 进行发送
+     */
     @Test
     public void  producerSendCallbackJunit() {
-
        List<Order> orderList = getOrderList();
         orderList.forEach(order -> {
             RocketEvent rocketEvent = new RocketEvent<>("event",order);
@@ -70,7 +69,7 @@ public class ProducerSendSequence {
 
     private void  sendOrderMessage(RocketEvent<?> rocketEvent) {
         //主题
-        String topic = "pay_test_topic";
+        String topic = "pay_Sequence_topic";
         Message message ;
         try {
             if (rocketEvent.getTag() != null && !"".equals(rocketEvent.getTag()) ) {
