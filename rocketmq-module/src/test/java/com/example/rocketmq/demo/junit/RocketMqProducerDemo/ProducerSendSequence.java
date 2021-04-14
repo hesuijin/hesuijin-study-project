@@ -1,6 +1,8 @@
 package com.example.rocketmq.demo.junit.RocketMqProducerDemo;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.example.rocketmq.demo.base.Order;
 import com.example.rocketmq.demo.base.RocketEvent;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
@@ -16,28 +18,53 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @Description:
- * 队列选择器
+ * 顺序投递测试
  * @Author HeSuiJin
- * @Date 2021/4/13
+ * @Date 2021/4/14
  */
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
 @Component
-public class ProducerSendQueueSelector {
+public class ProducerSendSequence {
 
     @Autowired
     private DefaultMQProducer defaultMQProducer;
 
+    /**
+     *
+     * @return
+     */
+    private static List<Order> getOrderList(){
+        List<Order> orderList = new ArrayList<>();
+        orderList.add(new Order(1L,"创建订单"));
+        orderList.add(new Order(2L,"结束订单"));
+        orderList.add(new Order(2L,"结束订单"));
+        orderList.add(new Order(1L,"创建订单"));
+        orderList.add(new Order(1L,"创建订单"));
+        orderList.add(new Order(2L,"结束订单"));
+        orderList.add(new Order(2L,"结束订单"));
+        orderList.add(new Order(2L,"结束订单"));
+        orderList.add(new Order(1L,"创建订单"));
+        orderList.add(new Order(1L,"创建订单"));
+        return  orderList;
+
+    }
 
     @Test
     public void  producerSendCallbackJunit() {
-        RocketEvent rocketEvent = new RocketEvent<>("event","Hello Rocket MQ ："+"我是测试 选择队列发送 ");
-        this.sendOrderMessage(rocketEvent);
+
+       List<Order> orderList = getOrderList();
+        orderList.forEach(order -> {
+            RocketEvent rocketEvent = new RocketEvent<>("event",order);
+            this.sendOrderMessage(rocketEvent);
+        });
+
     }
 
 
@@ -53,44 +80,31 @@ public class ProducerSendQueueSelector {
             }
             log.info("RocketMQ order 消息发送：{}", JSON.toJSONString(rocketEvent));
 
+            //转换为Order
+            Order  order = JSONObject.parseObject(JSONObject.toJSONString(rocketEvent.getData()), Order.class);
+
             //顺序发送可以根据一个订单号进行取模 然后该订单选择对应的队列
-            //与业务是强耦合的 需要根据业务做具体的分析
 
             //public SendResult send(Message msg, MessageQueueSelector selector, Object arg)
             //同步发送
             //选择对应的队列
-           SendResult sendResultSyn =  defaultMQProducer.send(message, new MessageQueueSelector() {
+            SendResult sendResultSyn =  defaultMQProducer.send(message, new MessageQueueSelector() {
                 @Override
                 public MessageQueue select(List<MessageQueue> messageQueueList, Message message, Object arg) {
-                   //2：选择使用该topic下的哪个  queueId   该Id需要在 arg获取
-                    int queueNum = Integer.parseInt(arg.toString());
-                    return messageQueueList.get(queueNum);
+                   Long orderId = (Long) arg;
+                   //根据 订单Id 取模后循序投递到队列
+                   long queueNum =  orderId%messageQueueList.size();
+                   return messageQueueList.get((int) queueNum);
                 }
-                // 1：arg 0 为选择队列  queueId =0
-            },0);
+                // 取订单Id作为入参
+            },order.getOrderId());
 
             log.info("RocketMQ order 消息同步发送 结果：{}",  JSON.toJSONString(sendResultSyn));
 
-            //public void send(Message msg, MessageQueueSelector selector, Object arg, SendCallback sendCallback)
-            //异步发送
-            //选择对应的队列
-             defaultMQProducer.send(message, (messageQueueList, message1, arg) -> {
-                int queueNum = Integer.parseInt(arg.toString());
-                return messageQueueList.get(queueNum);
-            }, 1, new SendCallback() {
-
-                @Override
-                public void onSuccess(SendResult sendResultAsyn) {
-                    log.info("RocketMQ order 消息异步发送 结果：{}",  JSON.toJSONString(sendResultAsyn));
-                }
-                @Override
-                public void onException(Throwable throwable) {
-
-                }
-            });
 
         } catch (Exception e) {
             log.error("RocketMQ order 消息发送异常: " + e.getMessage(), e);
         }
     }
+
 }

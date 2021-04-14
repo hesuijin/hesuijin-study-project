@@ -17,6 +17,8 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @Author HeSuiJin
  * @Date 2021/4/13 12:20
  * @Description:
+ * 解决重复消费
+ *
  *  消费者
  *  1：设置重试次数
  *  2：消费端去重：一条消息无论重试多少次，这些重试消息的Message ID, key不会改变。

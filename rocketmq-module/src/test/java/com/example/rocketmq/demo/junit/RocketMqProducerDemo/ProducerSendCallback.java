@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @Description:
+ * 异步发送
  * @Author HeSuiJin
  * @Date 2021/4/13
  */
