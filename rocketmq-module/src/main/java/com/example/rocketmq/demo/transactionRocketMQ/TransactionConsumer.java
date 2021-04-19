@@ -1,50 +1,42 @@
-package com.example.rocketmq.demo.consumer;
+package com.example.rocketmq.demo.transactionRocketMQ;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
-import org.apache.rocketmq.client.consumer.rebalance.AllocateMessageQueueAveragely;
-import org.apache.rocketmq.client.consumer.store.LocalFileOffsetStore;
 import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.impl.factory.MQClientInstance;
-import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.Message;
-import org.apache.rocketmq.common.message.MessageExt;
-import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
 
-import static org.apache.rocketmq.common.protocol.heartbeat.MessageModel.CLUSTERING;
-
 /**
- * @Author HeSuiJin
- * @Date 2021/3/19 11:07
  * @Description:
+ * 分布式事务 消费者  （不需要进行任何改动）
+ * @Author HeSuiJin
+ * @Date 2021/4/20
  */
+@Component
 @Slf4j
-//@Component
-public class RocketMqConsumerListener {
+public class TransactionConsumer {
 
-    private String pay_consumer_group = "pay_consumer_group";
+    private String pay_consumer_group = "transaction_consumer_group";
 
     private String nameSrvAddr = "47.113.101.241:9876";
 
-    private String topic = "pay_test_topic";
+    private String topic = "transaction_test_topic";
 
 
-    public RocketMqConsumerListener() throws MQClientException {
+    public TransactionConsumer() throws MQClientException {
 
         //创建DefaultMQPushConsumer
         DefaultMQPushConsumer  defaultMQPushConsumer = creatDefaultMQPushConsumer();
-
 
         //监听器
         defaultMQPushConsumer.registerMessageListener((MessageListenerConcurrently) (messages, context) -> {
             try {
                 Message msg = messages.get(0);
-                log.info(" Receive New Messages: {},{} ",Thread.currentThread().getName(), new String(messages.get(0).getBody()));
+                log.info(" 分布式事务消费者 Receive New Messages: {},{} ",Thread.currentThread().getName(), new String(messages.get(0).getBody()));
                 String topic = msg.getTopic();
                 String tags = msg.getTags();
                 String keys = msg.getKeys();

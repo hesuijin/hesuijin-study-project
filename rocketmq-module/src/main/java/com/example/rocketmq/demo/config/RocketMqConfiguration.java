@@ -6,6 +6,7 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 /**
  * 读取配置
@@ -28,6 +29,7 @@ public class RocketMqConfiguration {
      * @throws MQClientException MQ客户端异常
      */
     @Bean
+    @Scope("prototype")
     public DefaultMQProducer defaultProducer() throws MQClientException {
         log.info("初始化RocketMQ");
         DefaultMQProducer defaultMQProducer = new DefaultMQProducer();

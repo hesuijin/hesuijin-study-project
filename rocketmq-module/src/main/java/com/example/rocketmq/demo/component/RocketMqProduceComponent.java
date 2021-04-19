@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,7 +27,7 @@ public class RocketMqProduceComponent {
         this.defaultMQProducer = defaultMQProducer;
     }
 
-    public void   sendOrderMessage(RocketEvent<?> rocketEvent) {
+    public void  sendOrderMessage(RocketEvent<?> rocketEvent) {
         //主题
         String topic = "pay_test_topic";
         Message message ;
