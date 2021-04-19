@@ -22,11 +22,11 @@ public class PayController {
     private CallBackComponent callBackComponent;
 
     @RequestMapping("/api/v1/pay")
-    public Object callback(String message) {
+    public Object callback(String message,String tag) {
 
         //事务提交后再发送
         callBackComponent.execute(()->{
-            RocketEvent rocketEvent = new RocketEvent<>("event","Hello Rocket MQ ："+message);
+            RocketEvent rocketEvent = new RocketEvent<>("event","Hello Rocket MQ ："+message,tag);
             rocketMqProduceComponent.sendOrderMessage(rocketEvent);
         });
         return null;

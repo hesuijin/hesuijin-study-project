@@ -1,3 +1,6 @@
+server:
+    port: 8080
+
 rocketmq:
     name-srv-addr: 47.113.101.241:9876
     producer-group: pay_producer_group

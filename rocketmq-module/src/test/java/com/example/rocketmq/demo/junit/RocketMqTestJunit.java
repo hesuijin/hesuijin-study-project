@@ -23,7 +23,7 @@ public class RocketMqTestJunit {
 
     @Test
     public void payControllerJunit()  {
-        payController.callback("你好啊");
+        payController.callback("你好啊","my_tag");
     }
 
 }

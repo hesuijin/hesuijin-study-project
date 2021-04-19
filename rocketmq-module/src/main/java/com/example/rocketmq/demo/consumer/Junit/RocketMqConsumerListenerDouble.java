@@ -1,31 +1,29 @@
-package com.example.rocketmq.demo.consumer;
+package com.example.rocketmq.demo.consumer.Junit;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.client.consumer.DefaultMQPullConsumer;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
+import org.apache.rocketmq.client.consumer.MQPullConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
-import org.apache.rocketmq.client.consumer.rebalance.AllocateMessageQueueAveragely;
-import org.apache.rocketmq.client.consumer.store.LocalFileOffsetStore;
 import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.impl.factory.MQClientInstance;
-import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.message.Message;
-import org.apache.rocketmq.common.message.MessageExt;
-import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.springframework.stereotype.Component;
 
 import java.io.UnsupportedEncodingException;
 
+import static org.apache.rocketmq.common.protocol.heartbeat.MessageModel.BROADCASTING;
 import static org.apache.rocketmq.common.protocol.heartbeat.MessageModel.CLUSTERING;
 
 /**
  * @Author HeSuiJin
- * @Date 2021/3/19 11:07
+ * @Date 2021/4/19
  * @Description:
+ * 创建两个消费者  测试集群消费 和 广播消费
  */
 @Slf4j
-@Component
-public class RocketMqConsumerListener {
+//@Component
+public class RocketMqConsumerListenerDouble {
 
     private String pay_consumer_group = "pay_consumer_group";
 
@@ -34,17 +32,17 @@ public class RocketMqConsumerListener {
     private String topic = "pay_test_topic";
 
 
-    public RocketMqConsumerListener() throws MQClientException {
+    public RocketMqConsumerListenerDouble() throws MQClientException {
 
         //创建DefaultMQPushConsumer
         DefaultMQPushConsumer  defaultMQPushConsumer = creatDefaultMQPushConsumer();
-
+        defaultMQPushConsumer.setInstanceName("consumer-instance");
 
         //监听器
         defaultMQPushConsumer.registerMessageListener((MessageListenerConcurrently) (messages, context) -> {
             try {
                 Message msg = messages.get(0);
-                log.info(" Receive New Messages: {},{} ",Thread.currentThread().getName(), new String(messages.get(0).getBody()));
+                log.info("defaultMQPushConsumer Receive New Messages: {},{} ",Thread.currentThread().getName(), new String(messages.get(0).getBody()));
                 String topic = msg.getTopic();
                 String tags = msg.getTags();
                 String keys = msg.getKeys();
@@ -58,6 +56,29 @@ public class RocketMqConsumerListener {
         });
         log.info("consumer  start");
         defaultMQPushConsumer.start();
+
+        //创建DefaultMQPushConsumer
+        DefaultMQPushConsumer  defaultMQPushConsumerOther = creatDefaultMQPushConsumer();
+        defaultMQPushConsumerOther.setInstanceName("consumer-instance-Other");
+
+        //监听器
+        defaultMQPushConsumerOther.registerMessageListener((MessageListenerConcurrently) (messages, context) -> {
+            try {
+                Message msg = messages.get(0);
+                log.info("defaultMQPushConsumerOther Receive New Messages: {},{} ",Thread.currentThread().getName(), new String(messages.get(0).getBody()));
+                String topic = msg.getTopic();
+                String tags = msg.getTags();
+                String keys = msg.getKeys();
+                String body = new String(msg.getBody(), "utf-8");
+                log.info("topic=" + topic + ", tags=" + tags + ", keys = " + keys + ", msg = " + body);
+                return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
+            } catch (UnsupportedEncodingException e) {
+                log.info("rocket消费者异常：{}",e.getMessage(),e);
+                return ConsumeConcurrentlyStatus.RECONSUME_LATER;
+            }
+        });
+        log.info("consumer  start");
+        defaultMQPushConsumerOther.start();
     }
 
     /**
