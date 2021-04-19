@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * @Date 2021/4/14
  */
 @Slf4j
-@Component
+//@Component
 public class ConsumerReconsume {
 
     private String pay_consumer_group = "pay_consumer_group";
