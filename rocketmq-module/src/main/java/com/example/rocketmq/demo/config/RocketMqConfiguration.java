@@ -30,8 +30,10 @@ public class RocketMqConfiguration {
     @Bean
     public DefaultMQProducer defaultProducer() throws MQClientException {
         log.info("初始化RocketMQ");
+        DefaultMQProducer defaultMQProducer = new DefaultMQProducer();
+
         //该生产者所在group
-        DefaultMQProducer defaultMQProducer = new DefaultMQProducer(producerGroup);
+        defaultMQProducer.setProducerGroup(producerGroup);
         ///如果是集群模式 以 ; 分开   "IP1:9876;IP2:9876;"
         defaultMQProducer.setNamesrvAddr(nameSrvAddr);
         //是否走Vip通道
@@ -43,6 +45,13 @@ public class RocketMqConfiguration {
         defaultMQProducer.setRetryTimesWhenSendFailed(3);
         //消息异步发送失败重试次数
         defaultMQProducer.setRetryTimesWhenSendAsyncFailed(3);
+
+//        消息超过默认字节4096后进行压缩
+//        defaultMQProducer.setCompressMsgBodyOverHowmuch(4096);
+//        最大消息配置，默认128k
+//        defaultMQProducer.setMaxMessageSize(12);
+//        自动创建服务器不存在的Topic,默认创建的队列数
+//        defaultMQProducer.setDefaultTopicQueueNums(4);
 
         //开启线程
         defaultMQProducer.start();
