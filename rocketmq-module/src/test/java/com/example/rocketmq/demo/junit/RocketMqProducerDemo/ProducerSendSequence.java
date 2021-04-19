@@ -83,10 +83,6 @@ public class ProducerSendSequence {
             Order  order = JSONObject.parseObject(JSONObject.toJSONString(rocketEvent.getData()), Order.class);
 
             //顺序发送可以根据一个订单号进行取模 然后该订单选择对应的队列
-
-            //public SendResult send(Message msg, MessageQueueSelector selector, Object arg)
-            //同步发送
-            //选择对应的队列
             SendResult sendResultSyn =  defaultMQProducer.send(message, new MessageQueueSelector() {
                 @Override
                 public MessageQueue select(List<MessageQueue> messageQueueList, Message message, Object arg) {
@@ -97,10 +93,7 @@ public class ProducerSendSequence {
                 }
                 // 取订单Id作为入参
             },order.getOrderId());
-
             log.info("RocketMQ order 消息同步发送 结果：{}",  JSON.toJSONString(sendResultSyn));
-
-
         } catch (Exception e) {
             log.error("RocketMQ order 消息发送异常: " + e.getMessage(), e);
         }
