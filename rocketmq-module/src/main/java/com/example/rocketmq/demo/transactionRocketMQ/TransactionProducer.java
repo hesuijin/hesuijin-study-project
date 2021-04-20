@@ -12,8 +12,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.concurrent.*;
 
 /**
- * @Description:
- * 分布式事务 生产者
+ * @Description: 分布式事务 生产者
  * @Author HeSuiJin
  * @Date 2021/4/19
  */
@@ -23,6 +22,7 @@ public class TransactionProducer {
 //        DefaultMQProducer就是我们最普通的生产者
 //        DefaultMQProducer defaultMQProducer = new DefaultMQProducer();
 //        TransactionMQProducer 继承了 DefaultMQProducer
+
     public void sendMessageInTransaction() throws MQClientException, InterruptedException {
 
         TransactionMQProducer transactionMQProducer = new TransactionMQProducer();
@@ -32,11 +32,9 @@ public class TransactionProducer {
         transactionMQProducer.setNamesrvAddr("47.113.101.241:9876");
         //是否走Vip通道
         transactionMQProducer.setVipChannelEnabled(false);
-        //设置发送失败重试次数
-        transactionMQProducer.setRetryTimesWhenSendAsyncFailed(3);
         //消息同步发送失败重试次数
         transactionMQProducer.setRetryTimesWhenSendFailed(3);
-        //消息异步发送失败重试次数
+//        //消息异步发送失败重试次数
         transactionMQProducer.setRetryTimesWhenSendAsyncFailed(3);
 
 
@@ -49,11 +47,13 @@ public class TransactionProducer {
             }
         });
 
+        //使用实现类
+        transactionMQProducer.setExecutorService(executorService);
+
         //创建事务实现类
         TransactionListener transactionListener = new TransactionListenerImpl();
-
-        transactionMQProducer.setExecutorService(executorService);
         transactionMQProducer.setTransactionListener(transactionListener);
+
         transactionMQProducer.start();
 
         //设置Topic
@@ -64,7 +64,9 @@ public class TransactionProducer {
             try {
                 Message msg =
                         new Message(topic, tags[i % tags.length], "KEY" + i,
-                                ("Hello RocketMQ " + i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+                                ("Hello RocketMQ OrderNo: " +i).getBytes(RemotingHelper.DEFAULT_CHARSET));
+
+                //消息在事务里面发送出去了
                 SendResult sendResult = transactionMQProducer.sendMessageInTransaction(msg, null);
                 System.out.printf("%s%n", sendResult);
 
@@ -74,10 +76,8 @@ public class TransactionProducer {
             }
         }
 
-        //模拟事务一直不提交
-        for (int i = 0; i < 100000; i++) {
-            Thread.sleep(1000);
-        }
+        //生产者延时关闭 因为在需要 1分钟内才能进入 UNKNOW状态消息的的回查逻辑
+        Thread.sleep(1000 * 60);
         transactionMQProducer.shutdown();
     }
 }
