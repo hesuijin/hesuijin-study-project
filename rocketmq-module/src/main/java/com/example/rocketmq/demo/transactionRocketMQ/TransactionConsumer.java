@@ -16,7 +16,7 @@ import java.io.UnsupportedEncodingException;
  * @Author HeSuiJin
  * @Date 2021/4/20
  */
-@Component
+//@Component
 @Slf4j
 public class TransactionConsumer {
 

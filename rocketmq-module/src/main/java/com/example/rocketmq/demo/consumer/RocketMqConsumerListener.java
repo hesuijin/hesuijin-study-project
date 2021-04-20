@@ -24,7 +24,7 @@ import static org.apache.rocketmq.common.protocol.heartbeat.MessageModel.CLUSTER
  * @Description:
  */
 @Slf4j
-//@Component
+@Component
 public class RocketMqConsumerListener {
 
     private String pay_consumer_group = "pay_consumer_group";
