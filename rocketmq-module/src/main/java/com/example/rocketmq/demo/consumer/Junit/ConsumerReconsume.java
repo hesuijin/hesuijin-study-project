@@ -1,5 +1,6 @@
 package com.example.rocketmq.demo.consumer.Junit;
 
+import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -43,6 +44,9 @@ public class ConsumerReconsume {
             //判断该msgId是否已经在redis中
             // 解决问题 2：消费端去重：一条消息无论重试多少次，这些重试消息的Message ID, key不会改变。
 
+            //遗留问题 假如在下面逻辑成功之前 有另一个一样msgId的消息进入 那么该如何解决
+            //考虑再添加一个Synchronized的锁  但这个性能消耗大 同时概率极低 因此不推荐
+
             try {
                 log.info(" Receive New Messages: {},{} ",Thread.currentThread().getName(), new String(messages.get(0).getBody()));
                 String topic = msg.getTopic();
@@ -85,7 +89,7 @@ public class ConsumerReconsume {
      */
     private DefaultMQPushConsumer creatDefaultMQPushConsumer() throws MQClientException {
         DefaultMQPushConsumer defaultMQPushConsumer = new DefaultMQPushConsumer();
-        //如果是集群模式 以 ; 分开   "IP1:9876;IP2:9876;"
+        //如果是集群模式 以 ; 分开  为namesrvAddr地址   "IP1:9876;IP2:9876;"
         defaultMQPushConsumer.setNamesrvAddr(nameSrvAddr);
         //消费时的策略
         defaultMQPushConsumer.setConsumeFromWhere(ConsumeFromWhere.CONSUME_FROM_LAST_OFFSET);

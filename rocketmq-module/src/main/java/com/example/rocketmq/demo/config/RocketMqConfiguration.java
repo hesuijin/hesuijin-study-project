@@ -36,7 +36,7 @@ public class RocketMqConfiguration {
 
         //该生产者所在group
         defaultMQProducer.setProducerGroup(producerGroup);
-        ///如果是集群模式 以 ; 分开   "IP1:9876;IP2:9876;"
+        //如果是集群模式 以 ; 分开  为namesrvAddr地址   "IP1:9876;IP2:9876;"
         defaultMQProducer.setNamesrvAddr(nameSrvAddr);
         //是否走Vip通道
         defaultMQProducer.setVipChannelEnabled(false);
