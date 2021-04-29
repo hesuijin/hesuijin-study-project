@@ -12,6 +12,9 @@ public class TestDynamicClassLoader {
     }
 
     public static void main(String[] args) {
+        //第一次创建对象 (进行类加载)
+        new ClassLoaderA();
+        //第二次创建对象 (不进行类加载)
         new ClassLoaderA();
         System.out.println("*************load test************");
         //B不会加载，除非这里执行 new B()
