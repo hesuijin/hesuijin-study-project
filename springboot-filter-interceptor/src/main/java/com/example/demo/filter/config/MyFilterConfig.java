@@ -1,7 +1,5 @@
 package com.example.demo.filter.config;
 
-import com.example.demo.filter.myFilter.MyFilterOne;
-import com.example.demo.filter.myFilter.MyFilterTwo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
