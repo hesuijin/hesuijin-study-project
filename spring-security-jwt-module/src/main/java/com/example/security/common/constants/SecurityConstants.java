@@ -35,7 +35,7 @@ public class SecurityConstants {
     public static final String TOKEN_PREFIX = "Bearer ";
     public static final String TOKEN_TYPE = "JWT";
 
-    // Swagger WHITELIST
+    // Swagger 指定需要放行的接口
     public static final String[] SWAGGER_WHITELIST = {
             "/swagger-ui.html",
             "/swagger-ui/*",
@@ -45,7 +45,7 @@ public class SecurityConstants {
             "/webjars/**"
     };
 
-    // System WHITELIST
+    // 项目 登录注册 指定需要放行的接口
     public static final String[] SYSTEM_WHITELIST = {
             "/auth/login",
             "/users/sign-up"

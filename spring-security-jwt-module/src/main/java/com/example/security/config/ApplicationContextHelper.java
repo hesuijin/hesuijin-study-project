@@ -17,7 +17,6 @@ public class ApplicationContextHelper implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext context) throws BeansException {
-
         applicationContext = context;
     }
 
@@ -34,7 +33,6 @@ public class ApplicationContextHelper implements ApplicationContextAware {
         }
         return applicationContext.getBean(clazz);
     }
-
 
     public static <T> T popBean(String name, Class<T> clazz) {
         if (applicationContext == null) {

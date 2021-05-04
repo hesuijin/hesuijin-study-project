@@ -25,6 +25,14 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 /**
  * Spring Security配置类
+ *
+ * @EnableWebSecurity 注解使得 SpringMVC 集成了 Spring Security 的 web 安全
+ *  支持WebSecurityConfigurerAdapter 重写了其中的特定方法，用于自定义 Spring Security 配置。
+ *  整个 Spring Security 的工作量，其实都是集中在该配置类，
+ *
+ *  @EnableGlobalMethodSecurity注解  默认是关闭的 来判断用户对某个控制层的方法是否具有访问权限
+ *  @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+ *
  * @Author HeSuiJin
  * @Date 2021/3/10 14:17
  * @Description:
@@ -36,6 +44,36 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private  StringRedisTemplate stringRedisTemplate;
 
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.cors(withDefaults())
+                // 禁用 CSRF
+                .csrf().disable()
+                .authorizeRequests()
+
+                //注册登录 指定需要放行的接口
+                .antMatchers(HttpMethod.POST, SecurityConstants.SYSTEM_WHITELIST).permitAll()
+                // swagger  指定需要放行的接口
+                .antMatchers(SecurityConstants.SWAGGER_WHITELIST).permitAll()
+
+                // 其他的接口都需要认证后才能请求
+                .anyRequest().authenticated()
+                .and()
+
+                //添加自定义Filter  JWT过滤器
+                .addFilter(new JwtAuthorizationFilter(authenticationManager(), stringRedisTemplate))
+
+                // 不需要session（不创建会话）
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+
+                // 授权异常处理
+                .exceptionHandling().authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+                .accessDeniedHandler(new JwtAccessDeniedHandler());
+        // 防止H2 web 页面的Frame 被拦截
+        http.headers().frameOptions().disable();
+    }
+
+
     /**
      * 密码编码器
      */
@@ -44,33 +82,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors(withDefaults())
-                // 禁用 CSRF
-                .csrf().disable()
-                .authorizeRequests()
-                // 指定的接口直接放行
-                // swagger
-                .antMatchers(SecurityConstants.SWAGGER_WHITELIST).permitAll()
-                .antMatchers(HttpMethod.POST, SecurityConstants.SYSTEM_WHITELIST).permitAll()
-                // 其他的接口都需要认证后才能请求
-                .anyRequest().authenticated()
-                .and()
-                //添加自定义Filter
-                .addFilter(new JwtAuthorizationFilter(authenticationManager(), stringRedisTemplate))
-                // 不需要session（不创建会话）
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                // 授权异常处理
-                .exceptionHandling().authenticationEntryPoint(new JwtAuthenticationEntryPoint())
-                .accessDeniedHandler(new JwtAccessDeniedHandler());
-        // 防止H2 web 页面的Frame 被拦截
-        http.headers().frameOptions().disable();
-    }
-
     /**
-     * Cors配置优化
+     * Cors配置优化  防止跨域
      **/
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
@@ -86,4 +99,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
+
+
 }
