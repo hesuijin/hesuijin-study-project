@@ -60,7 +60,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
 
-                //添加自定义Filter  JWT过滤器
+                //添加自定义Filter  鉴权过滤器
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), stringRedisTemplate))
 
                 // 不需要session（不创建会话）

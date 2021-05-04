@@ -68,7 +68,7 @@ public class JwtTokenUtils {
 
     /**
      * getClaims(token)  JWT中方法 用户获取 有效负载payload中参数 的方法
-     * 获取存放在 JwtToken中的 用户名称   用户角色
+     * 获取存放在 JwtToken中的  用户名称  用户角色  并且组合成UsernamePasswordAuthenticationToken类型
      * @param token
      * @return
      */
