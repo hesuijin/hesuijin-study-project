@@ -66,7 +66,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void removeToken() {
-        stringRedisTemplate.delete(userComponent.getCurrentUser().getId().toString());
+        //获取用户ID  用于删除Redis中对应的值
+        String userId = userComponent.getCurrentUser().getId().toString();
+        stringRedisTemplate.delete(userId);
     }
 
 //      // 构建jwtUser对象

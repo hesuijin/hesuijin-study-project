@@ -73,15 +73,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
     }
 
-
-    /**
-     * 密码编码器
-     */
-    @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
     /**
      * Cors配置优化  防止跨域
      **/
@@ -92,6 +83,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // configuration.setAllowedOriginPatterns(singletonList("*"));
         configuration.setAllowedHeaders(singletonList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "DELETE", "PUT", "OPTIONS"));
+        //有设置exposedHeaders("Authorization")暴露 header 中的"Authorization"属性给客户端应用程序的话，前端是获取不到 token 信息的。
         configuration.setExposedHeaders(singletonList(SecurityConstants.TOKEN_HEADER));
         configuration.setAllowCredentials(false);
         configuration.setMaxAge(3600L);
@@ -100,5 +92,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return source;
     }
 
+//    /**
+//     * 密码编码器
+//     */
+//    @Bean
+//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
 
 }

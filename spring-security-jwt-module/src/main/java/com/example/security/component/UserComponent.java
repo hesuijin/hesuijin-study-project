@@ -23,6 +23,7 @@ import java.util.List;
 
 /**
  * user通用逻辑组件
+ *
  * @Author HeSuiJin
  * @Date 2021/3/10 11:36
  * @Description:
@@ -38,6 +39,7 @@ public class UserComponent {
 
     /**
      * 检查账号密码是对应
+     *
      * @param currentPassword
      * @param password
      * @return
@@ -48,6 +50,7 @@ public class UserComponent {
 
     /**
      * 根据用户名称获取角色名称
+     *
      * @param userName
      * @return
      */
@@ -77,19 +80,31 @@ public class UserComponent {
     }
 
     /**
-     * 根据上下文获取 User
+     * 根据 从上下文中获取 用户名称
+     * 再通过账户名称获取 用户ID
      * @return
      */
     public User getCurrentUser() {
+        //从上下文中获取 用户名称
         String userName = getCurrentUserName();
-        User user =  findUserByUserName(userName);
-        if(user == null){
-         throw new UserNameNotFoundException(ImmutableMap.of( "username:", userName));
+        //根据名称查询用户  然后获取用户ID
+        User user = findUserByUserName(userName);
+        if (user == null) {
+            throw new UserNameNotFoundException(ImmutableMap.of("username:", userName));
         }
-        return  findUserByUserName(getCurrentUserName());
+        return user;
     }
 
-    private  String getCurrentUserName() {
+    /**
+     * 在第一次不被放行的接口时候  根据token 生成相关信息存放到SecurityContextHolder中
+     * Authentication   的Principal    存放了账户名称
+     * Authentication   的Credentials 存放了Token
+     * Authentication  的Authorities 存放了账户角色
+     *
+     * @return
+     */
+    private String getCurrentUserName() {
+        //从上下文中获取 用户信息
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null && authentication.getPrincipal() != null) {
             return (String) authentication.getPrincipal();
