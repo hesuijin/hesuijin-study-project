@@ -42,10 +42,11 @@ public class AuthServiceImpl implements AuthService {
         queryWrapper.eq("user_name", loginRequest.getUsername());
         queryWrapper.last("limit 1");
         User user = userMapper.selectOne(queryWrapper);
+        //判断账号密码是否正确
         if (!userComponent.userCheck(loginRequest.getPassword(), user.getPassword())) {
             throw new BadCredentialsException("The user name or password is not correct.");
         }
-
+        //判断该账户是否被禁用
         if (user.getEnabled() == null ? true : user.getEnabled()) {
             throw new BadCredentialsException("User is forbidden to login");
         }
@@ -58,6 +59,7 @@ public class AuthServiceImpl implements AuthService {
 
         //生成token
         String token = JwtTokenUtils.createToken(user.getId().toString(), user.getUserName(), authorities, loginRequest.getRememberMe());
+        //存储到redis中
         stringRedisTemplate.opsForValue().set(user.getId().toString(), token);
         return token;
     }
@@ -67,7 +69,7 @@ public class AuthServiceImpl implements AuthService {
         stringRedisTemplate.delete(userComponent.getCurrentUser().getId().toString());
     }
 
-    //        //构建jwtUser对象
+//      // 构建jwtUser对象
 //        JwtUser jwtUser = new JwtUser(user);
 //        if (!jwtUser.isEnabled()) {
 //            throw new BadCredentialsException("User is forbidden to login");

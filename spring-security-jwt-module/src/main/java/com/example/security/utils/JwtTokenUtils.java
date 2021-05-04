@@ -37,10 +37,10 @@ public class JwtTokenUtils {
 
         //创建Token  形成JWT对象
         String tokenPrefix = Jwts.builder()
-                //设置标头
+                //1：设置标头
                 .setHeaderParam("type", SecurityConstants.TOKEN_TYPE)
 
-                //2： 设置 有效负载payload
+                //2：设置有效负载payload
                 .setIssuer("HeSuiJin")
                 .claim(SecurityConstants.ROLE_CLAIMS, String.join(",", roles))
                 .setId(id)
@@ -56,6 +56,11 @@ public class JwtTokenUtils {
         return SecurityConstants.TOKEN_PREFIX + tokenPrefix;
     }
 
+    /**
+     * 在token中获取 用户id
+     * @param token
+     * @return
+     */
     public static String getId(String token) {
         Claims claims = getClaims(token);
         return claims.getId();

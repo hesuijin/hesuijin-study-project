@@ -35,13 +35,19 @@ public class User extends BaseModel {
     private Boolean enabled;
 
 
+
 //    @TableField(exist = false)
 //    否则使用mybatisPlus的时候 会把该属性 作为sql  select 的字段植而报错
 //    @Autowired
 //    new出来的对象 无法直接引用spring容器中的对象
-//    private UserRoleMapper userRoleMapper;
 
-
+    /**
+     * 在User实体类中 调用另一个Spring对象的方法
+     * 这里只是尝试使用反射来获取其他类  并且  把逻辑写在实体类 User里面  变成充血模型
+     *
+     * 实际上也可以分开来写 即在该类外面 使用@Autowired UserComponent 来获取角色 （推荐）
+     * @return
+     */
     //使用JSON 转换打印时过滤掉该get方法
     @JSONField(serialize = false)
     public List<SimpleGrantedAuthority> getRoles()  {

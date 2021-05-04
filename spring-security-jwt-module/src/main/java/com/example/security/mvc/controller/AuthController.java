@@ -46,6 +46,7 @@ public class AuthController {
     public ResponseEntity<Void> login(@RequestBody LoginRequest loginRequest) {
         log.info("登录 请求入参 /auth/login ：{} ",JSONObject.toJSONString(loginRequest));
         String token = authService.createToken(loginRequest);
+        //把token存放到请求头里面的 Authorization 里面
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set(SecurityConstants.TOKEN_HEADER, token);
         return new ResponseEntity<>(httpHeaders, HttpStatus.OK);
