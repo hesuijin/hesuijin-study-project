@@ -29,21 +29,31 @@ public class JwtTokenUtils {
     private static final byte[] API_KEY_SECRET_BYTES = DatatypeConverter.parseBase64Binary(SecurityConstants.JWT_SECRET_KEY);
     private static final SecretKey SECRET_KEY = Keys.hmacShaKeyFor(API_KEY_SECRET_BYTES);
 
-    public static String createToken(String username, String id, List<String> roles, boolean isRememberMe) {
+    //入参  用户ID 用户名称 用户角色   存放7天还是存放1个小时
+    public static String createToken(String id ,String username,List<String> roles, boolean isRememberMe) {
         long expiration = isRememberMe ? SecurityConstants.EXPIRATION_REMEMBER : SecurityConstants.EXPIRATION;
         final Date createdDate = new Date();
         final Date expirationDate = new Date(createdDate.getTime() + expiration * 1000);
+
+        //创建Token  形成JWT对象
         String tokenPrefix = Jwts.builder()
+                //设置标头
                 .setHeaderParam("type", SecurityConstants.TOKEN_TYPE)
-                .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
+
+                //2： 设置 有效负载payload
+                .setIssuer("HeSuiJin")
                 .claim(SecurityConstants.ROLE_CLAIMS, String.join(",", roles))
                 .setId(id)
-                .setIssuer("SnailClimb")
-                .setIssuedAt(createdDate)
                 .setSubject(username)
+                .setIssuedAt(createdDate)
                 .setExpiration(expirationDate)
+
+                //3：设置秘钥 与 加密算法
+                .signWith(SECRET_KEY, SignatureAlgorithm.HS256)
                 .compact();
-        return SecurityConstants.TOKEN_PREFIX + tokenPrefix; // 添加 token 前缀 "Bearer ";
+
+        // 添加 token 前缀 "Bearer ";
+        return SecurityConstants.TOKEN_PREFIX + tokenPrefix;
     }
 
     public static String getId(String token) {
@@ -51,6 +61,12 @@ public class JwtTokenUtils {
         return claims.getId();
     }
 
+    /**
+     * getClaims(token)  JWT中方法 用户获取 有效负载payload中参数 的方法
+     * 获取存放在 JwtToken中的 用户名称   用户角色
+     * @param token
+     * @return
+     */
     public static UsernamePasswordAuthenticationToken getAuthentication(String token) {
         Claims claims = getClaims(token);
         List<SimpleGrantedAuthority> authorities = getAuthorities(claims);
