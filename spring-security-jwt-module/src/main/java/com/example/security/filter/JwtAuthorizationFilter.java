@@ -37,14 +37,14 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     @Override
+    //没有对请求进行真正的过滤 只是用于把Token中的重要用户信息存储在SecurityContextHolder中
+    //最后会在 SecurityConfiguration上真正的对权限信息的判断
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
                                     FilterChain chain) throws IOException, ServletException {
 
         //1:获取请求头中的Token
         //  如果请求头中没有Authorization信息则直接放行了
-
-        //注意：最后会在 真正请求接口接口时的进行 权限信息的判断
         String token = request.getHeader(SecurityConstants.TOKEN_HEADER);
         if (token == null || !token.startsWith(SecurityConstants.TOKEN_PREFIX)) {
             SecurityContextHolder.clearContext();
@@ -59,6 +59,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
             //3：获取redis中数据  根据  key 为用户Id  获取  value 为Token
             String previousToken = stringRedisTemplate.opsForValue().get(userId);
             //4:对比Token是否一致
+            //   如果Token不一致则直接放行
             if (!token.equals(previousToken)) {
                 SecurityContextHolder.clearContext();
                 chain.doFilter(request, response);

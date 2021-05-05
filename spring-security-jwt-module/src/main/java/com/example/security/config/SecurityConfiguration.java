@@ -39,7 +39,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
  */
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private  StringRedisTemplate stringRedisTemplate;
