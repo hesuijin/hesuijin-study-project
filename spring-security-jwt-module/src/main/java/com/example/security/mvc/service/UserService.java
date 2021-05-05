@@ -1,6 +1,7 @@
 package com.example.security.mvc.service;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.security.base.PageModel;
 import com.example.security.base.request.UserRegisterRequest;
 import com.example.security.base.request.UserUpdateRequest;
@@ -15,7 +16,7 @@ public interface UserService {
 
     void save(UserRegisterRequest userRegisterRequest);
 
-    IPage<UserNameResponse> getAll(PageModel pageModel);
+    IPage<UserNameResponse> getAll(Page page);
 
     void update(UserUpdateRequest userUpdateRequest);
 

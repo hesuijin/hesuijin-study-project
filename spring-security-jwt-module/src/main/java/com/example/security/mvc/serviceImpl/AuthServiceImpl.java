@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,15 +40,21 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public String createToken(LoginRequest loginRequest) {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name", loginRequest.getUsername());
+        queryWrapper.eq("user_name", loginRequest.getUserName());
         queryWrapper.last("limit 1");
         User user = userMapper.selectOne(queryWrapper);
+
+        if(user == null){
+            throw new BadCredentialsException("The user is not exist.");
+        }
+
         //判断账号密码是否正确
         if (!userComponent.userCheck(loginRequest.getPassword(), user.getPassword())) {
             throw new BadCredentialsException("The user name or password is not correct.");
         }
         //判断该账户是否被禁用
-        if (user.getEnabled() == null ? true : user.getEnabled()) {
+        Boolean isEnabled = user.getEnabled();
+        if (!isEnabled) {
             throw new BadCredentialsException("User is forbidden to login");
         }
 

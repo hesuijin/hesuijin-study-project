@@ -14,6 +14,9 @@
 ///**
 // * @Author hesuijin
 // * @Description
+// * 核心功能测试
+// * Authentication 获取 并 判断名称是否正确
+// *
 // * @Param
 // * @Return
 // * @Date 2021/3/34

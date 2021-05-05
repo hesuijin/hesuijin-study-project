@@ -20,6 +20,7 @@ public class JwtAccessDeniedHandler implements AccessDeniedHandler {
      */
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException {
+        //TODO 修改状态码有效  修改msg无效
         accessDeniedException = new AccessDeniedException("Sorry you don not enough permissions to access it!");
         response.sendError(HttpServletResponse.SC_FORBIDDEN, accessDeniedException.getMessage());
     }

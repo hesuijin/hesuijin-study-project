@@ -74,11 +74,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public IPage<UserNameResponse> getAll(PageModel pageModel) {
-        Page page = new Page(pageModel.getPage(), pageModel.getSize());
+    public IPage<UserNameResponse> getAll(Page page) {
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.select("user_name","full_name");
-
         IPage<UserNameResponse> resp = userMapper.selectPage(page,queryWrapper);;
         return resp;
     }

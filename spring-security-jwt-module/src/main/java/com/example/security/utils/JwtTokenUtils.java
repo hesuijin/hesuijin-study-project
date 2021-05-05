@@ -7,6 +7,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
 import javax.xml.bind.DatatypeConverter;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
  * @Date 2021/3/10 12:11
  * @Description:
  */
+
 public class JwtTokenUtils {
 
     /**

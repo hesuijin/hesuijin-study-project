@@ -1,7 +1,5 @@
 //package com.example.security.source_code;
 //
-////核心代码阅读
-//import org.springframework.security.authentication.ProviderManager;
 //
 //import org.springframework.beans.factory.InitializingBean;
 //import org.springframework.context.MessageSourceAware;
@@ -15,11 +13,14 @@
 //import java.util.Collections;
 //import java.util.List;
 //
+////核心代码阅读
+//对spring security 对权限进行认证
 //public class ProviderManager implements AuthenticationManager, MessageSourceAware, InitializingBean {
 //
 //    // 维护一个 AuthenticationProvider 列表
 //    private List<AuthenticationProvider> providers = Collections.emptyList();
 //
+//    @Override
 //    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 //        Class<? extends Authentication> toTest = authentication.getClass();
 //        AuthenticationException lastException = null;

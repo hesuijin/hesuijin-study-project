@@ -60,17 +60,28 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
 
-                //添加自定义Filter  鉴权过滤器
+                //添加自定义Filter  鉴权过滤器  用于把Token中的重要用户信息存储在SecurityContextHolder中
+                //实际上并没有做过滤
                 .addFilter(new JwtAuthorizationFilter(authenticationManager(), stringRedisTemplate))
 
                 // 不需要session（不创建会话）
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 
-                // 授权异常处理
+                //真正的进行 对存储在SecurityContextHolder中的用户信息做判断权限信息的判断
+                // 不提供Token或者Token错误或者过期时 的异常处理
                 .exceptionHandling().authenticationEntryPoint(new JwtAuthenticationEntryPoint())
+                // Token正确但没有对应操作权限 的异常处理
                 .accessDeniedHandler(new JwtAccessDeniedHandler());
         // 防止H2 web 页面的Frame 被拦截
         http.headers().frameOptions().disable();
+    }
+
+    /**
+     * 密码编码器
+     */
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
     }
 
     /**
@@ -92,12 +103,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         return source;
     }
 
-//    /**
-//     * 密码编码器
-//     */
-//    @Bean
-//    public BCryptPasswordEncoder bCryptPasswordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+
 
 }

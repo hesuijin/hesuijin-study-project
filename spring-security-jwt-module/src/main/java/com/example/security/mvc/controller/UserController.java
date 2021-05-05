@@ -1,6 +1,7 @@
 package com.example.security.mvc.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.security.base.PageModel;
 import com.example.security.base.request.UserRegisterRequest;
 import com.example.security.base.request.UserUpdateRequest;
@@ -39,15 +40,15 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping
+    @GetMapping("/find/allUser")
     @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_MANAGER','ROLE_ADMIN')")
     @ApiOperation("获取所有用户的信息（分页）")
-    public ResponseEntity<IPage<UserNameResponse>> getAllUser(PageModel pageModel) {
-        IPage<UserNameResponse> allUser = userService.getAll(pageModel);
+    public ResponseEntity<IPage<UserNameResponse>> getAllUser(Page page) {
+        IPage<UserNameResponse> allUser = userService.getAll(page);
         return ResponseEntity.ok().body(allUser);
     }
 
-    @PutMapping
+    @PutMapping("/update/user")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @ApiOperation("更新用户")
     public ResponseEntity<Void> update(@RequestBody @Valid UserUpdateRequest userUpdateRequest) {
@@ -55,7 +56,7 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete/user")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @ApiOperation("根据用户名删除用户")
     public ResponseEntity<Void> deleteUserByUserName(@RequestParam("username") String username) {

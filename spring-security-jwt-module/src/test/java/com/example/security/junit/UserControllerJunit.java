@@ -34,5 +34,4 @@ public class UserControllerJunit {
         userRegisterRequest.setPassword("123456");
         userController.signUp(userRegisterRequest);
     }
-
 }

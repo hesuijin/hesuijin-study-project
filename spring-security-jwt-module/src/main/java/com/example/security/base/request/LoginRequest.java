@@ -9,7 +9,9 @@ import lombok.Data;
  */
 @Data
 public class LoginRequest {
-    private String username;
+    private String userName;
     private String password;
-    private Boolean rememberMe;
+    private Boolean rememberMe = false;
+
+
 }

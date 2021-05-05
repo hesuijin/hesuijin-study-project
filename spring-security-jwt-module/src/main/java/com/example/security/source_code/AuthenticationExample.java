@@ -13,13 +13,15 @@
 ///**
 // * @Author hesuijin
 // * @Description
+// * 核心代码测试
+// * Authentication 进行数据的存储
 // * @Param
 // * @Return
 // * @Date 2021/3/34
 // */
 //public class AuthenticationExample {
 //
-//    private static AuthenticationManager am = new SampleAuthenticationManager();
+//    private static AuthenticationManager authenticationManager = new SampleAuthenticationManager();
 //
 //    public static void main(String[] args) throws Exception {
 //        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -32,7 +34,7 @@
 //            try {
 //                //name 为 principal   password 为 credentials
 //                Authentication request = new UsernamePasswordAuthenticationToken(name, password);
-//                Authentication result = am.authenticate(request);
+//                Authentication result = authenticationManager.authenticate(request);
 //                SecurityContextHolder.getContext().setAuthentication(result);
 //                break;
 //            } catch (AuthenticationException e) {
