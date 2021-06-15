@@ -59,7 +59,8 @@ public class JsonTest {
                 });
             });
 
-
+            responseDTO.setIsSuccess("1");
+            responseDTO.setMsg("成功");
             responseDTO.setData(businessTypeDTOFirstList);
 
             log.info(JSONObject.toJSONString(responseDTO));
