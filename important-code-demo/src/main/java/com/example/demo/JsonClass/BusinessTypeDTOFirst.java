@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class BusinessTypeDTOFirst {
 
-    String  businessDescOne;
+    String  vcBusinTypeDesc;
 
     List<BusinessTypeDTO> businessTypeDTOList = new ArrayList<>();
 }

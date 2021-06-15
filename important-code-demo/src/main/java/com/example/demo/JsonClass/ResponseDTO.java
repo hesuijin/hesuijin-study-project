@@ -13,5 +13,12 @@ import java.util.List;
 public class ResponseDTO {
 
 
-    private List<BusinessTypeDTOFirst> list ;
+
+    String isSuccess;
+
+    String msg;
+
+    String code;
+
+    private List<BusinessTypeDTOFirst> Data ;
 }

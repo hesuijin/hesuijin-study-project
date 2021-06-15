@@ -10,10 +10,10 @@ import lombok.Data;
 @Data
 public class BusinessTypeDTO {
 
-    String businessDescOne;
+    String vcBusinTypeDesc;
 
-     String businessTypeTwo;
+     String vcBusinCode;
 
-     String businessDescTwo;
+     String vcBusinName;
 
 }

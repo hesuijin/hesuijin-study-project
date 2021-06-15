@@ -20,20 +20,20 @@ public class JsonTest {
             List<BusinessTypeDTO> businessTypeDTOList = new ArrayList<>();
 
             BusinessTypeDTO businessTypeDTO = new BusinessTypeDTO();
-            businessTypeDTO.setBusinessDescOne("我是一级分类1");
-            businessTypeDTO.setBusinessTypeTwo("000");
-            businessTypeDTO.setBusinessDescTwo("我是000的名称");
+            businessTypeDTO.setVcBusinTypeDesc("我是一级分类1");
+            businessTypeDTO.setVcBusinCode("000");
+            businessTypeDTO.setVcBusinName("我是000的名称");
 
             BusinessTypeDTO businessTypeDTO1 = new BusinessTypeDTO();
-            businessTypeDTO1.setBusinessDescOne("我是一级分类1");
-            businessTypeDTO1.setBusinessTypeTwo("111");
-            businessTypeDTO1.setBusinessDescTwo("我是111的名称");
+            businessTypeDTO1.setVcBusinTypeDesc("我是一级分类1");
+            businessTypeDTO1.setVcBusinCode("111");
+            businessTypeDTO1.setVcBusinName("我是111的名称");
 
 
             BusinessTypeDTO businessTypeDTO2 = new BusinessTypeDTO();
-            businessTypeDTO2.setBusinessDescOne("我是一级分类2");
-            businessTypeDTO2.setBusinessTypeTwo("222");
-            businessTypeDTO2.setBusinessDescTwo("我是2222的名称");
+            businessTypeDTO2.setVcBusinTypeDesc("我是一级分类2");
+            businessTypeDTO2.setVcBusinCode("222");
+            businessTypeDTO2.setVcBusinName("我是2222的名称");
 
             businessTypeDTOList.add(businessTypeDTO);
             businessTypeDTOList.add(businessTypeDTO1);
@@ -42,10 +42,10 @@ public class JsonTest {
             List<BusinessTypeDTOFirst> businessTypeDTOFirstList = new ArrayList<>();
 
             BusinessTypeDTOFirst businessTypeDTOFirst = new BusinessTypeDTOFirst();
-            businessTypeDTOFirst.setBusinessDescOne("我是一级分类1");
+            businessTypeDTOFirst.setVcBusinTypeDesc("我是一级分类1");
 
             BusinessTypeDTOFirst businessTypeDTOFirst2 = new BusinessTypeDTOFirst();
-            businessTypeDTOFirst2.setBusinessDescOne("我是一级分类2");
+            businessTypeDTOFirst2.setVcBusinTypeDesc("我是一级分类2");
 
             businessTypeDTOFirstList.add(businessTypeDTOFirst);
             businessTypeDTOFirstList.add(businessTypeDTOFirst2);
@@ -53,14 +53,14 @@ public class JsonTest {
 
             businessTypeDTOFirstList.forEach(first -> {
                 businessTypeDTOList.forEach(second -> {
-                    if (second.getBusinessDescOne().equals(first.getBusinessDescOne())) {
+                    if (second.getVcBusinTypeDesc().equals(first.getVcBusinTypeDesc())) {
                         first.getBusinessTypeDTOList().add(second);
                     }
                 });
             });
 
 
-            responseDTO.setList(businessTypeDTOFirstList);
+            responseDTO.setData(businessTypeDTOFirstList);
 
             log.info(JSONObject.toJSONString(responseDTO));
         }
