@@ -14,14 +14,14 @@ import javax.sql.DataSource;
  * @Date 2021/7/3
  */
 @Configuration
-public class DataSourceMysqlProperties {
+public class DataSourceOraclelProperties {
 
     /**
      * Mysql数据库数据源配置
      * @return 返回 Mysql数据库数据源配置
      */
-    @Bean(name = "mysqlDataSourceProperties")
-    @ConfigurationProperties(prefix = "spring.datasource.mysql")
+    @Bean(name = "oracleDataSourceProperties")
+    @ConfigurationProperties(prefix = "spring.datasource.oracle")
     public DataSourceProperties deviceCenterDataSourceProperties() {
         return new DataSourceProperties();
     }
@@ -31,8 +31,8 @@ public class DataSourceMysqlProperties {
      * @param dataSourceProperties Mysql数据库数据源配置
      * @return 返回设 Mysql数据库数据源
      */
-    @Bean(name = "mysqlDataSource")
-    public DataSource deviceCenterDataSource(@Qualifier("mysqlDataSourceProperties") DataSourceProperties dataSourceProperties) {
+    @Bean(name = "oracleDataSource")
+    public DataSource deviceCenterDataSource(@Qualifier("oracleDataSourceProperties") DataSourceProperties dataSourceProperties) {
         return dataSourceProperties.initializeDataSourceBuilder().build();
     }
 }

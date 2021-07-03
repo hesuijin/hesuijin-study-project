@@ -1,9 +1,8 @@
-#spring:
-#  datasource :
-#    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
-#    username: hesuijin
-#    password : Hsj123456
-#    driver-class-name: oracle.jdbc.driver.OracleDriver
+# 关于数据库的说明
+# localhost（127.0.0.1） IP地址
+# port 端口号
+#  username  password  登录账户 登录密码  其中登录该账号 可以看到 该账户下对应的几个数据库 如数据库1 数据库2 数据库3
+# localhost:post/数据库1  localhost:post/数据库2  localhost:post/数据库3
 
 
 spring:
@@ -13,6 +12,8 @@ spring:
       password: Hsj123456
       url: jdbc:mysql://47.113.101.241/hsj_test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
       driverClassName: com.mysql.jdbc.Driver
-
-mybatis:
-  mapper-locations: classpath:mapper/*/*.xml, classpath:mapper/*.xml
+    oracle :
+      url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+      username: hesuijin
+      password : Hsj123456
+      driver-class-name: oracle.jdbc.driver.OracleDriver

@@ -1,8 +1,7 @@
-package com.example.demo.modules.mysqlModule.controller;
+package com.example.demo.modules.oracleModule.controller;
 
-
-import com.example.demo.modules.mysqlModule.base.model.Member;
-import com.example.demo.modules.mysqlModule.service.MysqlService;
+import com.example.demo.modules.oracleModule.base.model.Member;
+import com.example.demo.modules.oracleModule.service.OracleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,19 +13,19 @@ import java.util.List;
 /**
  * @Description:
  * @Author HeSuiJin
- * @Date 2021/7/2
+ * @Date 2021/7/3
  */
 @RestController
-@RequestMapping("/mysql")
+@RequestMapping("/oracle")
 @Slf4j
-public class MysqlController {
+public class OracleController {
 
     @Autowired
-    private MysqlService mysqlService;
+    private OracleService oracleService;
 
     @GetMapping("select")
-    private void mysqlSelectTest(){
-       List<Member> memberList = mysqlService.mysqlSelectTest();
+    public void  oraclelSelectTest(){
+        List<Member> memberList = oracleService.oraclelSelectTest();
     }
 
 }

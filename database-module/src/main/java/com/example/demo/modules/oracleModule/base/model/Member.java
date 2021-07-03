@@ -1,4 +1,4 @@
-package com.example.demo.valid.base;
+package com.example.demo.modules.oracleModule.base.model;
 
 import lombok.Data;
 

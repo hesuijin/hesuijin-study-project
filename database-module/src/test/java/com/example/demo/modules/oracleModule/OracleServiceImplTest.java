@@ -1,6 +1,7 @@
-package com.example.demo.modules.mysqlModule.service.seriverImpl;
+package com.example.demo.modules.oracleModule;
 
-import com.example.demo.modules.mysqlModule.base.model.Member;
+import com.example.demo.modules.oracleModule.base.model.Member;
+import com.example.demo.modules.oracleModule.service.impl.OracleServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,20 +14,18 @@ import java.util.List;
 /**
  * @Description:
  * @Author HeSuiJin
- * @Date 2021/7/2
+ * @Date 2021/7/3
  */
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class MysqlServiceImplTest {
+public class OracleServiceImplTest{
 
     @Autowired
-    private MysqlServiceImpl mysqlService;
+    private OracleServiceImpl oracleService;
 
     @Test
     public void mysqlSelectTest() {
-
-       List<Member> memberList = mysqlService.mysqlSelectTest();
-
+        List<Member> memberList = oracleService.oraclelSelectTest();
     }
 }

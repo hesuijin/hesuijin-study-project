@@ -1,9 +1,8 @@
-package com.example.demo.modules.mysqlModule.dao;
+package com.example.demo.modules.oracleModule.dao;
 
-import com.example.demo.modules.mysqlModule.base.model.Member;
+import com.example.demo.modules.oracleModule.base.model.Member;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.Mapping;
 
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  * @Author HeSuiJin
  * @Date 2021/7/3
  */
-@Repository("MemberMapperMysql")
+@Repository("MemberMapperOracle")
 @Mapper
 public interface MemberMapper {
 
