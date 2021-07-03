@@ -1,0 +1,18 @@
+#spring:
+#  datasource :
+#    url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+#    username: hesuijin
+#    password : Hsj123456
+#    driver-class-name: oracle.jdbc.driver.OracleDriver
+
+
+spring:
+  datasource:
+    mysql:
+      username: hesuijin
+      password: Hsj123456
+      url: jdbc:mysql://47.113.101.241/hsj_test?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
+      driverClassName: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapper/*/*.xml, classpath:mapper/*.xml
