@@ -6,4 +6,12 @@
         SELECT * from  member
     </select>
 
+    <select id="updateMemberByReq" parameterType="com.example.demo.modules.oracleModule.base.request.MemberUpdateReq">
+       update member
+       set
+       name =#{name},
+       age=#{age}
+       where  id =#{id}
+    </select>
+
 </mapper>

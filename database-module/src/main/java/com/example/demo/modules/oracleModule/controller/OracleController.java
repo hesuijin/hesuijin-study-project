@@ -1,10 +1,12 @@
 package com.example.demo.modules.oracleModule.controller;
 
 import com.example.demo.modules.oracleModule.base.model.Member;
+import com.example.demo.modules.oracleModule.base.request.MemberUpdateReq;
 import com.example.demo.modules.oracleModule.service.OracleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,8 +26,13 @@ public class OracleController {
     private OracleService oracleService;
 
     @GetMapping("select")
-    public void  oraclelSelectTest(){
-        List<Member> memberList = oracleService.oraclelSelectTest();
+    public void  selectTest(){
+        List<Member> memberList = oracleService.selectTest();
     }
 
+
+//    @PostMapping("update")
+//    public void  updateTest(MemberUpdateReq memberUpdateReq){
+//         oracleService.updateTest(memberUpdateReq );
+//    }
 }

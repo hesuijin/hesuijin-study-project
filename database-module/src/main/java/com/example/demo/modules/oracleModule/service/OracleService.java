@@ -1,6 +1,7 @@
 package com.example.demo.modules.oracleModule.service;
 
 import com.example.demo.modules.oracleModule.base.model.Member;
+import com.example.demo.modules.oracleModule.base.request.MemberUpdateReq;
 
 import java.util.List;
 
@@ -11,5 +12,7 @@ import java.util.List;
  */
 public interface OracleService {
 
-    List<Member> oraclelSelectTest();
+    List<Member> selectTest();
+
+    void updateTest(MemberUpdateReq memberUpdateReq);
 }

@@ -4,7 +4,6 @@
 #  username  password  登录账户 登录密码  其中登录该账号 可以看到 该账户下对应的几个数据库 如数据库1 数据库2 数据库3
 # localhost:post/数据库1  localhost:post/数据库2  localhost:post/数据库3
 
-
 spring:
   datasource:
     mysql:
