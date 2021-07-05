@@ -1,6 +1,7 @@
 package com.example.demo.modules.mysqlModule.dao;
 
 import com.example.demo.modules.mysqlModule.base.model.Member;
+import com.example.demo.modules.oracleModule.base.request.MemberUpdateReq;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.Mapping;
@@ -23,5 +24,6 @@ public interface MemberMapper {
      */
     List<Member> selectMemberList();
 
+    void updateMemberByReq(Member member);
 
 }
