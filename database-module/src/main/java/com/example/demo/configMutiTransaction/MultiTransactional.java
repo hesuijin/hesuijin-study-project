@@ -1,4 +1,4 @@
-package com.example.demo.configMutiTransaction2;
+package com.example.demo.configMutiTransaction;
 
 import java.lang.annotation.*;
 
@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface MultiTransactional2 {
+public @interface MultiTransactional {
 
     String[] values() default {};
 }

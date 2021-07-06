@@ -1,6 +1,5 @@
-package com.example.demo.configMutiTransaction2;
+package com.example.demo.configMutiTransaction;
 
-import com.example.demo.configMultiTransaction.MultiTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -12,7 +11,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
-import org.yaml.snakeyaml.util.ArrayUtils;
 
 import java.util.Stack;
 
@@ -31,7 +29,7 @@ public class MultiTransactionalAspect {
     private ApplicationContext applicationContext;
 
     @Around(value = "@annotation(multiTransactional)")
-    public Object around(ProceedingJoinPoint pjp, MultiTransactional2 multiTransactional) throws Throwable {
+    public Object around(ProceedingJoinPoint pjp, MultiTransactional multiTransactional) throws Throwable {
         Stack<DataSourceTransactionManager> dataSourceTransactionManagerStack = new Stack<>();
         Stack<TransactionStatus> transactionStatusStack = new Stack<>();
         try {
@@ -58,7 +56,7 @@ public class MultiTransactionalAspect {
      * @return
      */
     private boolean openTransaction(Stack<DataSourceTransactionManager> dataSourceTransactionManagerStack,
-                                    Stack<TransactionStatus> transactionStatusStack, MultiTransactional2 multiTransactional) {
+                                    Stack<TransactionStatus> transactionStatusStack, MultiTransactional multiTransactional) {
         String[] transactionMangerNames = multiTransactional.values();
         if (multiTransactional.values().length==0) {
             return false;
