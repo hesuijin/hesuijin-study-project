@@ -1,7 +1,7 @@
 package com.example.demo.modules.multiDataSourceTranaction;
 
 import com.example.demo.configMultiTransaction.MultiTransactional;
-import com.example.demo.configMutiTransaction2.MultiTransactional2;
+import com.example.demo.configMutiTransaction.MultiTransactional;
 import com.example.demo.modules.mysqlModule.base.model.Member;
 import com.example.demo.modules.oracleModule.base.request.MemberUpdateReq;
 import com.example.demo.modules.oracleModule.dao.MemberMapper;
@@ -137,7 +137,7 @@ public class ProgrammaticTransaction {
     }
 
     @Test
-    @MultiTransactional2(values = {TransactionConstant.DataSourceTransactionManager.ORACLE, TransactionConstant.DataSourceTransactionManager.MYSQL})
+    @MultiTransactional(values = {TransactionConstant.DataSourceTransactionManager.ORACLE, TransactionConstant.DataSourceTransactionManager.MYSQL})
     public void MultiTransactionalTest3() {
         MemberUpdateReq memberUpdateReq = new MemberUpdateReq();
         memberUpdateReq.setId(1L);
@@ -153,7 +153,7 @@ public class ProgrammaticTransaction {
     }
 
     @Test
-    @MultiTransactional2(values = {TransactionConstant.DataSourceTransactionManager.ORACLE, TransactionConstant.DataSourceTransactionManager.MYSQL})
+    @MultiTransactional(values = {TransactionConstant.DataSourceTransactionManager.ORACLE, TransactionConstant.DataSourceTransactionManager.MYSQL})
     public void MultiTransactionalTest4() {
         MemberUpdateReq memberUpdateReq = new MemberUpdateReq();
         memberUpdateReq.setId(1L);
