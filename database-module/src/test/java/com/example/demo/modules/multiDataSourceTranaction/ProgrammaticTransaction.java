@@ -1,7 +1,7 @@
 package com.example.demo.modules.multiDataSourceTranaction;
 
-import com.example.demo.configMultiTransaction.MultiTransactional;
 import com.example.demo.configMutiTransaction.MultiTransactional;
+import com.example.demo.constant.TransactionConstant;
 import com.example.demo.modules.mysqlModule.base.model.Member;
 import com.example.demo.modules.oracleModule.base.request.MemberUpdateReq;
 import com.example.demo.modules.oracleModule.dao.MemberMapper;
@@ -15,7 +15,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.demo.constant.TransactionConstant;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 /**
@@ -46,6 +45,8 @@ public class ProgrammaticTransaction {
         int a = 1 / 0;
     }
 
+
+
     @Test
     @Transactional(transactionManager = TransactionConstant.DataSourceTransactionManager.ORACLE, rollbackFor = RuntimeException.class)
     public void oracleTransactionJunit() {
@@ -54,7 +55,7 @@ public class ProgrammaticTransaction {
         memberUpdateReq.setName("hhhh");
         memberUpdateReq.setAge("999");
         oracleMemberMapper.updateMemberByReq(memberUpdateReq);
-        int a = 1 / 0;
+//        int a = 1 / 0;
     }
 
     @Autowired
@@ -106,7 +107,7 @@ public class ProgrammaticTransaction {
     }
 
     @Test
-    @MultiTransactional(value = {TransactionConstant.DataSourceTransactionManager.ORACLE, TransactionConstant.DataSourceTransactionManager.MYSQL})
+    @MultiTransactional(values = {TransactionConstant.DataSourceTransactionManager.ORACLE, TransactionConstant.DataSourceTransactionManager.MYSQL})
     public void MultiTransactionalTest() {
         MemberUpdateReq memberUpdateReq = new MemberUpdateReq();
         memberUpdateReq.setId(1L);
@@ -122,7 +123,7 @@ public class ProgrammaticTransaction {
     }
 
     @Test
-    @MultiTransactional(value = {TransactionConstant.DataSourceTransactionManager.ORACLE, TransactionConstant.DataSourceTransactionManager.MYSQL})
+    @MultiTransactional(values = {TransactionConstant.DataSourceTransactionManager.ORACLE, TransactionConstant.DataSourceTransactionManager.MYSQL})
     public void MultiTransactionalTest2() {
         MemberUpdateReq memberUpdateReq = new MemberUpdateReq();
         memberUpdateReq.setId(1L);
