@@ -156,7 +156,6 @@ public class ControllerJunitImpl {
      */
     @Test
     public void publicMethodTest5() throws Exception {
-
         UpdateMemberRequest updateMemberRequest = new UpdateMemberRequest();
         updateMemberRequest.setId(0L);
         updateMemberRequest.setName("HSJ");
