@@ -69,6 +69,9 @@ public class ListToMapJunit {
         //orderExtraList数据组装 business的数据(先转换为Map)
         Map<Long,Business> businessMap = businessList.stream().collect(Collectors.toMap(Business::getId, business->business));
 
+        Map<Long,Business> businessMap1 = businessList.stream().collect(Collectors.toMap(Business::getId, business->business,(a,b)->a));
+
+
         orderExtraList.stream().forEach(orderExtra -> {
             Member member =  memberMap.get(orderExtra.getMemberId());
             orderExtra.setMemberAge(member.getAge());
