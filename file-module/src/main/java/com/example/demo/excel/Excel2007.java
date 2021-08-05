@@ -37,10 +37,8 @@ public class Excel2007 {
     }
 
     public  void getExcel(String fileDir) throws IOException {
-
 //        String fileDir = System.getProperty("user.dir") + "/downLoad/" +"哈哈哈"+"_xxx报表_"+".xlsx";
 //        String fileDir =  InetAddress.getLocalHost()+"/downLoad/" +"哈哈哈"+"_xxx报表_"+".xlsx";
-
         //避免内存溢出
         XSSFWorkbook xssfWorkbook = new XSSFWorkbook();
         SXSSFWorkbook workbook = new SXSSFWorkbook(xssfWorkbook , 1000);
