@@ -23,14 +23,10 @@ import java.util.List;
  * @Date 2021/8/6
  */
 //https://blog.csdn.net/weixin_43952697/article/details/107249935
+//    https://blog.csdn.net/llllvvv/article/details/98945250
     @RestController()
     @RequestMapping("getExcel")
 public class Excel2007 {
-
-//    public static void   main(String[] args) throws IOException {
-//        String fileDir  ="http://127.0.0.1:8080" + "/downLoad/" +"哈哈哈"+"_xxx报表_"+".xlsx";;
-//        getExcel(fileDir);
-//    }
 
     @RequestMapping("test")
     @ResponseBody
@@ -44,7 +40,6 @@ public class Excel2007 {
 
 //        String fileDir = System.getProperty("user.dir") + "/downLoad/" +"哈哈哈"+"_xxx报表_"+".xlsx";
 //        String fileDir =  InetAddress.getLocalHost()+"/downLoad/" +"哈哈哈"+"_xxx报表_"+".xlsx";
-
 
         //避免内存溢出
         XSSFWorkbook xssfWorkbook = new XSSFWorkbook();
@@ -63,7 +58,9 @@ public class Excel2007 {
         }catch (Exception e){
 
         }finally {
-            fileOutputStream.close();
+            if (fileOutputStream!=null){
+                fileOutputStream.close();
+            }
         }
     }
 
