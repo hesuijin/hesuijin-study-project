@@ -42,8 +42,8 @@ public class ListToMapJunit {
     /**
      * 注意
      * 1：转换为 map的时候 key值必须是唯一的
-     * 2：key值不能为空
-     * 3：使用key值获取map数据注意判断空
+     * 2：key值可以为空 或者为 空字符串
+     * 3：使用key值获取map数据后，如果数据是对象类型，注意先对对象进行判断空
      */
     @Test
     public void  ListToMapJunit1(){
@@ -69,9 +69,6 @@ public class ListToMapJunit {
         //orderExtraList数据组装 business的数据(先转换为Map)
         Map<Long,Business> businessMap = businessList.stream().collect(Collectors.toMap(Business::getId, business->business));
 
-        Map<Long,Business> businessMap1 = businessList.stream().collect(Collectors.toMap(Business::getId, business->business,(a,b)->a));
-
-
         orderExtraList.stream().forEach(orderExtra -> {
             Member member =  memberMap.get(orderExtra.getMemberId());
             orderExtra.setMemberAge(member.getAge());
@@ -83,5 +80,18 @@ public class ListToMapJunit {
         });
 
         log.info("OrderExtra数组打印组装数据：{}",JSONObject.toJSONString(orderExtraList));
+    }
+
+    /**
+     * 使用
+     *  BinaryOperator<U> mergeFunction) 方式可以快速的在转换Map时  对Map的key值进行去重
+     */
+    @Test
+    public void  ListToMapJunit2(){
+        List<Business> businessList1 = createBusinessList.methodArray();
+        List<Business> businessList2 = createBusinessList.methodArray();
+        businessList1.addAll(businessList2);
+        Map<Long,Business> businessMap = businessList1.stream().collect(Collectors.toMap(Business::getId, business->business,(a,b)->a));
+        System.out.println(JSONObject.toJSONString(businessMap));
     }
 }
