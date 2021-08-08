@@ -18,6 +18,51 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+//Lists.partition(items, batchSize);
+//<dependency>
+//<groupId>com.google.guava</groupId>
+//<artifactId>guava</artifactId>
+//<version>23.6-jre</version>
+//</dependency>
+
+
+//
+//List<List<BusinessMonthBill>> lists = DataUtils.subList(bills, 1000);
+//public static<T>  List<List<T>> subList(List<T> tList, Integer subNum) {
+//        // 新的截取到的list集合
+//        List<List<T>> tNewList = new ArrayList<List<T>>();
+//        // 要截取的下标上限
+//        Integer priIndex = 0;
+//        // 要截取的下标下限
+//        Integer lastIndex = 0;
+//        // 每次插入list的数量
+//        // Integer subNum = 500;
+//        // 查询出来list的总数目
+//        Integer totalNum = tList.size();
+//        // 总共需要插入的次数
+//        Integer insertTimes = totalNum / subNum;
+//        List<T> subNewList = new ArrayList<T>();
+//        for (int i = 0; i <= insertTimes; i++) {
+//        priIndex = subNum * i;
+//        lastIndex = priIndex + subNum;
+//        // 判断是否是最后一次
+//        if (i == insertTimes) {
+//        subNewList = tList.subList(priIndex, tList.size());
+//        } else {
+//        // 非最后一次
+//        subNewList = tList.subList(priIndex, lastIndex);
+//
+//        }
+//        if (subNewList.size() > 0) {
+//        tNewList.add(subNewList);
+//        }
+//
+//        }
+//        return tNewList;
+//        }
+
+
 /**
  * @Description:
  * @Author HeSuiJin
