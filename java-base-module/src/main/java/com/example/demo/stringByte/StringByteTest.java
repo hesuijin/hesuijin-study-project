@@ -13,9 +13,6 @@ public class StringByteTest {
         byteDemo();
     }
 
-
-
-
     /**
      * 一般情况下，采用ISO8859-1编码方式时，一个中文字符与一个英文字符一样只占1个字节；
      * 采用GB2312或GBK编码方式时，一个中文字符占2个字节；

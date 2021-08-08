@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
  * @Author HeSuiJin
  * @Date 2021/8/8
  */
+//https://blog.csdn.net/yangyan19870319/article/details/6144131?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&spm=1001.2101.3001.4242
 public class StringByteLast {
 
     private final static String CHARSET_NAME = "GBK";
@@ -48,10 +49,8 @@ public class StringByteLast {
             if (start >= getStringByteLenths(orignal)) {
                 return null;
             }
-
             int len = 0;
             char c;
-
             //遍历String的每一个Char字符，计算当前总长度
             //如果到当前Char的的字节长度大于要截取的字符总长度，则跳出循环返回截取的字符串。
             for (int i = 0; i < orignal.toCharArray().length; i++) {
