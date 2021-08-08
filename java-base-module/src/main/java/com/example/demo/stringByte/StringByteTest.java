@@ -10,30 +10,8 @@ import java.io.UnsupportedEncodingException;
 public class StringByteTest {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-
-//        byteDemo();
-
-        //需求 截取字符串1 + 字符串2 相加为100字节（中文一个汉字两字节  英文一个字母一字节）的字符串  如果过长则先对字符串2进行截取
-        //情况1  如果字符串1本身超过100字节 则直接进行字符串1的截取即可
-        //情况2  如果字符串1+字符串2没有超过100字节  则不用管
-        //情况3   如果字符串1+字符串2没有超过100字节  则对字符串2进行截取
-
-//        byteStringDemo();
-
-
-        String str = "hesuijin";
-        int subSLength = 1;
-
-
+        byteDemo();
     }
-
-    private static void byteStringDemo() throws UnsupportedEncodingException {
-        String string1 = "";
-        String string2 = "";
-//        System.out.println("测试abc".getBytes("GB2312").length);
-
-    }
-
 
 
 
