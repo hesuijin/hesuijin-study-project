@@ -18,14 +18,24 @@
     </properties>
     <dependencies>
 
-<!--        poi-ooxml提供microsoft office新版本支持,eg .xlsx Excel-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.4</version>
+        </dependency>
+
+        <!--        poi-ooxml提供microsoft office新版本支持,eg .xlsx Excel-->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.10-FINAL</version>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.18</version>
+        </dependency>
         <!--        引入lombok 使用@Data注解  使用@Slf4j注解-->
         <dependency>
             <groupId>org.projectlombok</groupId>
