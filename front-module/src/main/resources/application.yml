@@ -1,0 +1,9 @@
+
+server:
+  port: 8082
+
+spring:
+#  设置静态资源路径
+  mvc:
+    static-path-pattern: static/**
+
