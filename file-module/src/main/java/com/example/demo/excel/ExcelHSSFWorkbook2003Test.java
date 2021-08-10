@@ -45,7 +45,7 @@ public class ExcelHSSFWorkbook2003Test {
         try {
             File xlsFile =new File(fileDir);
             fileOutputStream = new FileOutputStream(xlsFile);
-            getDetailExcel(sheet,workbook);
+            getDetailExcel(sheet);
             workbook.write(fileOutputStream);
         }catch (Exception e){
 
@@ -56,7 +56,7 @@ public class ExcelHSSFWorkbook2003Test {
         }
     }
 
-    private static void getDetailExcel(Sheet sheet,HSSFWorkbook workbook){
+    private static void getDetailExcel(Sheet sheet){
         Student student1 = new Student();
         student1.setId(1L);
         student1.setName("hsj");
