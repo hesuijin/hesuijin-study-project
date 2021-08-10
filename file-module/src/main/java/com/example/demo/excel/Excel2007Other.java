@@ -2,6 +2,7 @@ package com.example.demo.excel;
 
 import com.example.demo.excel.xssWorkBookNew.Student;
 import org.apache.commons.collections4.ListUtils;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
 import org.apache.poi.ss.usermodel.Sheet;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,6 +115,8 @@ public class Excel2007Other {
         student1.setId(1L);
         student1.setName("hsj");
         student1.setAge(10);
+        student1.setMoney(new BigDecimal(99999999999999.99));
+        student1.setMoneyFmt("99999999999999.99");
 
         Student student2 = new Student();
         student2.setId(2L);
@@ -176,6 +180,29 @@ public class Excel2007Other {
                         row.createCell(2).setCellValue(dto.getAge());
                     } else {
                         row.createCell(2).setCellValue("");
+                    }
+                    if (null != dto.getMoney()) {
+//                        row.createCell(3).setCellValue(Double.parseDouble(dto.getMoney().toString()));
+
+                        Cell cell =  row.createCell(3);
+//                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+//                        cell.setCellValue(Double.parseDouble(dto.getMoney().toString()));
+
+                        cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                        cell.setCellValue(dto.getMoney().toString());
+                    } else {
+                        row.createCell(3).setCellValue(99999999999999.99);
+                    }
+
+                    if (null != dto.getMoney()) {
+//                        row.createCell(3).setCellValue(Double.parseDouble(dto.getMoney().toString()));
+
+                        Cell cell =  row.createCell(4);
+                        cell.setCellType(Cell.CELL_TYPE_STRING);
+//                        cell.setCellFormula();
+                        cell.setCellValue(dto.getMoneyFmt());
+                    } else {
+                        row.createCell(4).setCellValue("");
                     }
                 }
             }

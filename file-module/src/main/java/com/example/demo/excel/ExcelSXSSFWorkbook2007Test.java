@@ -1,11 +1,11 @@
 package com.example.demo.excel;
 
 import com.example.demo.excel.xssWorkBookNew.Student;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +21,14 @@ import java.util.List;
  * @Author HeSuiJin
  * @Date 2021/8/6
  */
+//https://blog.csdn.net/qq_31615049/article/details/82228812
+
 //https://blog.csdn.net/weixin_43952697/article/details/107249935
 //    https://blog.csdn.net/llllvvv/article/details/98945250
     @RestController()
-    @RequestMapping("getExcel")
-public class Excel2007 {
+    @Slf4j
+    @RequestMapping("getExcel2007SXSSFWorkbookTest")
+public class ExcelSXSSFWorkbook2007Test {
 
     @RequestMapping("test")
     @ResponseBody
@@ -37,18 +39,11 @@ public class Excel2007 {
     }
 
     public  void getExcel(String fileDir) throws IOException {
-//        String fileDir = System.getProperty("user.dir") + "/downLoad/" +"哈哈哈"+"_xxx报表_"+".xlsx";
-//        String fileDir =  InetAddress.getLocalHost()+"/downLoad/" +"哈哈哈"+"_xxx报表_"+".xlsx";
-        //避免内存溢出
-        XSSFWorkbook xssfWorkbook = new XSSFWorkbook();
-//        一个版面可以显示1000行excel数据，那么每次内存里只存这1000行。当1001行进来时，第1行就会被写入到硬盘里去，内存里永远只有这最近的1000行。
-        SXSSFWorkbook workbook = new SXSSFWorkbook(xssfWorkbook , 1000);
 
-
+        SXSSFWorkbook workbook = new SXSSFWorkbook(1000);
         Sheet sheet = workbook.createSheet("我是sheet名称");
         FileOutputStream fileOutputStream = null;
-
-        fileDir = "V:/" +"哈哈哈"+"_xxx报表_我是测试啊"+".xlsx";
+        fileDir = "V:/" +"SXSSFWorkbook 2007导出"+".xlsx";
 
         try {
             File xlsFile =new File(fileDir);
@@ -56,7 +51,7 @@ public class Excel2007 {
             getDetailExcel(sheet,workbook);
             workbook.write(fileOutputStream);
         }catch (Exception e){
-
+           log.error(e.getMessage());
         }finally {
             if (fileOutputStream!=null){
                 fileOutputStream.close();
@@ -89,10 +84,21 @@ public class Excel2007 {
         }
 
         int i = 0;
+        Student dto =  studentList.get(0);
         //开始创建行和表格并且加入数据
         if (null != studentList && !studentList.isEmpty()) {
-            for (Student dto : studentList) {
-                i += 1;
+
+//            65535可以导出
+//            65536可以导出
+//            655370也能导出
+
+//        1048575（一个sheet可以）
+//        1048576（一个sheet 不行）
+
+            for (i = 0 ;i<1048577;i++){
+//              for (i = 0 ;i<655370;i++){
+//            for (Student dto : studentList) {
+//                i += 1;
                 //创建行
                 row = sheet.createRow(i);
                 //列1

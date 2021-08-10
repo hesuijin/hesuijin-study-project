@@ -52,9 +52,15 @@ poi导出excel最常用的方式；但是此种方式的局限就是导出的行
 
 第三种：SXSSFWorkbook
 
-从POI 3.8版本开始，提供了一种基于XSSF的低内存占用的SXSSF方式。对于大型excel文件的创建，一个关键问题就是，要确保不会内存溢出。其实，就算生成很小的excel（比如几Mb），它用掉的内存是远大于excel文件实际的size的。如果单元格还有各种格式（比如，加粗，背景标红之类的），那它占用的内存就更多了。对于大型excel的创建且不会内存溢出的，就只有SXSSFWorkbook了。它的原理很简单，用硬盘空间换内存（就像hash map用空间换时间一样）。
+从POI 3.8版本开始，提供了一种基于XSSF的低内存占用的SXSSF方式。
+对于大型excel文件的创建，一个关键问题就是，要确保不会内存溢出。
+其实，就算生成很小的excel（比如几Mb），它用掉的内存是远大于excel文件实际的size的。
+如果单元格还有各种格式（比如，加粗，背景标红之类的），那它占用的内存就更多了。
+对于大型excel的创建且不会内存溢出的，就只有SXSSFWorkbook了。
+它的原理很简单，用硬盘空间换内存（就像hash map用空间换时间一样）。
 
-SXSSFWorkbook是streaming版本的XSSFWorkbook,它只会保存最新的excel rows在内存里供查看，在此之前的excel rows都会被写入到硬盘里（Windows电脑的话，是写入到C盘根目录下的temp文件夹）。被写入到硬盘里的rows是不可见的/不可访问的。只有还保存在内存里的才可以被访问到。
+SXSSFWorkbook是streaming版本的XSSFWorkbook,它只会保存最新的excel rows在内存里供查看，
+在此之前的excel rows都会被写入到硬盘里（Windows电脑的话，是写入到C盘根目录下的temp文件夹）。被写入到硬盘里的rows是不可见的/不可访问的。只有还保存在内存里的才可以被访问到。
 
 SXSSF与XSSF的对比：
 

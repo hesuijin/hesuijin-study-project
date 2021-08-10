@@ -2,6 +2,8 @@ package com.example.demo.excel.xssWorkBookNew;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 /**
  * @Description:
  * @Author HeSuiJin
@@ -15,4 +17,8 @@ public class Student {
     private String name;
 
     private Integer age;
+
+    private BigDecimal money;
+
+    private String moneyFmt;
 }
