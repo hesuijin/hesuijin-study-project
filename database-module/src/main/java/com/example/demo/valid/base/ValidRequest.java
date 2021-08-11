@@ -24,7 +24,10 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
+import javax.validation.Valid;
 import javax.validation.constraints.*;
+import java.util.List;
+
 
 /**
  * @Description:
@@ -37,20 +40,25 @@ public class ValidRequest {
 //    @NotEmpty://CharSequence, Collection, Map 和 Array 对象不能是 null 并且相关对象的 size 大于 0。
 //    @NotBlank://String 不是 null 且去除两端空白字符后的长度（trimmed length）大于 0。
 
+//    @Valid 可以用于嵌套校验（即校验在 ValidRequest 里面的对象）
+
     //被注释的元素必须为 null
     @Null(message = "必须为null")
     private String nullTest;
 
     //被注释的元素必须不为 null
-    @NotNull
-    @Null(message = "必须不为null  作用于字符串或者集合  但可以是空字符串 或者空集合")
+    @NotNull(message = "必须不为null  作用于字符串或者集合  但可以是空字符串 或者空集合")
     private String notNull;
 
     @NotEmpty(message = "必须不为null  作用于字符串或者集合   但不可以是空字符串 或者空集合")
     private String notEmpty;
 
-    @NotBlank(message = "不能为null  只能作用于字符串  不能为空字符串")
+    @NotBlank(message = "必须不为为null  只能作用于字符串  不能为空字符串")
     private String notBlank;
+
+    @NotEmpty(message = "必须不为null  作用于字符串或者集合   但不可以是空字符串 或者空集合")
+    private List<String> listIsNotEmpty;
+
 
 
 //    @DecimalMin(value = " 1.01", message = "最小值为1")
