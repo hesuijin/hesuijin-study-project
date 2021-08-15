@@ -11,6 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>important-code-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>important-code-demo</name>
     <description>important-code-demo project for Spring Boot</description>
     <properties>
@@ -32,6 +33,7 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.68</version>
         </dependency>
+
         <!--        SpringBoot的Test启动类-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
