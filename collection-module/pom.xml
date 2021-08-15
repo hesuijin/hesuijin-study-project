@@ -15,6 +15,11 @@
     <description>Collection-Module project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
+        <!--跳过单元测试-->
+        <maven.test.skip>true</maven.test.skip>
+        <!-- 跳过文档编译-->
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+
     </properties>
     <dependencies>
         <dependency>
@@ -55,13 +60,32 @@
     </dependencies>
 
 
+<!--    <build>-->
+<!--        <plugins>-->
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--            </plugin>-->
+<!--        </plugins>-->
+<!--    </build>-->
+
     <build>
         <plugins>
+            <!--            <plugin>-->
+            <!--                <groupId>org.springframework.boot</groupId>-->
+            <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+            <!--            </plugin>-->
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
 
 </project>
