@@ -2,8 +2,9 @@ package com.example.demo.excel;
 
 import com.example.demo.excel.xssWorkBookNew.Student;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,13 +43,17 @@ public class ExcelSXSSFWorkbook2007Test {
 
         SXSSFWorkbook workbook = new SXSSFWorkbook(1000);
         Sheet sheet = workbook.createSheet("我是sheet名称");
+
+        CellStyle cellStyle =  workbook.createCellStyle();
+        DataFormat dataFormat  = workbook.createDataFormat();
+
         FileOutputStream fileOutputStream = null;
         fileDir = "V:/" +"SXSSFWorkbook 2007导出"+".xlsx";
 
         try {
             File xlsFile =new File(fileDir);
             fileOutputStream = new FileOutputStream(xlsFile);
-            getDetailExcel(sheet);
+            getDetailExcel(sheet,cellStyle,dataFormat);
             workbook.write(fileOutputStream);
         }catch (Exception e){
            log.error(e.getMessage());
@@ -59,11 +64,12 @@ public class ExcelSXSSFWorkbook2007Test {
         }
     }
 
-    private static void getDetailExcel(Sheet sheet){
+    private static void getDetailExcel(Sheet sheet, CellStyle cellStyle,DataFormat dataFormat){
         Student student1 = new Student();
         student1.setId(1L);
         student1.setName("hsj");
         student1.setAge(18);
+        student1.setDoubleMoney(999999999999.99d);
 
         Student student2 = new Student();
         student2.setId(2L);
@@ -74,7 +80,7 @@ public class ExcelSXSSFWorkbook2007Test {
         studentList.add(student1);
         studentList.add(student2);
 
-        String string = "id,name,age";
+        String string = "id,name,age,double";
         String[] strings = string.split(",");
         Row row;
         row = sheet.createRow(0);
@@ -82,6 +88,9 @@ public class ExcelSXSSFWorkbook2007Test {
         for (int j = 0; j < strings.length; j++) {
             row.createCell(j).setCellValue(strings[j]);
         }
+
+
+        cellStyle.setDataFormat(dataFormat.getFormat("#,##0.00"));
 
         int i = 0;
         Student dto =  studentList.get(0);
@@ -95,7 +104,7 @@ public class ExcelSXSSFWorkbook2007Test {
 //        1048575（一个sheet可以）
 //        1048576（一个sheet 不行）
 
-            for (i = 0 ;i<1048577;i++){
+            for (i = 0 ;i<5;i++){
 //              for (i = 0 ;i<655370;i++){
 //            for (Student dto : studentList) {
 //                i += 1;
@@ -118,6 +127,13 @@ public class ExcelSXSSFWorkbook2007Test {
                     row.createCell(2).setCellValue(dto.getAge());
                 } else {
                     row.createCell(2).setCellValue("");
+                }
+                if (null != dto.getDoubleMoney()) {
+                    Cell cell = row.createCell(4);
+                    cell.setCellStyle(cellStyle);
+                    cell.setCellValue(dto.getDoubleMoney());
+                } else {
+                    row.createCell(4).setCellValue("");
                 }
             }
         }
