@@ -28,6 +28,7 @@ public class RedisDistributedLockJunit {
 
     @Test
     public void redisLockTest() {
+        boolean isLock = false;
 
         RedisConnection connection = null;
         connection = redisTemplate.getConnectionFactory().getConnection();
@@ -35,19 +36,25 @@ public class RedisDistributedLockJunit {
         String key = "member:name:HSJ";
         byte[] content ="content".getBytes();
 
-        //关键点1：如果该key已经存在 则返回false  同时不会修改其内容
-       boolean isExist =  connection.setNX(key.getBytes(), content);
-       System.out.println("是否已经存在:"+isExist);
+        //关键点1：connection.setNX(key.getBytes(), content);
+        // 判断该key是否不存在  如果不存在则返回为true(同时新增key value) 存在则返回为false
+        // 如果存在也不会修改其内容
+       boolean isNotExist = connection.setNX(key.getBytes(), content);
+       System.out.println("是否不存在:"+isNotExist);
 
         //注意保证使用的key是存在的
         //redisTemplate.expire(key,timeout,timeunit);
         //参数说明  key 需要设置的key  timeout：key的生存时间  timeuint：时间单位（小时，分钟，秒……）
         //TimeUnit.MILLISECONDS 是毫秒
 
-        // 关键点2：重置过期时间
-        redisTemplate.expire(key, 15000L, TimeUnit.MILLISECONDS);
-
-        //获取过期时间
-        System.out.println("获取过期时间:"+redisTemplate.getExpire(key));
+        //如果该key的锁不存在 才能进行加锁
+        if(isNotExist){
+            // 关键点2：重置过期时间
+            redisTemplate.expire(key, 15000L, TimeUnit.MILLISECONDS);
+            //获取过期时间
+            System.out.println("获取过期时间:"+redisTemplate.getExpire(key));
+            //成功加锁
+            isLock = true;
+        }
     }
 }

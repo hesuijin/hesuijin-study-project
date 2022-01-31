@@ -65,9 +65,9 @@ public class RedisDistributedLockComponent {
                 //超过时间则添加锁失败
                 do {
                     //原子性 SET if Not Exists
+                    //如果不存在 才能进行加锁
                     if (connection.setNX(key.getBytes(), content)) {
                         //设置该key对应的锁超时时间
-
                         stringRedisTemplate.expire(key, lockTimeOut, TimeUnit.MILLISECONDS);
                         //设置锁为true
                         lock = true;
