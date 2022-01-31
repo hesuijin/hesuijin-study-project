@@ -61,17 +61,6 @@ public class RedisBoundJunit {
         System.out.println(boundHashOperations.get("hashKey1"));
         System.out.println(boundHashOperations.get("hashKey2"));
         System.out.println(boundHashOperations.get("hashKey3"));
-
-        System.out.println("keys"+boundHashOperations.keys());
-        System.out.println("values"+boundHashOperations.values());
-        System.out.println("entries"+boundHashOperations.entries());
     }
 
-    /**
-     * redisTemplate的删除操作非常方便
-     */
-    @Test
-    public void redisTemplate(){
-        redisTemplate.delete("hash");
-    }
 }
