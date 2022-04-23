@@ -84,7 +84,7 @@ public class PrivateMethodClassImplTest {
         //调用无参私有方法 privateMethodVoid
         ReflectionTestUtils.invokeMethod(privateMethodClass, "privateMethodVoid");
 
-        //调用无参私有方法 privateMethodString
+        //调用有参私有方法 privateMethodString
         String privateMethodStringReturn = ReflectionTestUtils.invokeMethod(privateMethodClass, "privateMethodString", "string");
         log.info("privateMethodStringReturn返回:{}", privateMethodStringReturn);
 
