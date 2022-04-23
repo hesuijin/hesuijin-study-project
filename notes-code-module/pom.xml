@@ -34,8 +34,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-
         <!--        引入lombok 使用@Data注解  使用@Slf4j注解-->
         <dependency>
             <groupId>org.projectlombok</groupId>
