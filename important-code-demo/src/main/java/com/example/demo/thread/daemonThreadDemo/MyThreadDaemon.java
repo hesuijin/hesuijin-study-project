@@ -15,6 +15,7 @@ public class MyThreadDaemon extends Thread{
 
     @Override
     public void run() {
+        //注意张羽线程如果不设置为守护线程，那么将永远结束不了。
         while(true){
             System.out.println(Thread.currentThread().getName() + ":" + "我是新线程啊");
 

@@ -31,8 +31,8 @@ public class ThreadDaemonDemo {
         myThreadDaemon.setDaemon(true);
         //myThreadDaemon.setDaemon(false);
 
+        //当刘备线程执行完后，张羽线程不管是否执行完都会自动结束。
         myThreadDaemon.start();
-
         for (int i = 0; i < 10; i++) {
             System.out.println(Thread.currentThread().getName() + ":" + i);
             try {
