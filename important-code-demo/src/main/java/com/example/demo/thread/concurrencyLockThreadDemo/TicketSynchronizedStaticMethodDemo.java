@@ -8,11 +8,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @Author HeSuiJin
  * @Date 2021/4/3
  */
-public class TicketSynchronizedMethodDemo implements Runnable{
+public class TicketSynchronizedStaticMethodDemo implements Runnable{
 
-    private int ticket = 100;
+    private static int ticket = 100;
 
-    private AtomicInteger sellTicketCount = new AtomicInteger(0);
+    private static AtomicInteger sellTicketCount = new AtomicInteger(0);
 
     /**
      * 执行卖票操作
@@ -27,9 +27,9 @@ public class TicketSynchronizedMethodDemo implements Runnable{
 
     }
 
-    //同步方法锁
-    //隐含锁对象 谁调用该方法 就是该对象（this） 作为锁
-    public synchronized void sellTicket(){
+    //同步静态方法锁
+    //给当前类方法加锁，会作用于类的所有对象实例
+    public static synchronized void sellTicket(){
         if (ticket > 0) {
             // 有票 可以卖
             // 出票操作

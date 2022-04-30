@@ -9,14 +9,14 @@ import java.util.concurrent.locks.ReentrantLock;
  * @Author HeSuiJin
  * @Date 2021/4/3
  */
-public class TicketLockDemo implements Runnable {
+public class TicketReentrantLockDemo implements Runnable {
 
     private int ticket = 100;
 
     private AtomicInteger sellTicketCount = new AtomicInteger(0);
 
     //    Lock锁也称同步锁，加锁与释放锁简单化了
-    Lock lock = new ReentrantLock();
+    Lock reentrantLock = new ReentrantLock();
 
     /**
      * 执行卖票操作
@@ -26,7 +26,7 @@ public class TicketLockDemo implements Runnable {
 //      每个窗口卖票的操作
 //      窗口 永远开启
         while (true) {
-            lock.lock();
+            reentrantLock.lock();
             try {
                 if (ticket > 0) {
                     // 有票 可以卖
@@ -47,7 +47,7 @@ public class TicketLockDemo implements Runnable {
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                lock.unlock();
+                reentrantLock.unlock();
             }
         }
 

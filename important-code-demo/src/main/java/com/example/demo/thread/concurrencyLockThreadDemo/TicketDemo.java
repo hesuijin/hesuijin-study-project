@@ -1,12 +1,6 @@
 package com.example.demo.thread.concurrencyLockThreadDemo;
 
 
-
-
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 /**
  * @Description:
  * @Author HeSuiJin
@@ -20,10 +14,13 @@ public class TicketDemo {
 
         //同步代码块
         TicketSynchronizedBlockDemo ticket = new TicketSynchronizedBlockDemo();
-        //同步方法锁
-//        TicketSynchronizedMethodDemo ticket = new TicketSynchronizedMethodDemo();
-        //同步锁
-//        TicketLockDemo ticket = new TicketLockDemo();
+        //同步实例方法锁
+//        TicketSynchronizedInstanceMethodDemo ticket = new TicketSynchronizedInstanceMethodDemo();
+        //同步静态方法锁
+//        TicketSynchronizedStaticMethodDemo ticket = new TicketSynchronizedStaticMethodDemo();
+
+        //同步可重入锁
+//        TicketReentrantLockDemo ticket = new TicketReentrantLockDemo();
 
 //     创建两个个窗口对象
         Thread t1 = new Thread(ticket, "窗口1");
