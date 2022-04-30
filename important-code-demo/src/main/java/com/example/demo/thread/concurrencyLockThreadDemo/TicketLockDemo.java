@@ -1,5 +1,6 @@
 package com.example.demo.thread.concurrencyLockThreadDemo;
 
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -11,6 +12,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TicketLockDemo implements Runnable {
 
     private int ticket = 100;
+
+    private AtomicInteger sellTicketCount = new AtomicInteger(0);
 
     //    Lock锁也称同步锁，加锁与释放锁简单化了
     Lock lock = new ReentrantLock();
@@ -38,6 +41,7 @@ public class TicketLockDemo implements Runnable {
                     // 获取当前线程对象的名字
                     String name = Thread.currentThread().getName();
                     System.out.println(name + "正在卖:" + ticket--);
+                    System.out.println("现在一共卖了:" +  sellTicketCount.incrementAndGet());
                 }
 
             } catch (Exception e) {

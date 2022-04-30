@@ -1,5 +1,7 @@
 package com.example.demo.thread.concurrencyLockThreadDemo;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @Description:
  * 同步代码块
@@ -9,6 +11,8 @@ package com.example.demo.thread.concurrencyLockThreadDemo;
 public class TicketSynchronizedBlockDemo implements Runnable  {
 
     private int ticket = 100;
+
+    private AtomicInteger sellTicketCount = new AtomicInteger(0);
 
     Object lock = new Object();
 
@@ -28,13 +32,14 @@ public class TicketSynchronizedBlockDemo implements Runnable  {
                     // 使用sleep模拟一下出票时间
                     try {
                         //Sleep 的 1000（1秒）与 100（0.1秒）哪个重复的可能性比较大
-                        Thread.sleep(100);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                     // 获取当前线程对象的名字
                     String name = Thread.currentThread().getName();
                     System.out.println(name + "正在卖:" + ticket--);
+                    System.out.println("现在一共卖了:" +  sellTicketCount.incrementAndGet());
                 }
             }
         }

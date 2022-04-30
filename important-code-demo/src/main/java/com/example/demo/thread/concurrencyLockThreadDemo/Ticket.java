@@ -1,5 +1,7 @@
 package com.example.demo.thread.concurrencyLockThreadDemo;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @Description:
  * @Author HeSuiJin
@@ -9,6 +11,7 @@ public class Ticket implements Runnable{
 
     private int ticket = 100;
 
+    private AtomicInteger  sellTicketCount = new AtomicInteger(0);
     /**
      * 执行卖票操作
      */
@@ -30,6 +33,8 @@ public class Ticket implements Runnable{
                 // 获取当前线程对象的名字
                 String name = Thread.currentThread().getName();
                 System.out.println(name + "正在卖:" + ticket--);
+                System.out.println("现在一共卖了:" +  sellTicketCount.incrementAndGet());
+
             }
         }
     }
