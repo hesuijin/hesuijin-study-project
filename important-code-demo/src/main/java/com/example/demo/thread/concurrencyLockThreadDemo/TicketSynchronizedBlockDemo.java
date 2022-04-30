@@ -11,9 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TicketSynchronizedBlockDemo implements Runnable  {
 
     private int ticket = 100;
-
     private AtomicInteger sellTicketCount = new AtomicInteger(0);
-
     Object lock = new Object();
 
     /**
@@ -24,7 +22,7 @@ public class TicketSynchronizedBlockDemo implements Runnable  {
 //      每个窗口卖票的操作
 //      窗口 永远开启
         while (true) {
-            //同步代码块
+            //同步代码块（锁对象）
             synchronized (lock) {
                 if (ticket > 0) {
                     // 有票 可以卖

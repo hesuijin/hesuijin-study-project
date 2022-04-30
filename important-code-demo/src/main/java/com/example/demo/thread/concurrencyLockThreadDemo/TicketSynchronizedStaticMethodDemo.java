@@ -4,14 +4,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Description:
- * 同步方法锁
+ * 同步静态方法锁
  * @Author HeSuiJin
  * @Date 2021/4/3
  */
 public class TicketSynchronizedStaticMethodDemo implements Runnable{
 
     private static int ticket = 100;
-
     private static AtomicInteger sellTicketCount = new AtomicInteger(0);
 
     /**
@@ -24,7 +23,6 @@ public class TicketSynchronizedStaticMethodDemo implements Runnable{
         while (true) {
             sellTicket();
         }
-
     }
 
     //同步静态方法锁
