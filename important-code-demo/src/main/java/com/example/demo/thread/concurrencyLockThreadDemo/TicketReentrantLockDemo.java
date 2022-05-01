@@ -12,10 +12,8 @@ import java.util.concurrent.locks.ReentrantLock;
 public class TicketReentrantLockDemo implements Runnable {
 
     private int ticket = 100;
-
     private AtomicInteger sellTicketCount = new AtomicInteger(0);
-
-    //    Lock锁也称同步锁，加锁与释放锁简单化了
+    //    ReentrantLock锁也称同步锁，加锁与释放锁简单化了
     Lock reentrantLock = new ReentrantLock();
 
     /**
@@ -50,6 +48,5 @@ public class TicketReentrantLockDemo implements Runnable {
                 reentrantLock.unlock();
             }
         }
-
     }
 }
