@@ -16,8 +16,8 @@ package com.example.demo.thread.stateThreadDemo;
 public class StateThreadDemo {
 
     public static void main(String[] args) {
-        threadState();
-//        deadLock();
+//        threadState();
+        deadLock();
     }
 
 
@@ -77,33 +77,41 @@ public class StateThreadDemo {
         }, "唤醒线程").start();
     }
 
+    private static Object resource1 = new Object();//资源 1
+    private static Object resource2 = new Object();//资源 2
+
     /**
      * 死锁测试
      */
     private static void deadLock() {
-        Object objA = new Object();
-        Object objB = new Object();
-
         new Thread(() -> {
-            while (true) {
-                synchronized (objA) {
-                    //线程一
-                    synchronized (objB) {
-                        System.out.println("小何同学正在走路");
-                    }
+            synchronized (resource1) {
+                System.out.println(Thread.currentThread() + "get resource1");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "waiting get resource2");
+                synchronized (resource2) {
+                    System.out.println(Thread.currentThread() + "get resource2");
                 }
             }
-        }).start();
+        }, "线程 1").start();
 
         new Thread(() -> {
-            while (true) {
-                synchronized (objB) {
-                    //线程二
-                    synchronized (objA) {
-                        System.out.println("小张同学正在走路");
-                    }
+            synchronized (resource2) {
+                System.out.println(Thread.currentThread() + "get resource2");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(Thread.currentThread() + "waiting get resource1");
+                synchronized (resource1) {
+                    System.out.println(Thread.currentThread() + "get resource1");
                 }
             }
-        }).start();
+        }, "线程 2").start();
     }
 }
