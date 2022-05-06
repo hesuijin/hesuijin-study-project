@@ -1,17 +1,17 @@
-package com.example.demo.thread.concurrencyLockThreadDemo;
+package com.example.demo.thread.concurrencyLockThreadDemo.ticketSynchronized;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @Description:
- * 同步静态方法锁
+ * 同步实例方法锁
  * @Author HeSuiJin
  * @Date 2021/4/3
  */
-public class TicketSynchronizedStaticMethodDemo implements Runnable{
+public class TicketSynchronizedInstanceMethodDemo implements Runnable{
 
-    private static int ticket = 100;
-    private static AtomicInteger sellTicketCount = new AtomicInteger(0);
+    private int ticket = 100;
+    private AtomicInteger sellTicketCount = new AtomicInteger(0);
 
     /**
      * 执行卖票操作
@@ -25,9 +25,9 @@ public class TicketSynchronizedStaticMethodDemo implements Runnable{
         }
     }
 
-    //同步静态方法锁
-    //给当前类方法加锁，会作用于类的所有对象实例
-    public static synchronized void sellTicket(){
+    //同步实例方法锁
+    //隐含锁对象 谁调用该方法 就是该对象（this） 作为锁
+    public synchronized void sellTicket(){
         if (ticket > 0) {
             // 有票 可以卖
             // 出票操作

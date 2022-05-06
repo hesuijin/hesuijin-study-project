@@ -1,4 +1,4 @@
-package com.example.demo.thread.concurrencyLockThreadDemo;
+package com.example.demo.thread.concurrencyLockThreadDemo.ticketSynchronized;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

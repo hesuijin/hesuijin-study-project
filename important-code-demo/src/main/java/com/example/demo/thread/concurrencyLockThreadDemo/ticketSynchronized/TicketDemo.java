@@ -1,4 +1,4 @@
-package com.example.demo.thread.concurrencyLockThreadDemo;
+package com.example.demo.thread.concurrencyLockThreadDemo.ticketSynchronized;
 
 
 /**
@@ -18,9 +18,6 @@ public class TicketDemo {
 //        TicketSynchronizedInstanceMethodDemo ticket = new TicketSynchronizedInstanceMethodDemo();
         //同步静态方法锁
 //        TicketSynchronizedStaticMethodDemo ticket = new TicketSynchronizedStaticMethodDemo();
-
-        //同步可重入锁
-//        TicketReentrantLockDemo ticket = new TicketReentrantLockDemo();
 
 //     创建两个个窗口对象
         Thread t1 = new Thread(ticket, "窗口1");

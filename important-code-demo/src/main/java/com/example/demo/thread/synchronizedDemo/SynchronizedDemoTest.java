@@ -1,7 +1,5 @@
 package com.example.demo.thread.synchronizedDemo;
 
-import com.example.demo.thread.concurrencyLockThreadDemo.TicketSynchronizedBlockDemo;
-
 /**
  * @Description:
  * @Author HeSuiJin
