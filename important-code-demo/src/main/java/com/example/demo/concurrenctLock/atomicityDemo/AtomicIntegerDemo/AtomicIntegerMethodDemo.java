@@ -3,16 +3,14 @@ package com.example.demo.concurrenctLock.atomicityDemo.AtomicIntegerDemo;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @Description:
- * AtomicInteger 的常见用法
- *
- *
+ * @Description: AtomicInteger 的常见用法
+ * <p>
+ * <p>
  * java从JDK1.5开始提供了java.util.concurrent.atomic包(简称Atomic包)，
  * 这个包中的原子操作类提供了一种用法简单，性能高效，线程安全地更新一个变量的方式
  * * Atomic包里一共提供了13个类，属于4种类型的原子更新方式
  * 分别是原子更新基本类型、原子更新数组、原子更新引用和原子更新属性(字段)
  * 使用原子的方式更新基本类型
- *
  * @Author HeSuiJin
  * @Date 2021/4/4
  */
@@ -39,17 +37,33 @@ public class AtomicIntegerMethodDemo {
         System.out.println(incrementAndGet);
         System.out.println(ac3.get());
 
-        //以原子方式将参数与对象中的值相加，并返回结果。
+        //以原子方式将参数与对象中的值相加，并返回相加后的结果。
         AtomicInteger ac4 = new AtomicInteger(10);
         int i = ac4.addAndGet(20);
         System.out.println(i);
         System.out.println(ac4.get());
 
-        //以原子方式设置为newValue的值，并返回旧值。
-        AtomicInteger ac5 = new AtomicInteger(100);
-        int andSet = ac5.getAndSet(20);
-        System.out.println(andSet);
+        //以原子方式将参数与对象中的值相加，并返回旧值。
+        AtomicInteger ac5 = new AtomicInteger(10);
+        int getAdd = ac5.getAndAdd(20);
+        System.out.println(getAdd);
         System.out.println(ac5.get());
+
+        //以原子方式设置为newValue的值，并返回旧值。
+        AtomicInteger ac6 = new AtomicInteger(100);
+        int andSet = ac6.getAndSet(20);
+        System.out.println(andSet);
+        System.out.println(ac6.get());
+
+
+        //如果输入的数值等于预期值，则以原子方式将该值设置为输入值（update）
+        //boolean compareAndSet(int expect, int update)
+        AtomicInteger ac7 = new AtomicInteger(100);
+        if (ac7.compareAndSet(100, 200)) {
+            System.out.println(ac7.get());
+        } else {
+            System.out.println(ac7.get());
+        }
     }
 
 }
