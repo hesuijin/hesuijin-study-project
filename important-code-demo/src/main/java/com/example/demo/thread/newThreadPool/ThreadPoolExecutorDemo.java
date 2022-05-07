@@ -10,37 +10,39 @@ import java.util.concurrent.*;
 public class ThreadPoolExecutorDemo {
 
     public static void main(String[] args) {
-        //尝试创建一个标准的线程池
+        //一个标准的线程池(存放Runnable线程)
         threadPoolExecutorDemo();
+        //一个标准的线程池(存放Callable线程)
+        threadSubmitCallableDemo();
 
 //       核心线程数量为1 ， 最大线程池数量为3, 任务容器的容量为1 ,
 //     空闲线程（即大于核心线程数的线程）的最大存在时间为20s   然后运行5个任务
-        Integer RejectedPolicy = 3;
-        switch (RejectedPolicy) {
-            case 1:
-                //丢弃任务并抛出RejectedExecutionException异常。是默认的策略。
-                abortPolicyDemo();
-                break;
-            case 2:
-                // 丢弃任务，但是不抛出异常 这是不推荐的做法。
-                discardPolicyDemo();
-                break;
-            case 3:
-                //  抛弃队列中等待最久的任务 然后把当前任务加入队列中
-                discardOldestPolicyDemo();
-                break;
-            case 4:
-                // 丢调用任务的run()方法绕过线程池直接执行  (谁调用 则使用谁的线程)
-                callerRunsPolicyDemo();
-                break;
-            default:
-                break;
-        }
+//        Integer RejectedPolicy = 3;
+//        switch (RejectedPolicy) {
+//            case 1:
+//                //丢弃任务并抛出RejectedExecutionException异常。是默认的策略。
+//                abortPolicyDemo();
+//                break;
+//            case 2:
+//                // 丢弃任务，但是不抛出异常 这是不推荐的做法。
+//                discardPolicyDemo();
+//                break;
+//            case 3:
+//                //  抛弃队列中等待最久的任务 然后把当前任务加入队列中
+//                discardOldestPolicyDemo();
+//                break;
+//            case 4:
+//                // 丢调用任务的run()方法绕过线程池直接执行  (谁调用 则使用谁的线程)
+//                callerRunsPolicyDemo();
+//                break;
+//            default:
+//                break;
+//        }
 
     }
 
     /**
-     * 一个标准的线程池
+     * 一个标准的线程池(存放Runnable线程)
      */
     private static void threadPoolExecutorDemo() {
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 5, 2, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
@@ -53,6 +55,29 @@ public class ThreadPoolExecutorDemo {
         threadPoolExecutor.shutdown();
     }
 
+    /**
+     * 一个标准的线程池(存放Callable线程)
+     */
+    private static void threadSubmitCallableDemo() {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 5, 2, TimeUnit.SECONDS, new ArrayBlockingQueue<>(10), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+        //使用一个实现Callable接口的类重写方法
+        Future future = threadPoolExecutor.submit(new ThreadPoolSubmitCallable());
+
+        // submit + Callable 的方式可以获取到线程池的响应结果 future
+        try {
+            System.out.println("threadPoolExecutor.submit 获取Callable的响应结果："+future.get());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        //使用内部类重写方法
+        threadPoolExecutor.submit(()->{
+            System.out.println(Thread.currentThread().getName() + "---->> 使用匿名内部类 重写方法");
+        });
+        threadPoolExecutor.shutdown();
+    }
 
     /**
      * 丢弃任务并抛出RejectedExecutionException异常。是默认的策略。

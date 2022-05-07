@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class LockInterruptiblyDemo {
 
-    private static Lock reentrantLock = new ReentrantLock();
+    private  static ReentrantLock reentrantLock = new ReentrantLock();
 
     public static void main(String[] args) {
         //主线程开始上锁
@@ -37,7 +37,7 @@ public class LockInterruptiblyDemo {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(Thread.currentThread().getName() + "是否持有锁:" + reentrantLock.tryLock());
+        System.out.println(Thread.currentThread().getName() + "是否持有锁:" + reentrantLock.isLocked());
         //主线程开始解锁
         reentrantLock.unlock();
         System.out.println(Thread.currentThread().getName() + "主线程结束,并且释放锁！");
@@ -59,8 +59,8 @@ public class LockInterruptiblyDemo {
         } finally {
             //注意 需要如果获取到锁  最后一定要释放锁
             //如果线程没有获取到锁就直接释放  会报IllegalMonitorStateException异常
-            System.out.println(Thread.currentThread().getName() + "是否持有锁:" + reentrantLock.tryLock());
-            if (reentrantLock.tryLock()) {
+            System.out.println(Thread.currentThread().getName() + "是否持有锁:" + reentrantLock.isLocked());
+            if (reentrantLock.isLocked()) {
                 reentrantLock.unlock();
             }
         }
