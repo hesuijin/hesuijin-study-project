@@ -64,12 +64,11 @@ public class ControllerJunitImpl {
     public void publicMethodTest1() throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test1")
 //                请求格式 默认JSON
-//                        .contentType(MediaType.APPLICATION_JSON_UTF8)
-//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED) //表单
+//                        .contentType(MediaType.APPLICATION_JSON_UTF8)   //JSON
 //                返回格式  默认JSON
 //                        .accept(MediaType.APPLICATION_JSON_UTF8)
                         .session(session)
-
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(MockMvcResultHandlers.print());
@@ -134,6 +133,7 @@ public class ControllerJunitImpl {
         String result = mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test4")
                 //设置请求数据类型为 FROM 表单
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                //设置返回格式为JSON
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .session(session)
 
@@ -165,9 +165,9 @@ public class ControllerJunitImpl {
         String result = mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test5")
                 //设置请求数据类型为 JSON
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
+                //设置返回格式为JSON
                 .accept(MediaType.APPLICATION_JSON_UTF8)
                 .session(session)
-
                 .content(requestString)
         )
                 .andExpect(MockMvcResultMatchers.status().isOk())
