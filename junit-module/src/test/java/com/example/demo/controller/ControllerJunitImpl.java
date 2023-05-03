@@ -25,8 +25,6 @@ import org.springframework.web.context.WebApplicationContext;
 /**
  * @Description:
  *
- * JSONAssert????
- *
  * http://tengj.top/categories/Spring-Boot%E5%B9%B2%E8%B4%A7%E7%B3%BB%E5%88%97/
  * https://zhuanlan.zhihu.com/p/98074553
  * https://juejin.cn/post/6844904179731791879
@@ -42,6 +40,7 @@ public class ControllerJunitImpl {
 
     @Autowired
     private WebApplicationContext wac;
+
     private MockMvc mvc;
     private MockHttpSession session;
 
