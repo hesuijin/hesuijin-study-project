@@ -41,14 +41,13 @@ public class ControllerJunit {
 
 
     /**
-     * 模拟表单请求
+     * 设置响应
      * @param
      * @return
      */
     @RequestMapping(value = "test3")
     @ResponseBody
     public Result controllerTest3(){
-
         UpdateMemberResponse updateMemberResponse = new UpdateMemberResponse();
         updateMemberResponse.setId(1L);
         updateMemberResponse.setName("HeSuiJin");
@@ -62,14 +61,14 @@ public class ControllerJunit {
     }
 
     /**
-     * 模拟表单请求
+     * 模拟JSON请求
      * @param updateMemberRequest
      * @return
      */
     @RequestMapping(value = "test4",method = RequestMethod.POST)
     @ResponseBody
-    public UpdateMemberResponse controllerTest4(UpdateMemberRequest updateMemberRequest){
-        log.info("我是  表单格式 的入参啊：{}", JSONObject.toJSONString(updateMemberRequest.toString()));
+    public UpdateMemberResponse controllerTest4(@RequestBody UpdateMemberRequest updateMemberRequest){
+        log.info("我是@RequestBody  JSON格式 的入参啊：{}", JSONObject.toJSONString(updateMemberRequest.toString()));
         UpdateMemberResponse updateMemberResponse = new UpdateMemberResponse();
         updateMemberResponse.setId(1L);
         updateMemberResponse.setName("HeSuiJin");
@@ -78,18 +77,19 @@ public class ControllerJunit {
     }
 
     /**
-     * 模拟JSON请求
+     * 模拟表单请求
      * @param updateMemberRequest
      * @return
      */
     @RequestMapping(value = "test5",method = RequestMethod.POST)
     @ResponseBody
-    public UpdateMemberResponse controllerTest5(@RequestBody UpdateMemberRequest updateMemberRequest){
-        log.info("我是@RequestBody  JSON格式 的入参啊：{}", JSONObject.toJSONString(updateMemberRequest.toString()));
+    public UpdateMemberResponse controllerTest5(UpdateMemberRequest updateMemberRequest){
+        log.info("我是  表单格式 的入参啊：{}", JSONObject.toJSONString(updateMemberRequest.toString()));
         UpdateMemberResponse updateMemberResponse = new UpdateMemberResponse();
         updateMemberResponse.setId(1L);
         updateMemberResponse.setName("HeSuiJin");
         updateMemberResponse.setAge(updateMemberRequest.getAge()+10);
         return updateMemberResponse;
     }
+
 }

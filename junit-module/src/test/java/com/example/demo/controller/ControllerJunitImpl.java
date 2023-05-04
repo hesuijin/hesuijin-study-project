@@ -5,6 +5,8 @@ import com.example.demo.base.request.UpdateMemberRequest;
 import com.example.demo.base.response.UpdateMemberResponse;
 import com.example.demo.result.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONString;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -62,8 +64,9 @@ public class ControllerJunitImpl {
     @Test
     public void publicMethodTest1() throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test1")
+//                注意：有可能随着版本的变化，默认值发生改变，因此建议指定.
 //                请求格式 默认JSON
-//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED) //表单
+//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED) //表单 FORM
 //                        .contentType(MediaType.APPLICATION_JSON_UTF8)   //JSON
 //                返回格式  默认JSON
 //                        .accept(MediaType.APPLICATION_JSON_UTF8)
@@ -100,7 +103,6 @@ public class ControllerJunitImpl {
      */
     @Test
     public void publicMethodTest3() throws Exception {
-
         String resultString = mvc.perform(MockMvcRequestBuilders.get("/controllerJunit/test3")
                 .session(session)
         )
@@ -121,6 +123,35 @@ public class ControllerJunitImpl {
         log.info("模拟请求数据为JSON格式  打印返回结果：{}", JSONObject.toJSONString(result));
     }
 
+    /**
+     * 模拟请求数据为JSON格式
+     *
+     * @throws Exception
+     */
+    @Test
+    public void publicMethodTest4() throws Exception {
+        UpdateMemberRequest updateMemberRequest = new UpdateMemberRequest();
+        updateMemberRequest.setId(0L);
+        updateMemberRequest.setName("River");
+        updateMemberRequest.setAge(100);
+        String requestString = JSONObject.toJSONString(updateMemberRequest);
+
+        String result = mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test4")
+                //设置请求数据类型为 JSON
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                //设置返回格式为JSON
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .session(session)
+                .content(requestString)
+        )
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andReturn().getResponse().getContentAsString();
+
+        UpdateMemberResponse updateMemberResponse = JSONObject.parseObject(result, UpdateMemberResponse.class);
+        log.info("模拟请求数据为JSON格式  打印返回结果：{}", JSONObject.toJSONString(updateMemberResponse));
+    }
+
 
     /**
      * 模拟请求数据为表单格式
@@ -128,8 +159,8 @@ public class ControllerJunitImpl {
      * @throws Exception
      */
     @Test
-    public void publicMethodTest4() throws Exception {
-        String result = mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test4")
+    public void publicMethodTest5() throws Exception {
+        String result = mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test5")
                 //设置请求数据类型为 FROM 表单
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
                 //设置返回格式为JSON
@@ -148,33 +179,9 @@ public class ControllerJunitImpl {
         log.info("模拟请求数据为表单格式 打印返回结果：{}", JSONObject.toJSONString(updateMemberResponse));
     }
 
-    /**
-     * 模拟请求数据为JSON格式
-     *
-     * @throws Exception
-     */
-    @Test
-    public void publicMethodTest5() throws Exception {
-        UpdateMemberRequest updateMemberRequest = new UpdateMemberRequest();
-        updateMemberRequest.setId(0L);
-        updateMemberRequest.setName("HSJ");
-        updateMemberRequest.setAge(100);
-        String requestString = JSONObject.toJSONString(updateMemberRequest);
-
-        String result = mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test5")
-                //设置请求数据类型为 JSON
-                .contentType(MediaType.APPLICATION_JSON_UTF8)
-                //设置返回格式为JSON
-                .accept(MediaType.APPLICATION_JSON_UTF8)
-                .session(session)
-                .content(requestString)
-        )
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print())
-                .andReturn().getResponse().getContentAsString();
-
-        UpdateMemberResponse updateMemberResponse = JSONObject.parseObject(result, UpdateMemberResponse.class);
-        log.info("模拟请求数据为JSON格式  打印返回结果：{}", JSONObject.toJSONString(updateMemberResponse));
+    //每个@Test执行完后会重新执行
+    @After
+    public void endTest() {
+        log.info("单元测试结束");
     }
-
 }
