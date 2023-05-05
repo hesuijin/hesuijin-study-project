@@ -4,3 +4,6 @@ spring:
     username: hesuijin
     password : Hsj123456
     driver-class-name: oracle.jdbc.driver.OracleDriver
+
+mybatis:
+  mapper-locations: mapper/oracle/**/*.xml,classpath:mapper/oracle/*.xml

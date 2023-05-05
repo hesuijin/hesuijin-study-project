@@ -4,13 +4,13 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.demo.base.request.UpdateMemberRequest;
 import com.example.demo.base.response.UpdateMemberResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.util.ReflectionTestUtils;
-
 import java.lang.reflect.Method;
 
 /**
@@ -27,14 +27,14 @@ public class PrivateMethodClassImplTest {
     private PrivateMethodClass privateMethodClass;
 
     /**
-     * 测试共有方法
+     * 测试公共方法
      */
     @Test
     public void publicMethodTest() {
         UpdateMemberRequest updateMemberRequest = new UpdateMemberRequest();
         updateMemberRequest.setId(0L);
         updateMemberRequest.setName("HSJ");
-        updateMemberRequest.setAge(100);
+        updateMemberRequest.setAge("18");
         UpdateMemberResponse updateMemberResponse = privateMethodClass.publicMethodUpdateMember(updateMemberRequest);
         log.info("publicMethodTest返回：{}", JSONObject.toJSONString(updateMemberResponse));
     }
@@ -53,7 +53,7 @@ public class PrivateMethodClassImplTest {
         UpdateMemberRequest updateMemberRequest = new UpdateMemberRequest();
         updateMemberRequest.setId(0L);
         updateMemberRequest.setName("HSJ");
-        updateMemberRequest.setAge(100);
+        updateMemberRequest.setAge("18");
 
         //3：获取方法
         Method publicMethodUpdateMember = clazz.getMethod("publicMethodUpdateMember", UpdateMemberRequest.class);
@@ -100,8 +100,9 @@ public class PrivateMethodClassImplTest {
         UpdateMemberRequest updateMemberRequest = new UpdateMemberRequest();
         updateMemberRequest.setId(0L);
         updateMemberRequest.setName("HSJ");
-        updateMemberRequest.setAge(100);
+        updateMemberRequest.setAge("18");
         UpdateMemberResponse updateMemberResponse = ReflectionTestUtils.invokeMethod(privateMethodClass, "privateMethodUpdateMember", updateMemberRequest);
+
         log.info("updateMemberResponse返回：{}", JSONObject.toJSONString(updateMemberResponse));
     }
 

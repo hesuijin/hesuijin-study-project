@@ -39,11 +39,20 @@
             <artifactId>druid</artifactId>
             <version>1.1.6</version>
         </dependency>
+
+        <!--  设置orcale兼容字符集-->
         <dependency>
             <groupId>com.oracle.ojdbc</groupId>
             <artifactId>ojdbc8</artifactId>
             <scope>11.2.0.3</scope>
         </dependency>
+
+        <dependency>
+        <groupId>cn.easyproject</groupId>
+        <artifactId>orai18n</artifactId>
+        <version>12.1.0.2.0</version>
+         </dependency>
+
 
 
         <!--        引入lombok 使用@Data注解  使用@Slf4j注解-->
@@ -76,6 +85,12 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>database-module</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

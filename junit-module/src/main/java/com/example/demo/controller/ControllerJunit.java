@@ -51,7 +51,7 @@ public class ControllerJunit {
         UpdateMemberResponse updateMemberResponse = new UpdateMemberResponse();
         updateMemberResponse.setId(1L);
         updateMemberResponse.setName("HeSuiJin");
-        updateMemberResponse.setAge(18);
+        updateMemberResponse.setAge("18");
 
         Result result = new Result();
         result.setMsg("Success");

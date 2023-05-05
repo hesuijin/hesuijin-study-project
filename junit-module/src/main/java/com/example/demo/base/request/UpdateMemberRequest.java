@@ -14,6 +14,6 @@ public class UpdateMemberRequest {
 
     private String name;
 
-    private Integer age;
+    private String age;
 
 }

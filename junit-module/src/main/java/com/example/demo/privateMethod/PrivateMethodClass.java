@@ -23,7 +23,7 @@ public class PrivateMethodClass {
         UpdateMemberResponse updateMemberResponse = new UpdateMemberResponse();
         updateMemberResponse.setId(1L);
         updateMemberResponse.setName("HeSuiJin");
-        updateMemberResponse.setAge(updateMemberRequest.getAge()+10);
+        updateMemberResponse.setAge("18");
         return updateMemberResponse;
     }
 
@@ -67,7 +67,7 @@ public class PrivateMethodClass {
         log.info("我是privateMethodUpdateMember的入参啊：{}", JSONObject.toJSONString(updateMemberRequest.toString()));
         updateMemberRequest.setId(1L);
         updateMemberRequest.setName("HeSuiJin");
-        updateMemberRequest.setAge(18);
+        updateMemberRequest.setAge("18");
         return updateMemberRequest;
     }
 }

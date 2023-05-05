@@ -13,12 +13,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.request.RequestPostProcessor;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -133,7 +131,7 @@ public class ControllerJunitImpl {
         UpdateMemberRequest updateMemberRequest = new UpdateMemberRequest();
         updateMemberRequest.setId(0L);
         updateMemberRequest.setName("River");
-        updateMemberRequest.setAge(100);
+        updateMemberRequest.setAge("18");
         String requestString = JSONObject.toJSONString(updateMemberRequest);
 
         String result = mvc.perform(MockMvcRequestBuilders.post("/controllerJunit/test4")

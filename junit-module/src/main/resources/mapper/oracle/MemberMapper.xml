@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.MemberMapper">
+
+    <select id="selectMemberList" resultType="com.example.demo.base.model.Member">
+        SELECT * from  member
+    </select>
+
+    <select id="selectMemberById" resultType="com.example.demo.base.model.Member">
+        SELECT * from  member where id=#{id}
+    </select>
+
+    <select id="updateMemberByReq" parameterType="com.example.demo.base.request.UpdateMemberRequest">
+       update member
+       set
+       name =#{name},
+       age  =#{age}
+       where id =#{id}
+    </select>
+
+</mapper>
+
+
