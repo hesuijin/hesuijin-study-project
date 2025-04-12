@@ -7,17 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="security" />
+        <module name="spring-security-jwt-module" />
         <module name="rocketmq-producer" />
         <module name="rocketmq-consumer" />
-        <module name="spring-security-jwt-module" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="hesuijin-study-project" target="1.8" />
       <module name="rocketmq-consumer" target="1.8" />
       <module name="rocketmq-producer" target="1.8" />
-      <module name="security" target="1.8" />
-      <module name="spring-security-jwt-module" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
